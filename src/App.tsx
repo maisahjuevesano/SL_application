@@ -1,10 +1,10 @@
-import "./App.scss";
-import RealTime from "./components/RealTime";
+import { SearchTravel } from "./components/SearchTravel";
 
 function App() {
   return (
     <>
-      <RealTime></RealTime>
+      <SearchTravel></SearchTravel>
+      {/* <Departures></Departures> */}
     </>
   );
 }
