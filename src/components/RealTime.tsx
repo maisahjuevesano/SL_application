@@ -1,3 +1,19 @@
+import downloadStaticData from "../services/realTimeService";
+
 export const RealTime = () => {
-  return <h1>Hello welcome to my sl application!</h1>;
+  const handleDownloadClick = async () => {
+    const operator = "sl";
+    try {
+      const data = await downloadStaticData(operator);
+    } catch (error) {}
+  };
+
+  return (
+    <div>
+      <h1>Realtidsinformation</h1>
+      <button onClick={handleDownloadClick}>Ladda ner GTFS-data</button>
+    </div>
+  );
 };
+
+export default RealTime;

@@ -1,8 +1,12 @@
-// import { useState } from "react";
 import "./App.scss";
+import RealTime from "./components/RealTime";
 
 function App() {
-  return <></>;
+  return (
+    <>
+      <RealTime></RealTime>
+    </>
+  );
 }
 
 export default App;
