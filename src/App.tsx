@@ -1,10 +1,17 @@
-import { SearchTravel } from "./components/SearchTravel";
+// import React from "react";
 
+import { Outlet } from "react-router-dom";
+import { Nav } from "./components/Nav";
 function App() {
   return (
     <>
-      <SearchTravel></SearchTravel>
-      {/* <Departures></Departures> */}
+      <header>
+        <Nav></Nav>
+      </header>
+      <main className="App">
+        <Outlet></Outlet>
+      </main>
+      <footer></footer>
     </>
   );
 }

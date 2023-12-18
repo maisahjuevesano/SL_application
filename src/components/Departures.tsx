@@ -17,7 +17,7 @@ export const Departures = () => {
       <Header>
         <HeaderContainer>
           <HeaderButton>Sök resa</HeaderButton>
-          <HeaderButton>Sök avångar</HeaderButton>
+          <HeaderButton>Sök avgångar</HeaderButton>
           <img src={slImage} alt="Picture of SL logo" />
         </HeaderContainer>
       </Header>
