@@ -15,6 +15,7 @@ export const Departures = () => {
       const departures = await fetchRealtimeDepartures(siteId);
       setDeparturesData(departures);
     }
+    setSearchString("");
   };
 
   const handleEnterSearch = async (
