@@ -1,27 +1,38 @@
 import { useState } from "react";
 import { SLDeparturesData } from "../models/slDeparturesData";
-import { fetchDepartures } from "../services/fetchDepartures";
+import { fetchRealtimeDepartures } from "../services/fetchRealtimeDepartures";
+import { fetchSiteId } from "../services/fetchSiteId";
 
 export const Departures = () => {
   const [departuresData, setDeparturesData] = useState<SLDeparturesData | null>(
     null
   );
-  const handleSearch = async () => {
-    const data = await fetchDepartures();
+  const [searchString, setSearchString] = useState<string>("");
 
-    setDeparturesData(data);
+  const handleSearch = async () => {
+    const siteId = await fetchSiteId(searchString);
+    if (siteId) {
+      const departures = await fetchRealtimeDepartures(siteId);
+      setDeparturesData(departures);
+    }
   };
+
   return (
     <div>
+      <input
+        type="text"
+        value={searchString}
+        onChange={(e) => setSearchString(e.target.value)}
+        placeholder="Sök hållplats"
+      />
       <button onClick={handleSearch}>Sök</button>
+
       {departuresData && (
         <div>
-          <h3>Bussar</h3>
+          <h3>Busstider</h3>
           <ul>
             {departuresData.Buses.map((bus, index) => (
-              <li key={index}>
-                {bus.Destination} - {bus.DisplayTime}
-              </li>
+              <li key={index}>{`${bus.Destination} - ${bus.DisplayTime}`}</li>
             ))}
           </ul>
         </div>
