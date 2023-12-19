@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { SLDeparturesData } from "../models/slDeparturesData";
 import { fetchRealtimeDepartures } from "../services/fetchRealtimeDepartures";
 import { fetchSiteId } from "../services/fetchSiteId";
@@ -17,12 +17,21 @@ export const Departures = () => {
     }
   };
 
+  const handleEnterSearch = async (
+    event: React.KeyboardEvent<HTMLInputElement>
+  ) => {
+    if (event.key === "Enter") {
+      await handleSearch();
+    }
+  };
+
   return (
     <div>
       <input
         type="text"
         value={searchString}
         onChange={(e) => setSearchString(e.target.value)}
+        onKeyDown={handleEnterSearch}
         placeholder="Sök hållplats"
       />
       <button onClick={handleSearch}>Sök</button>
