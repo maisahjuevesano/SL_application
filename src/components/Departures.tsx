@@ -8,14 +8,22 @@ export const Departures = () => {
     null
   );
   const [searchString, setSearchString] = useState<string>("");
+  const [searchedStation, setSearchStation] = useState<string>("");
+
+  // ny funktion jag lärt mig
+  const capitalizeFirstLetter = (string: string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1).toLocaleLowerCase();
+  };
 
   const handleSearch = async () => {
     const siteId = await fetchSiteId(searchString);
     if (siteId) {
       const departures = await fetchRealtimeDepartures(siteId);
       setDeparturesData(departures);
+      setSearchStation(capitalizeFirstLetter(searchString));
+      setSearchString(""); //osäker om denna ska vara här eller utanför måsvingen
     }
-    setSearchString("");
+    // setSearchString("");
   };
 
   const handleEnterSearch = async (
@@ -39,7 +47,7 @@ export const Departures = () => {
 
       {departuresData && (
         <div>
-          <h3>Busstider</h3>
+          {searchedStation && <h2>{searchedStation}</h2>}
           <ul>
             {departuresData.Buses.map((bus, index) => (
               <li key={index}>{`${bus.Destination} - ${bus.DisplayTime}`}</li>
