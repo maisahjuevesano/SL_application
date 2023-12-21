@@ -5,6 +5,8 @@ import { fetchSiteId } from "../services/fetchSiteId";
 import {
   Container,
   DeparturesContainer,
+  DeparturesLi,
+  DeparturesUl,
   StyledButton,
   StyledInput,
 } from "../styled/styledDepartures";
@@ -72,11 +74,14 @@ export const Departures = () => {
       {departuresData && (
         <Container>
           {searchedStation && <h2>{searchedStation}</h2>}
-          <ul>
+          <DeparturesUl>
             {departuresData.Buses.map((bus, index) => (
-              <li key={index}>{`${bus.Destination} - ${bus.DisplayTime}`}</li>
+              <DeparturesLi
+                key={index}
+              >{`${bus.Destination} - ${bus.DisplayTime}`}</DeparturesLi>
+              // <li key={index}>{`${bus.Destination} - ${bus.DisplayTime}`}</li>
             ))}
-          </ul>
+          </DeparturesUl>
         </Container>
       )}
     </DeparturesContainer>

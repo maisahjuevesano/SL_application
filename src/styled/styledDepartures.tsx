@@ -13,7 +13,7 @@ export const Container = styled.div`
   flex-direction: column;
   background-color: #3e4245;
   align-items: center;
-  height: 60vh;
+  height: 65vh;
   width: 300px;
   border-radius: 4%;
   /* background-color: #2870f0; */
@@ -75,4 +75,14 @@ export const Heading2 = styled.h2`
 export const Heading3 = styled.h2`
   display: flex;
   color: white;
+`;
+
+export const DeparturesUl = styled.ul`
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+`;
+
+export const DeparturesLi = styled.li`
+  display: flex;
 `;
