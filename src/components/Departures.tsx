@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { SLDeparturesData } from "../models/slDeparturesData";
 import { fetchRealtimeDepartures } from "../services/fetchRealtimeDepartures";
 import { fetchSiteId } from "../services/fetchSiteId";
@@ -10,7 +10,18 @@ export const Departures = () => {
   const [searchString, setSearchString] = useState<string>("");
   const [searchedStation, setSearchStation] = useState<string>("");
 
-  // ny funktion jag lärt mig
+  useEffect(() => {
+    const savedStation = localStorage.getItem("searchedStation");
+    const savedDeparturesData = localStorage.getItem("departuresData");
+
+    if (savedStation) {
+      setSearchStation(savedStation);
+    }
+    if (savedDeparturesData) {
+      setDeparturesData(JSON.parse(savedDeparturesData));
+    }
+  }, []);
+
   const capitalizeFirstLetter = (string: string) => {
     return string.charAt(0).toUpperCase() + string.slice(1).toLocaleLowerCase();
   };
@@ -20,10 +31,13 @@ export const Departures = () => {
     if (siteId) {
       const departures = await fetchRealtimeDepartures(siteId);
       setDeparturesData(departures);
-      setSearchStation(capitalizeFirstLetter(searchString));
-      setSearchString(""); //osäker om denna ska vara här eller utanför måsvingen
+      const capitalizedSearchString = capitalizeFirstLetter(searchString);
+      setSearchStation(capitalizedSearchString);
+
+      localStorage.setItem("searchedStation", capitalizedSearchString);
+      localStorage.setItem("departuresData", JSON.stringify(departures));
+      setSearchString("");
     }
-    // setSearchString("");
   };
 
   const handleEnterSearch = async (
