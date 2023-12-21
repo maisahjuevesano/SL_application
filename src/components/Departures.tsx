@@ -2,6 +2,12 @@ import React, { useEffect, useState } from "react";
 import { SLDeparturesData } from "../models/slDeparturesData";
 import { fetchRealtimeDepartures } from "../services/fetchRealtimeDepartures";
 import { fetchSiteId } from "../services/fetchSiteId";
+import {
+  Container,
+  DeparturesContainer,
+  StyledButton,
+  StyledInput,
+} from "../styled/styledDepartures";
 
 export const Departures = () => {
   const [departuresData, setDeparturesData] = useState<SLDeparturesData | null>(
@@ -49,26 +55,30 @@ export const Departures = () => {
   };
 
   return (
-    <div>
-      <input
+    <DeparturesContainer>
+      <StyledInput
         type="text"
         value={searchString}
-        onChange={(e) => setSearchString(e.target.value)}
-        onKeyDown={handleEnterSearch}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+          setSearchString(e.target.value)
+        }
+        onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) =>
+          handleEnterSearch(e)
+        }
         placeholder="Sök hållplats"
       />
-      <button onClick={handleSearch}>Sök</button>
+      <StyledButton onClick={handleSearch}>Sök</StyledButton>
 
       {departuresData && (
-        <div>
+        <Container>
           {searchedStation && <h2>{searchedStation}</h2>}
           <ul>
             {departuresData.Buses.map((bus, index) => (
               <li key={index}>{`${bus.Destination} - ${bus.DisplayTime}`}</li>
             ))}
           </ul>
-        </div>
+        </Container>
       )}
-    </div>
+    </DeparturesContainer>
   );
 };
