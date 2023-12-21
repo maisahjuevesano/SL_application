@@ -1,20 +1,29 @@
 import { Link } from "react-router-dom";
+import {
+  ImageContainer,
+  StyledLi,
+  StyledNav,
+  StyledUl,
+} from "../styled/styledNav";
 
 export const Nav = () => {
   return (
-    <nav>
-      <ul>
-        <li>
+    <StyledNav>
+      <StyledUl>
+        <StyledLi>
           <Link to="/">Sök resa</Link>
-        </li>
-        <li>
+        </StyledLi>
+
+        <StyledLi>
           <Link to="/departures">Sök avgångar</Link>
-        </li>
-        <li>
-          <img src="" alt="" />
-          <Link to="/home">sl ikon</Link>
-        </li>
-      </ul>
-    </nav>
+        </StyledLi>
+
+        <StyledLi>
+          <Link to="/home">
+            <ImageContainer></ImageContainer>
+          </Link>
+        </StyledLi>
+      </StyledUl>
+    </StyledNav>
   );
 };
