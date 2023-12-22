@@ -17,6 +17,11 @@ export const StyledUl = styled.ul`
 export const StyledLi = styled.li`
   display: flex;
   flex-direction: row;
+
+  a {
+    color: black;
+    text-decoration: none;
+  }
 `;
 
 export const ImageContainer = styled.div`
@@ -27,7 +32,7 @@ export const ImageContainer = styled.div`
   background-position: center;
 `;
 
-// göra länkarna tll färgen svart!
+//Kanske ska ha streck emellan sökrösa och sökavgångar
 //StyledLink fungerar ej får något fel på "to".
 
 export const StyledLink = styled.a`
