@@ -27,7 +27,7 @@ export const InputAndButtonContainer = styled.div`
   width: 260px;
   border-radius: 4%;
   margin-top: 30px;
-  margin-left: 40px; // den ska ligga lite mer åt höger
+  margin-left: 40px;
 `;
 
 export const StyledInput = styled.input`
