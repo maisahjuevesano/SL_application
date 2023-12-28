@@ -34,7 +34,6 @@ export const StyledInput = styled.input`
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* margin-top: 80px; */
   background-color: #d9d9d9;
   border: none;
   padding: 10px 15px;
@@ -113,7 +112,7 @@ export const Container = styled.div`
   align-items: center;
   border-radius: 2%;
   background-color: #3e4245;
-  margin-top: 3%;
+  margin-top: 1%;
   height: 50vh;
   width: 300px;
 `;

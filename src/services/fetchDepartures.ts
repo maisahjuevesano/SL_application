@@ -1,5 +1,5 @@
 export const fetchDepartures = async () => {
-  const apiKey = "472c5da07a7a420b8ea098d8a4cd3ffd";
+  const apiKey = import.meta.env.VITE_API_KEY_FETCH_DEPARTURES;
   const siteId = "3710";
   const timeWindow = "60";
 
