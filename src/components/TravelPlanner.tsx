@@ -1,18 +1,26 @@
 import { useState } from "react";
 import { Leg, Trip, TripResponse } from "../models/ApiTravelResponse";
+import { fetchSiteId } from "../services/fetchSiteId";
 import { fetchTripData } from "../services/travelService";
 
 export const TravelPlanner = () => {
-  const [originId, setOriginId] = useState<string>("9109");
-  const [destId, setDestId] = useState<string>("");
+  const [originName, setOriginName] = useState<string>("");
+  const [destName, setDestName] = useState<string>("");
   const [tripData, setTripData] = useState<TripResponse | null>(null);
   const [error, setError] = useState<string>("");
 
   const handleFetchTrip = async () => {
     try {
-      const data = await fetchTripData(originId, destId);
-      setTripData(data);
-      setError("");
+      const originId = await fetchSiteId(originName);
+      const destId = await fetchSiteId(destName);
+
+      if (originId && destId) {
+        const data = await fetchTripData(originId, destId);
+        setTripData(data);
+        setError("");
+      } else {
+        setError("Kunde inte hitta station ID.");
+      }
     } catch (err) {
       setError("Kunde inte hämta resdata.");
       console.error(err);
@@ -22,12 +30,13 @@ export const TravelPlanner = () => {
   const renderLegs = (trip: Trip) => {
     return trip.LegList.Leg.map((leg: Leg, index: number) => (
       <div key={index}>
-        <div>Från: {leg.Origin.name}</div>
-        <div>Till: {leg.Destination.name}</div>
+        <div>Från: {leg.Origin?.name || "Okänd"}</div>
+        <div>Till: {leg.Destination?.name || "Okänd"}</div>
         <div>
-          Tid: {leg.Origin.time} - {leg.Destination.time}
+          Tid: {leg.Origin?.time || "Okänd tid"} -{" "}
+          {leg.Destination?.time || "Okänd tid"}
         </div>
-        <div>Medel: {leg.Product.name}</div>
+        <div>Medel: {leg.Product?.name || "Okänt"}</div>
         <hr />
       </div>
     ));
@@ -47,15 +56,15 @@ export const TravelPlanner = () => {
     <div>
       <input
         type="text"
-        value={originId}
-        onChange={(e) => setOriginId(e.target.value)}
-        placeholder="Startstation ID"
+        value={originName}
+        onChange={(e) => setOriginName(e.target.value)}
+        placeholder="Startstation Namn"
       />
       <input
         type="text"
-        value={destId}
-        onChange={(e) => setDestId(e.target.value)}
-        placeholder="Destination ID"
+        value={destName}
+        onChange={(e) => setDestName(e.target.value)}
+        placeholder="Destination Namn"
       />
       <button onClick={handleFetchTrip}>Hitta Resa</button>
       {error && <p>{error}</p>}
