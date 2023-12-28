@@ -13,7 +13,7 @@ export const Nav = () => {
       <StyledNav>
         <StyledUl>
           <StyledLi>
-            <Link to="/SearchTravel">Sök resa</Link>
+            <Link to="/TravelPlanner">Sök resa</Link>
           </StyledLi>
 
           <StyledLi>

@@ -1,26 +1,22 @@
-import { TripResponse } from "../models/travelService";
+import { TripResponse } from "../models/ApiTravelResponse";
+const apiKey = import.meta.env.VITE_API_KEY_FETCH_TRAVEL_API;
 
-const API_BASE_URL = "https://api.resrobot.se/v2.1";
-
-const getTrip = async (
+const fetchTripData = async (
   originId: string,
-  destId: string,
-  apiKey: string
+  destId: string
 ): Promise<TripResponse> => {
-  const url = new URL(`${API_BASE_URL}/trip`);
-  url.search = new URLSearchParams({
-    format: "json",
-    originId,
-    destId,
-    passlist: "true",
-    showPassingPoints: "true",
-    accessId: apiKey,
-  }).toString();
+  const corsProxy = "https://cors-anywhere.herokuapp.com/";
+  const apiURL = `http://api.sl.se/api2/TravelplannerV3_1/trip.json?key=${apiKey}&originId=${originId}&destId=${destId}`;
+  const url = corsProxy + apiURL;
 
   try {
-    const response = await fetch(url.toString());
+    const response = await fetch(url, {
+      headers: {
+        "X-Requested-With": "XMLHttpRequest",
+      },
+    });
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      throw new Error("Network response was not ok");
     }
     return (await response.json()) as TripResponse;
   } catch (error) {
@@ -29,4 +25,4 @@ const getTrip = async (
   }
 };
 
-export { getTrip };
+export { fetchTripData };
