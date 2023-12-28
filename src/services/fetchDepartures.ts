@@ -1,5 +1,5 @@
 export const fetchDepartures = async () => {
-  const apiKey = process.env.REACT_APP_API_KEY_FETCH_DEPARTURES;
+  const apiKey = import.meta.env.VITE_API_KEY_FETCH_DEPARTURES;
   const siteId = "3710";
   const timeWindow = "60";
 
