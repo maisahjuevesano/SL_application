@@ -69,7 +69,6 @@ export const Departures = () => {
         </DivHeading>
         <InputAndButtonContainer>
           <DivHeading>
-            <Heading3>Sök avångar</Heading3>
             <Heading3>Från</Heading3>
           </DivHeading>
           <StyledInput

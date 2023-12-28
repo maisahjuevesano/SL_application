@@ -7,8 +7,8 @@ export const fetchRealtimeDepartures = async (
   siteId: string
 ): Promise<SLDeparturesData | null> => {
   const apiKey = "472c5da07a7a420b8ea098d8a4cd3ffd";
+  // const apiKey = process.env.REACT_APP_API_KEY_FETCH_REALTIME_DEPARTURES;
   const timeWindow = "60";
-
   const proxyUrl = "https://cors-anywhere.herokuapp.com/";
   const apiUrl = `${proxyUrl}https://api.sl.se/api2/realtimedeparturesV4.json?key=${apiKey}&siteid=${siteId}&timewindow=${timeWindow}`;
 

@@ -4,7 +4,7 @@ export const fetchSiteId = async (
   searchString: string
 ): Promise<string | null> => {
   const apiKey = "8a11b05cf8d54981bb11dceedcba94e9";
-
+  // const apiKey = process.env.REACT_APP_API_KEY_FETCH_SITE_ID;
   const proxyUrl = "https://cors-anywhere.herokuapp.com/";
   const apiUrl = `${proxyUrl}https://journeyplanner.integration.sl.se/v1/typeahead.json?key=${apiKey}&searchstring=s=${encodeURIComponent(
     searchString
