@@ -1,20 +1,32 @@
 import { Link } from "react-router-dom";
+import {
+  ImageContainer,
+  StyledHeader,
+  StyledLi,
+  StyledNav,
+  StyledUl,
+} from "../styled/styledNav";
 
 export const Nav = () => {
   return (
-    <nav>
-      <ul>
-        <li>
-          <Link to="/">Sök resa</Link>
-        </li>
-        <li>
-          <Link to="/departures">Sök avgångar</Link>
-        </li>
-        <li>
-          <img src="" alt="" />
-          <Link to="/home">sl ikon</Link>
-        </li>
-      </ul>
-    </nav>
+    <StyledHeader>
+      <StyledNav>
+        <StyledUl>
+          <StyledLi>
+            <Link to="/SearchTravel">Sök resa</Link>
+          </StyledLi>
+
+          <StyledLi>
+            <Link to="/">Sök avgångar</Link>
+          </StyledLi>
+
+          <StyledLi>
+            <Link to="/">
+              <ImageContainer></ImageContainer>
+            </Link>
+          </StyledLi>
+        </StyledUl>
+      </StyledNav>
+    </StyledHeader>
   );
 };

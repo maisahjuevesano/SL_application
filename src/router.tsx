@@ -11,7 +11,7 @@ export const router = createBrowserRouter([
     errorElement: <NotFound />,
     children: [
       {
-        index: true,
+        index: true, // detta är min startsida
         element: <Departures />,
       },
       {
