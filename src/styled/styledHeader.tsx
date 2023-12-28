@@ -5,9 +5,8 @@ export const Header = styled.header`
   flex-direction: column;
   background-color: #d9d9d9;
   padding: 10px 100px 20px;
-  margin-bottom: 20px; // ändra i framtiden
+  margin-bottom: 20px;
   border-radius: 15px;
-  /* width: 200px; */
 `;
 
 export const HeaderContainer = styled.div`

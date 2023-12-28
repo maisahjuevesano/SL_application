@@ -2,6 +2,15 @@ import { useState } from "react";
 import { Leg, Trip, TripResponse } from "../models/ApiTravelResponse";
 import { fetchSiteId } from "../services/fetchSiteId";
 import { fetchTripData } from "../services/travelService";
+import { Heading3 } from "../styled/styledDepartures";
+import {
+  DivHeading,
+  InputAndButtonContainer,
+  SearchTravelPlannerContainer,
+  StyledButton,
+  StyledInput,
+  TravelPlannerContainer,
+} from "../styled/styledTravelPlanner";
 
 export const TravelPlanner = () => {
   const [originName, setOriginName] = useState<string>("");
@@ -53,23 +62,35 @@ export const TravelPlanner = () => {
   };
 
   return (
-    <div>
-      <input
-        type="text"
-        value={originName}
-        onChange={(e) => setOriginName(e.target.value)}
-        placeholder="Startstation Namn"
-      />
-      <input
-        type="text"
-        value={destName}
-        onChange={(e) => setDestName(e.target.value)}
-        placeholder="Destination Namn"
-      />
-      <button onClick={handleFetchTrip}>Hitta Resa</button>
-      {error && <p>{error}</p>}
-      <div>{renderTripData()}</div>
-    </div>
+    <TravelPlannerContainer>
+      <SearchTravelPlannerContainer>
+        <DivHeading>
+          <Heading3>Sök avgångar</Heading3>
+        </DivHeading>
+        <InputAndButtonContainer>
+          <StyledInput
+            type="text"
+            value={originName}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setOriginName(e.target.value)
+            }
+            placeholder="Startstation Namn"
+          />
+          <StyledInput
+            type="text"
+            value={destName}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setDestName(e.target.value)
+            }
+            placeholder="Destination Namn"
+          />
+          <StyledButton onClick={handleFetchTrip}>Sök resa</StyledButton>
+
+          {error && <p>{error}</p>}
+          <div>{renderTripData()}</div>
+        </InputAndButtonContainer>
+      </SearchTravelPlannerContainer>
+    </TravelPlannerContainer>
   );
 };
 

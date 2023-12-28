@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const DeparturesContainer = styled.div`
+export const TravelPlannerContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -9,10 +9,10 @@ export const DeparturesContainer = styled.div`
   background-color: #2870f0;
 `;
 
-export const SearchTravelContainer = styled.div`
+export const SearchTravelPlannerContainer = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: lightgrey;
+  background-color: #3e4245;
   align-items: center;
   height: 25vh;
   width: 260px;
@@ -21,7 +21,7 @@ export const SearchTravelContainer = styled.div`
 export const InputAndButtonContainer = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: #3e4245;
+  background-color: lightgrey;
   align-items: center;
   height: 25vh;
   width: 260px;
@@ -69,41 +69,7 @@ export const StyledButton = styled.button`
   }
 `;
 
-export const Heading2 = styled.h2``;
-
-export const Heading3 = styled.h2`
-  display: flex;
-  color: white;
-  font-size: 16px;
-  margin-bottom: 0;
-`;
-
-export const Heading3Black = styled.h2`
-  display: flex;
-  font-size: 16px;
-  margin-bottom: 0;
-`;
-
-export const DivContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
 export const DivHeading = styled.div`
   width: 85%;
   text-align: start;
-`;
-
-export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 2%;
-  background-color: #3e4245;
-  margin-top: 1%;
-  height: 50vh;
-  width: 300px;
-`;
-export const InfoDiv = styled.div`
-  display: flex;
 `;
