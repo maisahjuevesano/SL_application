@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import {
   ImageContainer,
+  StyledHeader,
   StyledLi,
   StyledNav,
   StyledUl,
@@ -8,22 +9,24 @@ import {
 
 export const Nav = () => {
   return (
-    <StyledNav>
-      <StyledUl>
-        <StyledLi>
-          <Link to="/">Sök resa</Link>
-        </StyledLi>
+    <StyledHeader>
+      <StyledNav>
+        <StyledUl>
+          <StyledLi>
+            <Link to="/">Sök resa</Link>
+          </StyledLi>
 
-        <StyledLi>
-          <Link to="/departures">Sök avgångar</Link>
-        </StyledLi>
+          <StyledLi>
+            <Link to="/departures">Sök avgångar</Link>
+          </StyledLi>
 
-        <StyledLi>
-          <Link to="/home">
-            <ImageContainer></ImageContainer>
-          </Link>
-        </StyledLi>
-      </StyledUl>
-    </StyledNav>
+          <StyledLi>
+            <Link to="/home">
+              <ImageContainer></ImageContainer>
+            </Link>
+          </StyledLi>
+        </StyledUl>
+      </StyledNav>
+    </StyledHeader>
   );
 };

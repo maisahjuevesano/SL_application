@@ -5,8 +5,13 @@ import { fetchSiteId } from "../services/fetchSiteId";
 import {
   Container,
   DeparturesContainer,
-  DeparturesLi,
-  DeparturesUl,
+  DivContainer,
+  DivHeading,
+  Heading3,
+  Heading3Black,
+  InfoDiv,
+  InputAndButtonContainer,
+  SearchTravelContainer,
   StyledButton,
   StyledInput,
 } from "../styled/styledDepartures";
@@ -58,30 +63,39 @@ export const Departures = () => {
 
   return (
     <DeparturesContainer>
-      <StyledInput
-        type="text"
-        value={searchString}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          setSearchString(e.target.value)
-        }
-        onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) =>
-          handleEnterSearch(e)
-        }
-        placeholder="Sök hållplats"
-      />
-      <StyledButton onClick={handleSearch}>Sök</StyledButton>
+      <SearchTravelContainer>
+        <DivHeading>
+          <Heading3Black>Sök resa</Heading3Black>
+        </DivHeading>
+        <InputAndButtonContainer>
+          <DivHeading>
+            <Heading3>Från</Heading3>
+          </DivHeading>
+          <StyledInput
+            type="text"
+            value={searchString}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setSearchString(e.target.value)
+            }
+            onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) =>
+              handleEnterSearch(e)
+            }
+            placeholder="Sök avgång"
+          />
+          <StyledButton onClick={handleSearch}>Sök</StyledButton>
+        </InputAndButtonContainer>
+      </SearchTravelContainer>
 
       {departuresData && (
         <Container>
           {searchedStation && <h2>{searchedStation}</h2>}
-          <DeparturesUl>
+          <DivContainer>
             {departuresData.Buses.map((bus, index) => (
-              <DeparturesLi
-                key={index}
-              >{`${bus.Destination} - ${bus.DisplayTime}`}</DeparturesLi>
-              // <li key={index}>{`${bus.Destination} - ${bus.DisplayTime}`}</li>
+              <InfoDiv key={index}>
+                {`${bus.Destination} - ${bus.DisplayTime}`}
+              </InfoDiv>
             ))}
-          </DeparturesUl>
+          </DivContainer>
         </Container>
       )}
     </DeparturesContainer>
