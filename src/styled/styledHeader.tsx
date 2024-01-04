@@ -3,9 +3,7 @@ import { styled } from "styled-components";
 export const Header = styled.header`
   display: flex;
   flex-direction: column;
-  background-color: #d9d9d9;
-  padding: 10px 100px 20px;
-  margin-bottom: 20px;
+  padding: 0px 0px 10px;
   border-radius: 15px;
 `;
 

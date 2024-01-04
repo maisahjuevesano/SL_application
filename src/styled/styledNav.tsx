@@ -3,7 +3,6 @@ import SlImage from "../assets/SLpicture_50px.png";
 
 export const StyledHeader = styled.header`
   display: flex;
-  background-color: #2870f0;
   justify-content: center;
 `;
 
@@ -15,9 +14,10 @@ export const StyledNav = styled.nav`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
-  background-color: #d9d9d9;
   border-radius: 15px;
+  background-color: rgba(217, 217, 217, 0.5);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
 `;
 
 export const StyledUl = styled.ul`
@@ -31,12 +31,12 @@ export const StyledLi = styled.li`
 
   &:not(:last-child)::after {
     content: "|";
-    color: black;
+    color: #f8ac41;
     margin: 0 10px;
   }
 
   a {
-    color: black;
+    color: #f8ac41;
     text-decoration: none;
   }
 `;
@@ -53,6 +53,6 @@ export const StyledLink = styled.a`
   color: black;
   text-decoration: none;
   &:hover {
-    color: pink;
+    color: #f8ac41;
   }
 `;

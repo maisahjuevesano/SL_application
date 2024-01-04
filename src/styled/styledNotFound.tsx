@@ -8,7 +8,6 @@ export const ImageContainer = styled.div`
   height: 80vh;
   background-size: cover;
   background-position: center;
-  /* border: 1px solid red;  */
 `;
 
 export const NotFoundContainer = styled.div`

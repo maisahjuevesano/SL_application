@@ -6,10 +6,14 @@ import { Heading3 } from "../styled/styledDepartures";
 import {
   DivHeading,
   InputAndButtonContainer,
+  LegContainer,
+  LegDetail,
+  LegHeader,
   SearchTravelPlannerContainer,
   StyledButton,
   StyledInput,
   TravelPlannerContainer,
+  TripContainer,
 } from "../styled/styledTravelPlanner";
 
 export const TravelPlanner = () => {
@@ -38,26 +42,25 @@ export const TravelPlanner = () => {
 
   const renderLegs = (trip: Trip) => {
     return trip.LegList.Leg.map((leg: Leg, index: number) => (
-      <div key={index}>
-        <div>Från: {leg.Origin?.name || "Okänd"}</div>
-        <div>Till: {leg.Destination?.name || "Okänd"}</div>
-        <div>
+      <LegContainer key={index}>
+        <LegDetail>Från: {leg.Origin?.name || "Okänd"}</LegDetail>
+        <LegDetail>Till: {leg.Destination?.name || "Okänd"}</LegDetail>
+        <LegDetail>
           Tid: {leg.Origin?.time || "Okänd tid"} -{" "}
           {leg.Destination?.time || "Okänd tid"}
-        </div>
-        <div>Medel: {leg.Product?.name || "Okänt"}</div>
-        <hr />
-      </div>
+        </LegDetail>
+        <LegDetail>Medel: {leg.Product?.name || "Okänt"}</LegDetail>
+      </LegContainer>
     ));
   };
 
   const renderTripData = () => {
     if (!tripData) return null;
     return tripData.Trip.map((trip: Trip, index: number) => (
-      <div key={index}>
-        <h3>Resa {index + 1}</h3>
+      <TripContainer key={index}>
+        <LegHeader>Resa {index + 1}</LegHeader>
         {renderLegs(trip)}
-      </div>
+      </TripContainer>
     ));
   };
 
@@ -74,7 +77,7 @@ export const TravelPlanner = () => {
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
               setOriginName(e.target.value)
             }
-            placeholder="Startstation Namn"
+            placeholder="Från"
           />
           <StyledInput
             type="text"
@@ -82,7 +85,7 @@ export const TravelPlanner = () => {
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
               setDestName(e.target.value)
             }
-            placeholder="Destination Namn"
+            placeholder="Till"
           />
           <StyledButton onClick={handleFetchTrip}>Sök resa</StyledButton>
 

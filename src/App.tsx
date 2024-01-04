@@ -2,12 +2,16 @@
 
 import { Outlet } from "react-router-dom";
 import { Nav } from "./components/Nav";
+import { GlobalStyle } from "./styled/Layout";
+import { Header } from "./styled/styledHeader";
+
 function App() {
   return (
     <>
-      <header>
+      <GlobalStyle></GlobalStyle>
+      <Header>
         <Nav></Nav>
-      </header>
+      </Header>
       <main className="App">
         <Outlet></Outlet>
       </main>

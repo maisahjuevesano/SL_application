@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
+//Sök resa
+
 export const TravelPlannerContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 90vh;
-  background-color: #2870f0;
 `;
 
 export const SearchTravelPlannerContainer = styled.div`
@@ -21,20 +21,21 @@ export const SearchTravelPlannerContainer = styled.div`
 export const InputAndButtonContainer = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: lightgrey;
+  background-color: rgba(217, 217, 217, 0.5);
   align-items: center;
   height: 25vh;
   width: 260px;
   border-radius: 4%;
   margin-top: 30px;
   margin-left: 40px;
+  padding-top: 10px;
 `;
 
 export const StyledInput = styled.input`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #d9d9d9;
+  background-color: rgba(217, 217, 217, 0.5);
   border: none;
   padding: 10px 15px;
   border-radius: 10px;
@@ -45,7 +46,7 @@ export const StyledInput = styled.input`
 
 export const StyledButton = styled.button`
   font-weight: bolder;
-  background-color: #d9d9d9;
+  background-color: rgba(217, 217, 217, 0.5);
   border: none;
   margin-top: 15px;
   padding: 10px 45px;
@@ -72,4 +73,32 @@ export const StyledButton = styled.button`
 export const DivHeading = styled.div`
   width: 85%;
   text-align: start;
+`;
+
+//tripdatastyling
+export const TripContainer = styled.div`
+  background-color: rgba(217, 217, 217, 0.5);
+  border-radius: 8px;
+  width: 250px;
+  margin: 10px 0;
+  padding: 10px; //15px
+`;
+
+export const LegContainer = styled.div`
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: rgba(217, 217, 217, 0.5);
+  border: 1px solid #ddd;
+  border-radius: 8px;
+`;
+
+export const LegHeader = styled.h3`
+  color: #f8ac41;
+  margin: 0 0 10px 0;
+`;
+
+export const LegDetail = styled.div`
+  color: #333;
+  font-size: 14px;
+  line-height: 1.5;
 `;
