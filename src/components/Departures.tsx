@@ -65,7 +65,7 @@ export const Departures = () => {
     <DeparturesContainer>
       <SearchTravelContainer>
         <DivHeading>
-          <Heading3Black>Sök resa</Heading3Black>
+          <Heading3Black>Sök avgångar</Heading3Black>
         </DivHeading>
         <InputAndButtonContainer>
           <DivHeading>
