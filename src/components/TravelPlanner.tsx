@@ -40,6 +40,12 @@ export const TravelPlanner = () => {
     }
   };
 
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      handleFetchTrip();
+    }
+  };
+
   const renderLegs = (trip: Trip) => {
     return trip.LegList.Leg.map((leg: Leg, index: number) => (
       <LegContainer key={index}>
@@ -68,7 +74,7 @@ export const TravelPlanner = () => {
     <TravelPlannerContainer>
       <SearchTravelPlannerContainer>
         <DivHeading>
-          <Heading3>Sök avgångar</Heading3>
+          <Heading3>Sök resa</Heading3>
         </DivHeading>
         <InputAndButtonContainer>
           <StyledInput
@@ -77,6 +83,7 @@ export const TravelPlanner = () => {
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
               setOriginName(e.target.value)
             }
+            onKeyPress={handleKeyPress}
             placeholder="Från"
           />
           <StyledInput
@@ -85,6 +92,7 @@ export const TravelPlanner = () => {
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
               setDestName(e.target.value)
             }
+            onKeyPress={handleKeyPress}
             placeholder="Till"
           />
           <StyledButton onClick={handleFetchTrip}>Sök resa</StyledButton>

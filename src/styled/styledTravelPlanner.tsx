@@ -54,7 +54,6 @@ export const StyledButton = styled.button`
   border: white 3px solid;
   font-size: 16px;
   cursor: pointer;
-  /* outline: none; */
   transition: background-colour 0.3s ease;
 
   &:hover {

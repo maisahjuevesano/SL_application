@@ -12,11 +12,14 @@ export const DeparturesContainer = styled.div`
 export const SearchTravelContainer = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: rgba(217, 217, 217, 0.5);
+
   align-items: center;
   height: 25vh;
   width: 260px;
   border-radius: 4%;
+  color: #f8ac41;
+  /* background-color: rgba(217, 217, 217, 0.5); */
+  background-color: #3e4245;
 `;
 export const InputAndButtonContainer = styled.div`
   display: flex;
@@ -36,7 +39,6 @@ export const StyledInput = styled.input`
   flex-direction: column;
   align-items: center;
   background-color: rgba(217, 217, 217, 0.5);
-  border: none;
   padding: 10px 15px;
   border-radius: 10px;
   border: white 3px solid;
@@ -49,12 +51,11 @@ export const StyledButton = styled.button`
   background-color: rgba(217, 217, 217, 0.5);
   border: none;
   margin-top: 15px;
-  padding: 10px 45px;
+  padding: 10px 35px;
   border-radius: 10px;
   border: white 3px solid;
   font-size: 16px;
   cursor: pointer;
-  /* outline: none; */
   transition: background-colour 0.3s ease;
 
   &:hover {
