@@ -105,7 +105,7 @@ export const Container = styled.div`
   margin-top: 1%;
   height: 50vh;
   width: 300px;
-  color: #f8ac41;
+  color: #000000;
 `;
 export const InfoDiv = styled.div`
   display: flex;
