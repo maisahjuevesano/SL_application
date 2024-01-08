@@ -3,6 +3,8 @@ import { Leg, Trip, TripResponse } from "../models/ApiTravelResponse";
 import { useTheme } from "../models/theme-context";
 import { fetchSiteId } from "../services/fetchSiteId";
 import { fetchTripData } from "../services/travelService";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowsUpDown } from "@fortawesome/free-solid-svg-icons";
 
 import {
   DivHeading,
@@ -14,6 +16,7 @@ import {
   SearchTravelPlannerContainer,
   StyledButton,
   StyledInput,
+  StyledSwitchButton,
   TravelPlannerContainer,
   TripContainer,
 } from "../styled/styledTravelPlanner";
@@ -24,6 +27,11 @@ export const TravelPlanner = () => {
   const [tripData, setTripData] = useState<TripResponse | null>(null);
   const [error, setError] = useState<string>("");
   const { isToggled } = useTheme();
+
+  const handleSwapInputs = () => {
+    setOriginName(destName);
+    setDestName(originName);
+  };
 
   const handleFetchTrip = async () => {
     try {
@@ -89,6 +97,7 @@ export const TravelPlanner = () => {
             onKeyPress={handleKeyPress}
             placeholder="Från"
           />
+
           <StyledInput
             type="text"
             value={destName}
@@ -98,8 +107,10 @@ export const TravelPlanner = () => {
             onKeyPress={handleKeyPress}
             placeholder="Till"
           />
+          <StyledSwitchButton onClick={handleSwapInputs}>
+            <FontAwesomeIcon icon={faArrowsUpDown} />
+          </StyledSwitchButton>
           <StyledButton onClick={handleFetchTrip}>Sök resa</StyledButton>
-
           {error && <p>{error}</p>}
           <div>{renderTripData()}</div>
         </InputAndButtonContainer>
