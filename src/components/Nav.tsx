@@ -1,5 +1,5 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLightbulb } from "@fortawesome/free-regular-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faLightbulb } from "@fortawesome/free-regular-svg-icons";
 import { Link } from "react-router-dom";
 
 import {
@@ -9,6 +9,7 @@ import {
   StyledNav,
   StyledUl,
 } from "../styled/styledNav";
+import ToggleButton from "./ToggleButton";
 
 export const Nav = () => {
   return (
@@ -25,7 +26,9 @@ export const Nav = () => {
             <Link to="/">
               <ImageContainer></ImageContainer>
             </Link>
-            <FontAwesomeIcon icon={faLightbulb} />
+          </StyledLi>
+          <StyledLi>
+            <ToggleButton />
           </StyledLi>
         </StyledUl>
       </StyledNav>
