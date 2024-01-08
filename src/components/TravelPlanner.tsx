@@ -46,6 +46,14 @@ export const TravelPlanner = () => {
     localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
   }, [searchHistory]);
 
+  const handleSearchSelect = async (search: Search) => {
+    setOriginName(search.origin);
+    setDestName(search.destination);
+
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    handleFetchTrip();
+  };
+
   const handleSwapInputs = () => {
     setOriginName(destName);
     setDestName(originName);
@@ -83,6 +91,19 @@ export const TravelPlanner = () => {
     if (e.key === "Enter") {
       handleFetchTrip();
     }
+  };
+
+  const onSearchRemove = (searchToRemove: {
+    origin: string;
+    destination: string;
+  }) => {
+    // Använda filter för att skapa en ny array som inte innehåller sökningen du vill ta bort
+    const newSearchHistory = searchHistory.filter(
+      (search) => search !== searchToRemove
+    );
+
+    // Uppdatera din sökhistorik med den nya arrayen
+    setSearchHistory(newSearchHistory);
   };
 
   const renderLegs = (trip: Trip) => {
@@ -145,7 +166,12 @@ export const TravelPlanner = () => {
           </InputAndButtonContainer>
         </SearchTravelPlannerContainer>
       </TravelPlannerContainer>
-      <SearchHistory history={searchHistory}></SearchHistory>
+
+      <SearchHistory
+        history={searchHistory}
+        onSearchSelect={handleSearchSelect}
+        onSearchRemove={onSearchRemove}
+      ></SearchHistory>
     </>
   );
 };
