@@ -70,6 +70,30 @@ export const StyledButton = styled.button`
     box-shadow: 0 0 0 2px #bbb;
   }
 `;
+export const StyledSwitchButton = styled.button`
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  font-weight: bolder;
+  background-color: rgba(217, 217, 217, 0.5);
+  width: 30px;
+  height: 30px;
+  border: white 3px solid;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-colour 0.3s ease;
+
+  &:hover {
+    background-color: #666;
+  }
+
+  &:active {
+    background-color: #333;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 2px #bbb;
+  }
+`;
 
 export const DivHeading = styled.div`
   width: 85%;
