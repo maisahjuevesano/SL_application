@@ -5,7 +5,7 @@ export const ToggleButton = () => {
   const { isToggled, toggleTheme } = useTheme();
 
   return (
-    <ToggleContainer isToggled={isToggled} onClick={toggleTheme}>
+    <ToggleContainer $istoggled={isToggled} onClick={toggleTheme}>
       <ToggleKnob />
     </ToggleContainer>
   );

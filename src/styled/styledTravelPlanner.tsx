@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { ToggleContainerProps } from "../models/toggleContainerProps";
 
 //Sök resa
 
@@ -75,8 +76,8 @@ export const DivHeading = styled.div`
   text-align: start;
 `;
 
-export const Heading3 = styled.h3<{ isToggled: boolean }>`
-  color: ${(props) => (props.isToggled ? "white" : "#f8ac41")};
+export const Heading3 = styled.h3<ToggleContainerProps>`
+  color: ${(props) => (props.$istoggled ? "white" : "#f8ac41")};
 `;
 
 //tripdatastyling

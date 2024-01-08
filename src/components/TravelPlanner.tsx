@@ -77,7 +77,7 @@ export const TravelPlanner = () => {
     <TravelPlannerContainer>
       <SearchTravelPlannerContainer>
         <DivHeading>
-          <Heading3 isToggled={isToggled}>Sök resa</Heading3>
+          <Heading3 $istoggled={isToggled}>Sök resa</Heading3>
         </DivHeading>
         <InputAndButtonContainer>
           <StyledInput

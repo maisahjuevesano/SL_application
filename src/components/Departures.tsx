@@ -65,13 +65,13 @@ export const Departures = () => {
 
   return (
     <DeparturesContainer>
-      <SearchTravelContainer isToggled={isToggled}>
+      <SearchTravelContainer $istoggled={isToggled}>
         <DivHeading>
-          <Heading3Black isToggled={isToggled}>Sök avgångar</Heading3Black>
+          <Heading3Black $istoggled={isToggled}>Sök avgångar</Heading3Black>
         </DivHeading>
         <InputAndButtonContainer>
           <DivHeading>
-            <Heading3 isToggled={isToggled}>Från</Heading3>
+            <Heading3 $istoggled={isToggled}>Från</Heading3>
           </DivHeading>
           <StyledInput
             type="text"

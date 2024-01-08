@@ -12,7 +12,7 @@ export const ThemeWrapper = ({ children }: ThemeWrapperProps) => {
 
   return (
     <>
-      <GlobalStyle isToggled={isToggled} />
+      <GlobalStyle $isToggled={isToggled} />
       {children}
     </>
   );

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { ToggleContainerProps } from "../models/toggleContainerProps";
 
 //sök avgångar
 
@@ -9,16 +10,16 @@ export const DeparturesContainer = styled.div`
   align-items: center;
 `;
 
-export const SearchTravelContainer = styled.div<{ isToggled: boolean }>`
+export const SearchTravelContainer = styled.div<ToggleContainerProps>`
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 25vh;
   width: 260px;
   border-radius: 4%;
-  color: ${(props) => (props.isToggled ? "#f8ac41" : "#3e4245")};
+  color: ${(props) => (props.$istoggled ? "#f8ac41" : "#3e4245")};
   background-color: ${(props) =>
-    props.isToggled ? "#3e4245" : "rgba(217, 217, 217, 0.5)"};
+    props.$istoggled ? "#3e4245" : "rgba(217, 217, 217, 0.5)"};
 `;
 export const InputAndButtonContainer = styled.div`
   display: flex;
@@ -72,18 +73,18 @@ export const StyledButton = styled.button`
 
 export const Heading2 = styled.h2``;
 
-export const Heading3 = styled.h2<{ isToggled: boolean }>`
+export const Heading3 = styled.h2<ToggleContainerProps>`
   display: flex;
-  color: ${(props) => (props.isToggled ? "#3e4245" : "#f8ac41")};
+  color: ${(props) => (props.$istoggled ? "#3e4245" : "#f8ac41")};
   font-size: 16px;
   margin-bottom: 0;
 `;
 
-export const Heading3Black = styled.h2<{ isToggled: boolean }>`
+export const Heading3Black = styled.h2<ToggleContainerProps>`
   display: flex;
   font-size: 16px;
   margin-bottom: 0;
-  color: ${(props) => (props.isToggled ? "white" : "#f8ac41")};
+  color: ${(props) => (props.$istoggled ? "white" : "#f8ac41")};
 `;
 
 export const DivContainer = styled.div`
