@@ -20,8 +20,9 @@ import {
   TravelPlannerContainer,
   TripContainer,
 } from "../styled/styledTravelPlanner";
-import { SearchHistory } from "./SearchHistory";
+
 import { Search } from "../models/search";
+import { SearchHistory } from "./SearchHistory";
 
 export const TravelPlanner = () => {
   const [originName, setOriginName] = useState<string>("");
