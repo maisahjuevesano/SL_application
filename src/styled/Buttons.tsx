@@ -1,15 +1,20 @@
-import { styled } from "styled-components";
-import { ToggleContainerProps } from "../models/toggleContainer";
+import styled from "styled-components";
 
-export const ToggleContainer = styled.div<ToggleContainerProps>`
+interface ToggleContainerProps {
+  isToggled: boolean;
+}
+
+export const ToggleContainer = styled.div.attrs(
+  () => ({})
+)<ToggleContainerProps>`
   width: 40px;
   height: 20px;
-  background-color: ${(props) => (props.toggled ? "#3e4245;" : "#f8ac41;")};
+  background-color: ${(props) => (props.isToggled ? "#3e4245" : "#f8ac41")};
   border-radius: 25px;
   padding: 5px;
   display: flex;
   align-items: center;
-  justify-content: ${(props) => (props.toggled ? "flex-end" : "flex-start")};
+  justify-content: ${(props) => (props.isToggled ? "flex-end" : "flex-start")};
   cursor: pointer;
 `;
 

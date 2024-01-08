@@ -1,15 +1,11 @@
-import { useState } from "react";
+import { useTheme } from "../models/theme-context";
 import { ToggleContainer, ToggleKnob } from "../styled/Buttons";
 
 export const ToggleButton = () => {
-  const [toggled, setToggled] = useState(false);
-
-  const handleToggle = () => {
-    setToggled(!toggled);
-  };
+  const { isToggled, toggleTheme } = useTheme();
 
   return (
-    <ToggleContainer toggled={toggled} onClick={handleToggle}>
+    <ToggleContainer isToggled={isToggled} onClick={toggleTheme}>
       <ToggleKnob />
     </ToggleContainer>
   );
