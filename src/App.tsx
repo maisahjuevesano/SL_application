@@ -1,22 +1,22 @@
-// import React from "react";
-
 import { Outlet } from "react-router-dom";
+import { ThemeProvider } from "./context/ThemeContext";
 import { Nav } from "./components/Nav";
-import { GlobalStyle } from "./styled/Layout";
 import { Header } from "./styled/styledHeader";
+import { ThemeWrapper } from "./components/ThemeWrapper";
 
 function App() {
   return (
-    <>
-      <GlobalStyle></GlobalStyle>
-      <Header>
-        <Nav></Nav>
-      </Header>
-      <main className="App">
-        <Outlet></Outlet>
-      </main>
-      <footer></footer>
-    </>
+    <ThemeProvider>
+      <ThemeWrapper>
+        <Header>
+          <Nav />
+        </Header>
+        <main className="App">
+          <Outlet />
+        </main>
+        <footer></footer>
+      </ThemeWrapper>
+    </ThemeProvider>
   );
 }
 

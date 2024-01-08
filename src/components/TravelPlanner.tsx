@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { Leg, Trip, TripResponse } from "../models/ApiTravelResponse";
+import { useTheme } from "../models/theme-context";
 import { fetchSiteId } from "../services/fetchSiteId";
 import { fetchTripData } from "../services/travelService";
-import { Heading3 } from "../styled/styledDepartures";
+
 import {
   DivHeading,
+  Heading3,
   InputAndButtonContainer,
   LegContainer,
   LegDetail,
@@ -21,6 +23,7 @@ export const TravelPlanner = () => {
   const [destName, setDestName] = useState<string>("");
   const [tripData, setTripData] = useState<TripResponse | null>(null);
   const [error, setError] = useState<string>("");
+  const { isToggled } = useTheme();
 
   const handleFetchTrip = async () => {
     try {
@@ -74,7 +77,7 @@ export const TravelPlanner = () => {
     <TravelPlannerContainer>
       <SearchTravelPlannerContainer>
         <DivHeading>
-          <Heading3>Sök resa</Heading3>
+          <Heading3 $istoggled={isToggled}>Sök resa</Heading3>
         </DivHeading>
         <InputAndButtonContainer>
           <StyledInput
