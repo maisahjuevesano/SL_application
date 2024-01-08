@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Leg, Trip, TripResponse } from "../models/ApiTravelResponse";
 import { useTheme } from "../models/theme-context";
 import { fetchSiteId } from "../services/fetchSiteId";
@@ -20,6 +20,8 @@ import {
   TravelPlannerContainer,
   TripContainer,
 } from "../styled/styledTravelPlanner";
+import { SearchHistory } from "./SearchHistory";
+import { Search } from "../models/search";
 
 export const TravelPlanner = () => {
   const [originName, setOriginName] = useState<string>("");
@@ -27,6 +29,22 @@ export const TravelPlanner = () => {
   const [tripData, setTripData] = useState<TripResponse | null>(null);
   const [error, setError] = useState<string>("");
   const { isToggled } = useTheme();
+
+  const [searchHistory, setSearchHistory] = useState<Search[]>(() => {
+    const loadedHistory = localStorage.getItem("searchHistory");
+    return loadedHistory ? JSON.parse(loadedHistory) : [];
+  });
+
+  useEffect(() => {
+    const loadedHistory = localStorage.getItem("searchHistory");
+    if (loadedHistory) {
+      setSearchHistory(JSON.parse(loadedHistory));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+  }, [searchHistory]);
 
   const handleSwapInputs = () => {
     setOriginName(destName);
@@ -42,6 +60,16 @@ export const TravelPlanner = () => {
         const data = await fetchTripData(originId, destId);
         setTripData(data);
         setError("");
+
+        setSearchHistory((prevHistory) => {
+          const newHistory = [
+            { origin: originName, destination: destName },
+            ...prevHistory,
+          ].slice(0, 10);
+
+          localStorage.setItem("searchHistory", JSON.stringify(newHistory));
+          return newHistory;
+        });
       } else {
         setError("Kunde inte hitta station ID.");
       }
@@ -82,40 +110,43 @@ export const TravelPlanner = () => {
   };
 
   return (
-    <TravelPlannerContainer>
-      <SearchTravelPlannerContainer>
-        <DivHeading>
-          <Heading3 $istoggled={isToggled}>Sök resa</Heading3>
-        </DivHeading>
-        <InputAndButtonContainer>
-          <StyledInput
-            type="text"
-            value={originName}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setOriginName(e.target.value)
-            }
-            onKeyPress={handleKeyPress}
-            placeholder="Från"
-          />
+    <>
+      <TravelPlannerContainer>
+        <SearchTravelPlannerContainer>
+          <DivHeading>
+            <Heading3 $istoggled={isToggled}>Sök resa</Heading3>
+          </DivHeading>
+          <InputAndButtonContainer>
+            <StyledInput
+              type="text"
+              value={originName}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setOriginName(e.target.value)
+              }
+              onKeyPress={handleKeyPress}
+              placeholder="Från"
+            />
 
-          <StyledInput
-            type="text"
-            value={destName}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setDestName(e.target.value)
-            }
-            onKeyPress={handleKeyPress}
-            placeholder="Till"
-          />
-          <StyledSwitchButton onClick={handleSwapInputs}>
-            <FontAwesomeIcon icon={faArrowsUpDown} />
-          </StyledSwitchButton>
-          <StyledButton onClick={handleFetchTrip}>Sök resa</StyledButton>
-          {error && <p>{error}</p>}
-          <div>{renderTripData()}</div>
-        </InputAndButtonContainer>
-      </SearchTravelPlannerContainer>
-    </TravelPlannerContainer>
+            <StyledInput
+              type="text"
+              value={destName}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setDestName(e.target.value)
+              }
+              onKeyPress={handleKeyPress}
+              placeholder="Till"
+            />
+            <StyledSwitchButton onClick={handleSwapInputs}>
+              <FontAwesomeIcon icon={faArrowsUpDown} />
+            </StyledSwitchButton>
+            <StyledButton onClick={handleFetchTrip}>Sök resa</StyledButton>
+            {error && <p>{error}</p>}
+            <div>{renderTripData()}</div>
+          </InputAndButtonContainer>
+        </SearchTravelPlannerContainer>
+      </TravelPlannerContainer>
+      <SearchHistory history={searchHistory}></SearchHistory>
+    </>
   );
 };
 
