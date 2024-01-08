@@ -38,6 +38,7 @@ export const StyledInput = styled.input`
   background-color: rgba(217, 217, 217, 0.5);
   border: none;
   padding: 10px 15px;
+  margin-bottom: 5px;
   border-radius: 10px;
   border: white 3px solid;
   font-size: 16px;
@@ -74,13 +75,17 @@ export const DivHeading = styled.div`
   text-align: start;
 `;
 
+export const Heading3 = styled.h3<{ isToggled: boolean }>`
+  color: ${(props) => (props.isToggled ? "white" : "#f8ac41")};
+`;
+
 //tripdatastyling
 export const TripContainer = styled.div`
   background-color: rgba(217, 217, 217, 0.5);
   border-radius: 8px;
   width: 250px;
   margin: 10px 0;
-  padding: 10px; //15px
+  padding: 10px;
 `;
 
 export const LegContainer = styled.div`

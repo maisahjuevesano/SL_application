@@ -9,17 +9,16 @@ export const DeparturesContainer = styled.div`
   align-items: center;
 `;
 
-export const SearchTravelContainer = styled.div`
+export const SearchTravelContainer = styled.div<{ isToggled: boolean }>`
   display: flex;
   flex-direction: column;
-
   align-items: center;
   height: 25vh;
   width: 260px;
   border-radius: 4%;
-  color: #f8ac41;
-  /* background-color: rgba(217, 217, 217, 0.5); */
-  background-color: #3e4245;
+  color: ${(props) => (props.isToggled ? "#f8ac41" : "#3e4245")};
+  background-color: ${(props) =>
+    props.isToggled ? "#3e4245" : "rgba(217, 217, 217, 0.5)"};
 `;
 export const InputAndButtonContainer = styled.div`
   display: flex;
@@ -73,17 +72,18 @@ export const StyledButton = styled.button`
 
 export const Heading2 = styled.h2``;
 
-export const Heading3 = styled.h2`
+export const Heading3 = styled.h2<{ isToggled: boolean }>`
   display: flex;
-  color: #f8ac41;
+  color: ${(props) => (props.isToggled ? "#3e4245" : "#f8ac41")};
   font-size: 16px;
   margin-bottom: 0;
 `;
 
-export const Heading3Black = styled.h2`
+export const Heading3Black = styled.h2<{ isToggled: boolean }>`
   display: flex;
   font-size: 16px;
   margin-bottom: 0;
+  color: ${(props) => (props.isToggled ? "white" : "#f8ac41")};
 `;
 
 export const DivContainer = styled.div`
@@ -109,5 +109,4 @@ export const Container = styled.div`
 `;
 export const InfoDiv = styled.div`
   display: flex;
-  /* color: #f8ac41; */
 `;

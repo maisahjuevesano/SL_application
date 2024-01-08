@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { SLDeparturesData } from "../models/slDeparturesData";
+import { useTheme } from "../models/theme-context";
 import { fetchRealtimeDepartures } from "../services/fetchRealtimeDepartures";
 import { fetchSiteId } from "../services/fetchSiteId";
 import {
@@ -22,6 +23,7 @@ export const Departures = () => {
   );
   const [searchString, setSearchString] = useState<string>("");
   const [searchedStation, setSearchStation] = useState<string>("");
+  const { isToggled } = useTheme();
 
   useEffect(() => {
     const savedStation = localStorage.getItem("searchedStation");
@@ -63,13 +65,13 @@ export const Departures = () => {
 
   return (
     <DeparturesContainer>
-      <SearchTravelContainer>
+      <SearchTravelContainer isToggled={isToggled}>
         <DivHeading>
-          <Heading3Black>Sök avgångar</Heading3Black>
+          <Heading3Black isToggled={isToggled}>Sök avgångar</Heading3Black>
         </DivHeading>
         <InputAndButtonContainer>
           <DivHeading>
-            <Heading3>Från</Heading3>
+            <Heading3 isToggled={isToggled}>Från</Heading3>
           </DivHeading>
           <StyledInput
             type="text"
