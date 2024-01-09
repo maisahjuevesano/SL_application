@@ -36,7 +36,6 @@ export const TravelPlanner = () => {
     return loadedHistory ? JSON.parse(loadedHistory) : [];
   });
 
-  //1
   const [isSearchDisabled, setIsSearchDisabled] = useState(true);
   const [alertMessage, setAlertMessage] = useState("");
 
@@ -139,6 +138,20 @@ export const TravelPlanner = () => {
 
     setSearchHistory(newSearchHistory);
   };
+  const onToggleFavorite = (searchToToggle: Search) => {
+    const updatedHistory = searchHistory.map((search) => {
+      if (
+        search.origin === searchToToggle.origin &&
+        search.destination === searchToToggle.destination
+      ) {
+        return { ...search, isFavorite: !search.isFavorite };
+      }
+      return search;
+    });
+
+    setSearchHistory(updatedHistory);
+    localStorage.setItem("searchHistory", JSON.stringify(updatedHistory));
+  };
 
   const renderLegs = (trip: Trip) => {
     return trip.LegList.Leg.map((leg: Leg, index: number) => (
@@ -212,6 +225,7 @@ export const TravelPlanner = () => {
         history={searchHistory}
         onSearchSelect={handleSearchSelect}
         onSearchRemove={onSearchRemove}
+        onToggleFavorite={onToggleFavorite}
       ></SearchHistory>
     </>
   );
