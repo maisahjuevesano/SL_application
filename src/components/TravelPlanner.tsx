@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Leg, Trip, TripResponse } from "../models/ApiTravelResponse";
 import { useTheme } from "../models/theme-context";
 import { fetchSiteId } from "../services/fetchSiteId";
@@ -51,12 +51,9 @@ export const TravelPlanner = () => {
     localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
   }, [searchHistory]);
 
-  const handleSearchSelect = async (search: Search) => {
+  const handleSearchSelect = (search: Search) => {
     setOriginName(search.origin);
     setDestName(search.destination);
-
-    await new Promise((resolve) => setTimeout(resolve, 0));
-    handleFetchTrip();
   };
 
   const handleSwapInputs = () => {
@@ -64,7 +61,7 @@ export const TravelPlanner = () => {
     setDestName(originName);
   };
 
-  const handleFetchTrip = async () => {
+  const handleFetchTrip = useCallback(async () => {
     if (!originName || !destName) {
       setIsSearchDisabled(true);
       setAlertMessage("Du måste fylla i vad du vill söka för resa");
@@ -83,14 +80,23 @@ export const TravelPlanner = () => {
         setTripData(data);
         setError("");
 
-        setSearchHistory((prevHistory) => {
-          const newHistory = [
-            { origin: originName, destination: destName },
-            ...prevHistory,
-          ].slice(0, 10);
+        setSearchHistory((prevHistory: Search[]) => {
+          const existingSearch = prevHistory.find(
+            (search: Search) =>
+              search.origin === originName && search.destination === destName
+          );
 
-          localStorage.setItem("searchHistory", JSON.stringify(newHistory));
-          return newHistory;
+          if (!existingSearch) {
+            const newHistory: Search[] = [
+              { origin: originName, destination: destName },
+              ...prevHistory,
+            ].slice(0, 10);
+
+            localStorage.setItem("searchHistory", JSON.stringify(newHistory));
+            return newHistory;
+          }
+
+          return prevHistory;
         });
       } else {
         setError("Kunde inte hitta station ID.");
@@ -99,7 +105,13 @@ export const TravelPlanner = () => {
       setError("Kunde inte hämta resdata.");
       console.error(err);
     }
-  };
+  }, [originName, destName]);
+
+  useEffect(() => {
+    if (originName && destName) {
+      handleFetchTrip();
+    }
+  }, [originName, destName, handleFetchTrip]);
 
   useEffect(() => {
     if (!originName || !destName) {
