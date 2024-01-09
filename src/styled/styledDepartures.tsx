@@ -104,7 +104,7 @@ export const Container = styled.div`
   border-radius: 2%;
   background-color: rgba(217, 217, 217, 0.5);
   margin-top: 1%;
-  height: 50vh;
+  height: 65vh;
   width: 300px;
   color: #000000;
 `;
