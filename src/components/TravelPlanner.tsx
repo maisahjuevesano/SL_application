@@ -35,6 +35,10 @@ export const TravelPlanner = () => {
     return loadedHistory ? JSON.parse(loadedHistory) : [];
   });
 
+  //1
+  const [isSearchDisabled, setIsSearchDisabled] = useState(true);
+  const [alertMessage, setAlertMessage] = useState("");
+
   useEffect(() => {
     const loadedHistory = localStorage.getItem("searchHistory");
     if (loadedHistory) {
@@ -60,6 +64,15 @@ export const TravelPlanner = () => {
   };
 
   const handleFetchTrip = async () => {
+    if (!originName || !destName) {
+      setIsSearchDisabled(true);
+      setAlertMessage("Du måste fylla i vad du vill söka för resa");
+      return;
+    }
+
+    setIsSearchDisabled(false);
+    setAlertMessage("");
+
     try {
       const originId = await fetchSiteId(originName);
       const destId = await fetchSiteId(destName);
@@ -87,6 +100,16 @@ export const TravelPlanner = () => {
     }
   };
 
+  useEffect(() => {
+    if (!originName || !destName) {
+      setIsSearchDisabled(true);
+      setAlertMessage("Du måste fylla i vad du vill söka för resa");
+    } else {
+      setIsSearchDisabled(false);
+      setAlertMessage("");
+    }
+  }, [originName, destName]);
+
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       handleFetchTrip();
@@ -97,12 +120,10 @@ export const TravelPlanner = () => {
     origin: string;
     destination: string;
   }) => {
-    // Använda filter för att skapa en ny array som inte innehåller sökningen du vill ta bort
     const newSearchHistory = searchHistory.filter(
       (search) => search !== searchToRemove
     );
 
-    // Uppdatera din sökhistorik med den nya arrayen
     setSearchHistory(newSearchHistory);
   };
 
@@ -160,7 +181,14 @@ export const TravelPlanner = () => {
             <StyledSwitchButton onClick={handleSwapInputs}>
               <FontAwesomeIcon icon={faArrowsUpDown} />
             </StyledSwitchButton>
-            <StyledButton onClick={handleFetchTrip}>Sök resa</StyledButton>
+            <StyledButton
+              onClick={handleFetchTrip}
+              disabled={isSearchDisabled}
+              // disabled={!originName || !destName}
+            >
+              Sök resa
+            </StyledButton>
+            {isSearchDisabled && <div>{alertMessage}</div>}
             {error && <p>{error}</p>}
             <div>{renderTripData()}</div>
           </InputAndButtonContainer>
