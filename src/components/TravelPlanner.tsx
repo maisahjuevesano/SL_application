@@ -155,6 +155,10 @@ export const TravelPlanner = () => {
     localStorage.setItem("searchHistory", JSON.stringify(updatedHistory));
   };
 
+  const handleFavoriteSelect = (search: Search) => {
+    handleSearchSelect(search);
+  };
+
   const renderLegs = (trip: Trip) => {
     return trip.LegList.Leg.map((leg: Leg, index: number) => (
       <LegContainer key={index}>
@@ -229,7 +233,10 @@ export const TravelPlanner = () => {
         onSearchRemove={onSearchRemove}
         onToggleFavorite={onToggleFavorite}
       ></SearchHistory>
-      <FavoriteList favorites={favoriteSearches}></FavoriteList>
+      <FavoriteList
+        favorites={favoriteSearches}
+        onFavoriteSelect={handleFavoriteSelect}
+      />
     </>
   );
 };
