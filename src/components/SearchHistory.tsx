@@ -6,11 +6,14 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { SearchHistoryProps } from "../models/search";
+import { faStar as solidStar } from "@fortawesome/free-solid-svg-icons";
+import { faStar as regularStar } from "@fortawesome/free-regular-svg-icons";
 
 export const SearchHistory = ({
   history,
   onSearchSelect,
   onSearchRemove,
+  onToggleFavorite,
 }: SearchHistoryProps) => {
   return (
     <SearchHistoryContainer>
@@ -24,6 +27,10 @@ export const SearchHistory = ({
           <FontAwesomeIcon
             icon={faTrashCan}
             onClick={() => onSearchRemove(search)}
+          />
+          <FontAwesomeIcon
+            icon={search.isFavorite ? solidStar : regularStar}
+            onClick={() => onToggleFavorite(search)}
           />
         </SearchItem>
       ))}
