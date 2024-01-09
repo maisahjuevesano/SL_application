@@ -23,6 +23,7 @@ import {
 
 import { Search } from "../models/search";
 import { SearchHistory } from "./SearchHistory";
+import FavoriteList from "./FavoriteList";
 
 export const TravelPlanner = () => {
   const [originName, setOriginName] = useState<string>("");
@@ -38,6 +39,7 @@ export const TravelPlanner = () => {
 
   const [isSearchDisabled, setIsSearchDisabled] = useState(true);
   const [alertMessage, setAlertMessage] = useState("");
+  const favoriteSearches = searchHistory.filter((search) => search.isFavorite);
 
   useEffect(() => {
     const loadedHistory = localStorage.getItem("searchHistory");
@@ -227,6 +229,7 @@ export const TravelPlanner = () => {
         onSearchRemove={onSearchRemove}
         onToggleFavorite={onToggleFavorite}
       ></SearchHistory>
+      <FavoriteList favorites={favoriteSearches}></FavoriteList>
     </>
   );
 };
