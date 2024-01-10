@@ -23,6 +23,7 @@ export const InputAndButtonContainer = styled.div`
   display: flex;
   flex-direction: column;
   background-color: rgba(217, 217, 217, 0.5);
+  border: white 3px solid;
   align-items: center;
   width: 260px;
   border-radius: 4%;
@@ -103,14 +104,12 @@ export const StyledButtonContainer = styled.div`
 export const StyledSwitchButton = styled.button`
   border-radius: 50%;
   transition: all 0.3s ease;
-  font-weight: bolder;
   background-color: rgba(217, 217, 217, 0.5);
   width: 30px;
   height: 30px;
   border: white 3px solid;
   font-size: 16px;
   cursor: pointer;
-  transition: background-colour 0.3s ease;
 
   &:hover {
     background-color: #666;

@@ -73,7 +73,7 @@ export const Departures = () => {
         <DivHeading>
           <Heading3Black $istoggled={isToggled}>Sök avgångar</Heading3Black>
         </DivHeading>
-        <InputAndButtonContainer>
+        <InputAndButtonContainer $istoggled={isToggled}>
           <DivHeading>
             <Heading3 $istoggled={isToggled}>Från</Heading3>
           </DivHeading>
