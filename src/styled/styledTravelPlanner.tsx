@@ -24,7 +24,7 @@ export const InputAndButtonContainer = styled.div`
   flex-direction: column;
   background-color: rgba(217, 217, 217, 0.5);
   align-items: center;
-  height: 25vh;
+  height: 25vh; //ändra senare
   width: 260px;
   border-radius: 4%;
   margin-left: 40px;
@@ -69,6 +69,37 @@ export const StyledButton = styled.button`
     box-shadow: 0 0 0 2px #bbb;
   }
 `;
+
+export const StyledButtonAlternative = styled.button`
+  font-weight: bolder;
+  background-color: rgba(217, 217, 217, 0.5);
+  border: none;
+  margin-top: 10px;
+  padding: 5px 10px 10px;
+  border-radius: 10px;
+  border: white 3px solid;
+  margin-left: 3px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-colour 0.3s ease;
+
+  &:hover {
+    background-color: #666;
+  }
+
+  &:active {
+    background-color: #333;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 2px #bbb;
+  }
+`;
+
+export const StyledButtonContainer = styled.div`
+  display: flex;
+`;
+
 export const StyledSwitchButton = styled.button`
   border-radius: 50%;
   transition: all 0.3s ease;
@@ -129,4 +160,10 @@ export const LegDetail = styled.div`
   color: #333;
   font-size: 14px;
   line-height: 1.5;
+`;
+
+export const ContainerSearchHistoryAndFavoriteList = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 `;

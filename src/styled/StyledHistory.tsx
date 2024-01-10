@@ -6,12 +6,8 @@ export const SearchHistoryContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 40%;
-  // Media query för skärmar mindre än 600px
-  @media (min-width: 375px) {
-    background-color: green;
-    /* padding: 10px; */
-  }
+  margin-top: 155px;
+  width: 300px;
 `;
 
 export const SearchItem = styled.div`
