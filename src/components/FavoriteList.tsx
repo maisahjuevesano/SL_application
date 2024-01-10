@@ -1,4 +1,9 @@
 import { Search } from "../models/search";
+import {
+  FavoriteItem,
+  FavoriteListContainer,
+  Heading3FavoriteList,
+} from "../styled/StyledFavoriteList";
 
 interface FavoriteListProps {
   favorites: Search[];
@@ -7,14 +12,14 @@ interface FavoriteListProps {
 
 const FavoriteList = ({ favorites, onFavoriteSelect }: FavoriteListProps) => {
   return (
-    <div>
-      <h3>Favoritsökningar</h3>
+    <FavoriteListContainer>
+      <Heading3FavoriteList>Favoritsökningar</Heading3FavoriteList>
       {favorites.map((search, index) => (
-        <div key={index} onClick={() => onFavoriteSelect(search)}>
+        <FavoriteItem key={index} onClick={() => onFavoriteSelect(search)}>
           Från: {search.origin}, Till: {search.destination}
-        </div>
+        </FavoriteItem>
       ))}
-    </div>
+    </FavoriteListContainer>
   );
 };
 

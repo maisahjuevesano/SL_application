@@ -1,5 +1,3 @@
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faLightbulb } from "@fortawesome/free-regular-svg-icons";
 import { Link } from "react-router-dom";
 import { useTheme } from "../models/theme-context";
 
