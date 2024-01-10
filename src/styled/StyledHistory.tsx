@@ -6,7 +6,7 @@ export const SearchHistoryContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 155px;
+  margin-top: 20px; //kanske ändra senare
   width: 300px;
 `;
 
