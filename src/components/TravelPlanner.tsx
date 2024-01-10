@@ -4,9 +4,14 @@ import { useTheme } from "../models/theme-context";
 import { fetchSiteId } from "../services/fetchSiteId";
 import { fetchTripData } from "../services/travelService";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowsUpDown } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowsUpDown,
+  faClockRotateLeft,
+} from "@fortawesome/free-solid-svg-icons";
+import { faStar as solidStar } from "@fortawesome/free-solid-svg-icons";
 
 import {
+  ContainerSearchHistoryAndFavoriteList,
   DivHeading,
   Heading3,
   InputAndButtonContainer,
@@ -15,6 +20,8 @@ import {
   LegHeader,
   SearchTravelPlannerContainer,
   StyledButton,
+  StyledButtonAlternative,
+  StyledButtonContainer,
   StyledInput,
   StyledSwitchButton,
   TravelPlannerContainer,
@@ -39,9 +46,8 @@ export const TravelPlanner = () => {
     return loadedHistory ? JSON.parse(loadedHistory) : [];
   });
 
-  const [isSearchDisabled, setIsSearchDisabled] = useState(true);
-  const [alertMessage, setAlertMessage] = useState("");
   const favoriteSearches = searchHistory.filter((search) => search.isFavorite);
+  const [activeView, setActiveView] = useState("favorites");
 
   useEffect(() => {
     const loadedHistory = localStorage.getItem("searchHistory");
@@ -54,6 +60,9 @@ export const TravelPlanner = () => {
     localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
   }, [searchHistory]);
 
+  const handleViewChange = (view: "favorites" | "history") => {
+    setActiveView(view);
+  };
   const handleSearchSelect = (search: Search) => {
     setOriginName(search.origin);
     setDestName(search.destination);
@@ -66,17 +75,6 @@ export const TravelPlanner = () => {
   };
 
   const handleFetchTrip = useCallback(async (o: string, d: string) => {
-    console.log("handleFetchTrip called");
-
-    if (!o || !d) {
-      setIsSearchDisabled(true);
-      setAlertMessage("Du måste fylla i vad du vill söka för resa");
-      return;
-    }
-
-    setIsSearchDisabled(false);
-    setAlertMessage("");
-
     try {
       const originId = await fetchSiteId(o);
       const destId = await fetchSiteId(d);
@@ -111,22 +109,6 @@ export const TravelPlanner = () => {
       console.error(err);
     }
   }, []);
-
-  // useEffect(() => {
-  //   if (originName && destName) {
-  //     handleFetchTrip();
-  //   }
-  // }, [originName, destName, handleFetchTrip]);
-
-  useEffect(() => {
-    if (!originName || !destName) {
-      setIsSearchDisabled(true);
-      setAlertMessage("Du måste fylla i vad du vill söka för resa");
-    } else {
-      setIsSearchDisabled(false);
-      setAlertMessage("");
-    }
-  }, [originName, destName]);
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
@@ -223,28 +205,46 @@ export const TravelPlanner = () => {
               onClick={() => {
                 handleFetchTrip(originName, destName);
               }}
-              disabled={isSearchDisabled}
-              // disabled={!originName || !destName}
+              disabled={!originName || !destName}
             >
               Sök resa
             </StyledButton>
-            {isSearchDisabled && <div>{alertMessage}</div>}
+            <StyledButtonContainer>
+              <StyledButtonAlternative
+                onClick={() => handleViewChange("favorites")}
+              >
+                Favoriter
+                <FontAwesomeIcon icon={solidStar} />
+              </StyledButtonAlternative>
+              <StyledButtonAlternative
+                onClick={() => handleViewChange("history")}
+              >
+                Sökhistorik
+                <FontAwesomeIcon icon={faClockRotateLeft} />
+              </StyledButtonAlternative>
+            </StyledButtonContainer>
             {error && <p>{error}</p>}
             <div>{renderTripData()}</div>
           </InputAndButtonContainer>
         </SearchTravelPlannerContainer>
       </TravelPlannerContainer>
+      <ContainerSearchHistoryAndFavoriteList>
+        {activeView === "favorites" && (
+          <FavoriteList
+            favorites={favoriteSearches}
+            onFavoriteSelect={handleFavoriteSelect}
+          />
+        )}
 
-      <SearchHistory
-        history={searchHistory}
-        onSearchSelect={handleSearchSelect}
-        onSearchRemove={onSearchRemove}
-        onToggleFavorite={onToggleFavorite}
-      ></SearchHistory>
-      <FavoriteList
-        favorites={favoriteSearches}
-        onFavoriteSelect={handleFavoriteSelect}
-      />
+        {activeView === "history" && (
+          <SearchHistory
+            history={searchHistory}
+            onSearchSelect={handleSearchSelect}
+            onSearchRemove={onSearchRemove}
+            onToggleFavorite={onToggleFavorite}
+          />
+        )}
+      </ContainerSearchHistoryAndFavoriteList>
     </>
   );
 };
