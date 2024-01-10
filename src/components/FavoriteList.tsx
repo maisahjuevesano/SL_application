@@ -3,7 +3,8 @@ import {
   FavoriteItem,
   FavoriteListContainer,
   Heading3FavoriteList,
-} from "../styled/StyledFavoriteList";
+  FavoriteSelectButton,
+} from "./../styled/StyledFavoriteList";
 
 interface FavoriteListProps {
   favorites: Search[];
@@ -15,8 +16,11 @@ const FavoriteList = ({ favorites, onFavoriteSelect }: FavoriteListProps) => {
     <FavoriteListContainer>
       <Heading3FavoriteList>Favoritsökningar</Heading3FavoriteList>
       {favorites.map((search, index) => (
-        <FavoriteItem key={index} onClick={() => onFavoriteSelect(search)}>
+        <FavoriteItem key={index}>
           Från: {search.origin}, Till: {search.destination}
+          <FavoriteSelectButton onClick={() => onFavoriteSelect(search)}>
+            Välj
+          </FavoriteSelectButton>
         </FavoriteItem>
       ))}
     </FavoriteListContainer>

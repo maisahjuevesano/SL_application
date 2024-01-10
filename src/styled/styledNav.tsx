@@ -22,15 +22,16 @@ export const StyledUl = styled.ul`
 export const StyledLi = styled.li<ToggleContainerProps>`
   display: flex;
   flex-direction: row;
+  font-weight: bolder;
 
   &:not(:last-child)::after {
     content: "|";
-    color: ${(props) => (props.$istoggled ? "#3e4245" : "#f8ac41")};
+    color: ${(props) => (props.$istoggled ? "#3e4245" : "#94b0c2")};
     margin: 0 10px;
   }
 
   a {
-    color: ${(props) => (props.$istoggled ? "#3e4245" : "#f8ac41")};
+    color: ${(props) => (props.$istoggled ? "#3e4245" : "#94b0c2")};
     text-decoration: none;
   }
 `;
@@ -45,7 +46,7 @@ export const StyledLink = styled.a`
   color: black;
   text-decoration: none;
   &:hover {
-    color: #f8ac41;
+    color: #94b0c2;
   }
 `;
 

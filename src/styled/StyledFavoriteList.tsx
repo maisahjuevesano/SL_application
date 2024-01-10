@@ -10,9 +10,11 @@ export const FavoriteListContainer = styled.div`
 `;
 
 export const FavoriteItem = styled.div`
+  display: flex;
+  flex-direction: column;
   margin-bottom: 10px;
-  padding: 5px;
-  border-bottom: 2px solid #ffffff;
+  padding: 10px;
+  /* border-bottom: 2px solid #ffffff; */
 `;
 
 export const SearchDetail = styled.div`
@@ -20,3 +22,26 @@ export const SearchDetail = styled.div`
 `;
 
 export const Heading3FavoriteList = styled.h3``;
+
+export const FavoriteSelectButton = styled.button`
+  background-color: rgba(217, 217, 217, 0.5);
+  margin-top: 10px;
+  border-radius: 10px;
+  border: white 3px solid;
+  margin-right: 3px;
+
+  cursor: pointer;
+  transition: background-colour 0.3s ease;
+
+  &:hover {
+    background-color: #666;
+  }
+
+  &:active {
+    background-color: #333;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 2px #bbb;
+  }
+`;
