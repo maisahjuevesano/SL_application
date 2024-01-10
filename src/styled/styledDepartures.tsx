@@ -25,8 +25,8 @@ export const SearchTravelContainer = styled.div<ToggleContainerProps>`
 export const InputAndButtonContainer = styled.div<ToggleContainerProps>`
   display: flex;
   flex-direction: column;
-  background-color: ${(props) =>
-    props.$istoggled ? "#94b0c2a6" : "rgba(217, 217, 217, 0.5)"};
+  /* background-color: ${(props) =>
+    props.$istoggled ? "#94b0c2a6" : "rgba(217, 217, 217, 0.5)"}; */
   border: white 3px solid;
   align-items: center;
   height: 50vh;
@@ -79,14 +79,14 @@ export const Heading2 = styled.h2``;
 
 export const Heading3 = styled.h2<ToggleContainerProps>`
   display: flex;
-  color: ${(props) => (props.$istoggled ? "#3e4245" : "#94b0c2")};
+  color: ${(props) => (props.$istoggled ? "#000000" : "#94b0c2")};
   font-size: 16px;
 `;
 
 export const Heading3Black = styled.h3<ToggleContainerProps>`
   display: flex;
   margin-bottom: 0;
-  color: ${(props) => (props.$istoggled ? "white" : "#94b0c2")};
+  color: ${(props) => (props.$istoggled ? "#000000" : "#94b0c2")};
 `;
 
 export const DivContainer = styled.div`
@@ -110,6 +110,7 @@ export const Container = styled.div`
   color: #000000;
   min-height: 25vh; // Minsta höjd, men kan bli större beroende på innehåll
   flex-grow: 1; // Låter komponenten expandera och fylla tillgängligt utrymme
+  border: #94b0c2 3px solid;
 `;
 
 export const InfoDiv = styled.div`
