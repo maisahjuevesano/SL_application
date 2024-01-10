@@ -6,7 +6,7 @@ export const FavoriteListContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 180px;
+  margin-top: 20px;
 `;
 
 export const FavoriteItem = styled.div`

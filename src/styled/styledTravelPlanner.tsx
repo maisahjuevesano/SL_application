@@ -49,8 +49,9 @@ export const StyledButton = styled.button`
   font-weight: bolder;
   background-color: rgba(217, 217, 217, 0.5);
   border: none;
-  margin-top: 15px;
-  padding: 10px 45px;
+  margin-top: 10px;
+  padding: 10px 80px;
+  margin-bottom: 10px;
   border-radius: 10px;
   border: white 3px solid;
   font-size: 16px;
@@ -74,7 +75,7 @@ export const StyledButtonAlternative = styled.button`
   font-weight: bolder;
   background-color: rgba(217, 217, 217, 0.5);
   border: none;
-  margin-top: 10px;
+  margin-top: 40px;
   padding: 5px 10px 10px;
   border-radius: 10px;
   border: white 3px solid;
