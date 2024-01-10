@@ -1,16 +1,16 @@
 import { styled } from "styled-components";
 
 export const Header = styled.header`
-  display: flex;
-  flex-direction: column;
-  padding: 0px 0px 10px;
-  border-radius: 15px;
+  /* display: flex;
+  flex-direction: column; */
+  /* padding: 0px 0px 10px; */
+  /* border-radius: 15px; */
 `;
 
 export const HeaderContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  padding: 20px;
+  /* display: flex; */
+  /* justify-content: center; */
+  /* padding: 20px; */
 `;
 
 export const HeaderButton = styled.button`

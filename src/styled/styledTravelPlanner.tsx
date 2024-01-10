@@ -23,8 +23,8 @@ export const InputAndButtonContainer = styled.div`
   display: flex;
   flex-direction: column;
   background-color: rgba(217, 217, 217, 0.5);
+  border: white 3px solid;
   align-items: center;
-  height: 25vh; //ändra senare
   width: 260px;
   border-radius: 4%;
   margin-left: 40px;
@@ -49,8 +49,8 @@ export const StyledButton = styled.button`
   font-weight: bolder;
   background-color: rgba(217, 217, 217, 0.5);
   border: none;
-  margin-top: 10px;
   padding: 10px 80px;
+  margin-top: 5px;
   margin-bottom: 10px;
   border-radius: 10px;
   border: white 3px solid;
@@ -75,11 +75,11 @@ export const StyledButtonAlternative = styled.button`
   font-weight: bolder;
   background-color: rgba(217, 217, 217, 0.5);
   border: none;
-  margin-top: 40px;
-  padding: 5px 10px 10px;
+  margin-top: 100px;
+  padding: 10px 15px;
   border-radius: 10px;
   border: white 3px solid;
-  margin-left: 3px;
+  margin-left: 15px;
   font-size: 15px;
   cursor: pointer;
   transition: background-colour 0.3s ease;
@@ -104,14 +104,12 @@ export const StyledButtonContainer = styled.div`
 export const StyledSwitchButton = styled.button`
   border-radius: 50%;
   transition: all 0.3s ease;
-  font-weight: bolder;
   background-color: rgba(217, 217, 217, 0.5);
   width: 30px;
   height: 30px;
   border: white 3px solid;
   font-size: 16px;
   cursor: pointer;
-  transition: background-colour 0.3s ease;
 
   &:hover {
     background-color: #666;
@@ -132,7 +130,7 @@ export const DivHeading = styled.div`
 `;
 
 export const Heading3 = styled.h3<ToggleContainerProps>`
-  color: ${(props) => (props.$istoggled ? "white" : "#f8ac41")};
+  color: ${(props) => (props.$istoggled ? "white" : "#94b0c2")};
 `;
 
 //tripdatastyling
@@ -153,7 +151,7 @@ export const LegContainer = styled.div`
 `;
 
 export const LegHeader = styled.h3`
-  color: #f8ac41;
+  color: #000000;
   margin: 0 0 10px 0;
 `;
 

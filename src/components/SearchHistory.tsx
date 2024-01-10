@@ -3,12 +3,16 @@ import {
   SearchItem,
   SearchDetail,
   Heading3SearchHistory,
+  SearchButton,
+  ContainerButtons,
 } from "../styled/StyledHistory";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import {
+  faStar as solidStar,
+  faStar as regularStar,
+} from "@fortawesome/free-solid-svg-icons";
 import { SearchHistoryProps } from "../models/search";
-import { faStar as solidStar } from "@fortawesome/free-solid-svg-icons";
-import { faStar as regularStar } from "@fortawesome/free-regular-svg-icons";
 
 export const SearchHistory = ({
   history,
@@ -21,18 +25,25 @@ export const SearchHistory = ({
       <Heading3SearchHistory>Tidigare sökningar</Heading3SearchHistory>
       {history.map((search, index) => (
         <SearchItem key={index}>
-          <div onClick={() => onSearchSelect(search)}>
+          <div>
             <SearchDetail>Från: {search.origin}</SearchDetail>
             <SearchDetail>Till: {search.destination}</SearchDetail>
           </div>
-          <FontAwesomeIcon
-            icon={faTrashCan}
-            onClick={() => onSearchRemove(search)}
-          />
-          <FontAwesomeIcon
-            icon={search.isFavorite ? solidStar : regularStar}
-            onClick={() => onToggleFavorite(search)}
-          />
+
+          <ContainerButtons>
+            <SearchButton onClick={() => onSearchSelect(search)}>
+              Sök
+            </SearchButton>
+
+            <FontAwesomeIcon
+              icon={faTrashCan}
+              onClick={() => onSearchRemove(search)}
+            />
+            <FontAwesomeIcon
+              icon={search.isFavorite ? solidStar : regularStar}
+              onClick={() => onToggleFavorite(search)}
+            />
+          </ContainerButtons>
         </SearchItem>
       ))}
     </SearchHistoryContainer>

@@ -17,21 +17,24 @@ export const SearchTravelContainer = styled.div<ToggleContainerProps>`
   height: 25vh;
   width: 260px;
   border-radius: 4%;
-  color: ${(props) => (props.$istoggled ? "#f8ac41" : "#3e4245")};
+  color: ${(props) =>
+    props.$istoggled ? "rgba(217, 217, 217, 0.5)" : "#3e4245"};
   background-color: ${(props) =>
-    props.$istoggled ? "#3e4245" : "rgba(217, 217, 217, 0.5)"};
+    props.$istoggled ? "#94b0c2" : "rgba(217, 217, 217, 0.5)"};
 `;
-export const InputAndButtonContainer = styled.div`
+export const InputAndButtonContainer = styled.div<ToggleContainerProps>`
   display: flex;
   flex-direction: column;
-  background-color: rgba(217, 217, 217, 0.5);
+  background-color: ${(props) =>
+    props.$istoggled ? "#94b0c2a6" : "rgba(217, 217, 217, 0.5)"};
+  border: white 3px solid;
   align-items: center;
-  height: 25vh;
+  height: 50vh;
   width: 260px;
   border-radius: 4%;
   margin-top: 30px;
-  margin-left: 40px;
-  padding-top: 10px;
+  margin-left: 30px;
+  /* padding-top: 10px; */
 `;
 
 export const StyledInput = styled.input`
@@ -51,7 +54,8 @@ export const StyledButton = styled.button`
   background-color: rgba(217, 217, 217, 0.5);
   border: none;
   margin-top: 15px;
-  padding: 10px 35px;
+  padding: 10px 99px;
+  margin-bottom: 15px;
   border-radius: 10px;
   border: white 3px solid;
   font-size: 16px;
@@ -75,16 +79,14 @@ export const Heading2 = styled.h2``;
 
 export const Heading3 = styled.h2<ToggleContainerProps>`
   display: flex;
-  color: ${(props) => (props.$istoggled ? "#3e4245" : "#f8ac41")};
+  color: ${(props) => (props.$istoggled ? "#3e4245" : "#94b0c2")};
   font-size: 16px;
-  margin-bottom: 0;
 `;
 
-export const Heading3Black = styled.h2<ToggleContainerProps>`
+export const Heading3Black = styled.h3<ToggleContainerProps>`
   display: flex;
-  font-size: 16px;
   margin-bottom: 0;
-  color: ${(props) => (props.$istoggled ? "white" : "#f8ac41")};
+  color: ${(props) => (props.$istoggled ? "white" : "#94b0c2")};
 `;
 
 export const DivContainer = styled.div`
@@ -103,11 +105,14 @@ export const Container = styled.div`
   align-items: center;
   border-radius: 2%;
   background-color: rgba(217, 217, 217, 0.5);
-  margin-top: 1%;
-  height: 65vh;
+  margin-top: 100px;
   width: 300px;
   color: #000000;
+  min-height: 25vh; // Minsta höjd, men kan bli större beroende på innehåll
+  flex-grow: 1; // Låter komponenten expandera och fylla tillgängligt utrymme
 `;
+
 export const InfoDiv = styled.div`
-  display: flex;
+  /* display: flex;
+  margin-top: 3px; */
 `;
