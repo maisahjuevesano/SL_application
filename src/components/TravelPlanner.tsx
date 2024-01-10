@@ -24,6 +24,8 @@ import {
 import { Search } from "../models/search";
 import { SearchHistory } from "./SearchHistory";
 import FavoriteList from "./FavoriteList";
+import { Bus } from "../styled/StyledBus";
+import { Train } from "../styled/StyledTrain";
 
 export const TravelPlanner = () => {
   const [originName, setOriginName] = useState<string>("");
@@ -55,6 +57,7 @@ export const TravelPlanner = () => {
   const handleSearchSelect = (search: Search) => {
     setOriginName(search.origin);
     setDestName(search.destination);
+    handleFetchTrip(search.origin, search.destination);
   };
 
   const handleSwapInputs = () => {
@@ -62,8 +65,10 @@ export const TravelPlanner = () => {
     setDestName(originName);
   };
 
-  const handleFetchTrip = useCallback(async () => {
-    if (!originName || !destName) {
+  const handleFetchTrip = useCallback(async (o: string, d: string) => {
+    console.log("handleFetchTrip called");
+
+    if (!o || !d) {
       setIsSearchDisabled(true);
       setAlertMessage("Du måste fylla i vad du vill söka för resa");
       return;
@@ -73,8 +78,8 @@ export const TravelPlanner = () => {
     setAlertMessage("");
 
     try {
-      const originId = await fetchSiteId(originName);
-      const destId = await fetchSiteId(destName);
+      const originId = await fetchSiteId(o);
+      const destId = await fetchSiteId(d);
 
       if (originId && destId) {
         const data = await fetchTripData(originId, destId);
@@ -83,13 +88,12 @@ export const TravelPlanner = () => {
 
         setSearchHistory((prevHistory: Search[]) => {
           const existingSearch = prevHistory.find(
-            (search: Search) =>
-              search.origin === originName && search.destination === destName
+            (search: Search) => search.origin === o && search.destination === d
           );
 
           if (!existingSearch) {
             const newHistory: Search[] = [
-              { origin: originName, destination: destName },
+              { origin: o, destination: d },
               ...prevHistory,
             ].slice(0, 10);
 
@@ -106,13 +110,13 @@ export const TravelPlanner = () => {
       setError("Kunde inte hämta resdata.");
       console.error(err);
     }
-  }, [originName, destName]);
+  }, []);
 
-  useEffect(() => {
-    if (originName && destName) {
-      handleFetchTrip();
-    }
-  }, [originName, destName, handleFetchTrip]);
+  // useEffect(() => {
+  //   if (originName && destName) {
+  //     handleFetchTrip();
+  //   }
+  // }, [originName, destName, handleFetchTrip]);
 
   useEffect(() => {
     if (!originName || !destName) {
@@ -126,7 +130,7 @@ export const TravelPlanner = () => {
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      handleFetchTrip();
+      handleFetchTrip(originName, destName);
     }
   };
 
@@ -186,6 +190,8 @@ export const TravelPlanner = () => {
   return (
     <>
       <TravelPlannerContainer>
+        <Bus></Bus>
+        <Train></Train>
         <SearchTravelPlannerContainer>
           <DivHeading>
             <Heading3 $istoggled={isToggled}>Sök resa</Heading3>
@@ -214,7 +220,9 @@ export const TravelPlanner = () => {
               <FontAwesomeIcon icon={faArrowsUpDown} />
             </StyledSwitchButton>
             <StyledButton
-              onClick={handleFetchTrip}
+              onClick={() => {
+                handleFetchTrip(originName, destName);
+              }}
               disabled={isSearchDisabled}
               // disabled={!originName || !destName}
             >

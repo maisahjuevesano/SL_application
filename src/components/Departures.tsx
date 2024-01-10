@@ -3,6 +3,7 @@ import { SLDeparturesData } from "../models/slDeparturesData";
 import { useTheme } from "../models/theme-context";
 import { fetchRealtimeDepartures } from "../services/fetchRealtimeDepartures";
 import { fetchSiteId } from "../services/fetchSiteId";
+import { Bus } from "../styled/StyledBus";
 import {
   Container,
   DeparturesContainer,
@@ -16,6 +17,7 @@ import {
   StyledButton,
   StyledInput,
 } from "../styled/styledDepartures";
+import { Train } from "../styled/StyledTrain";
 
 export const Departures = () => {
   const [departuresData, setDeparturesData] = useState<SLDeparturesData | null>(
@@ -65,6 +67,8 @@ export const Departures = () => {
 
   return (
     <DeparturesContainer>
+      <Bus></Bus>
+      <Train></Train>
       <SearchTravelContainer $istoggled={isToggled}>
         <DivHeading>
           <Heading3Black $istoggled={isToggled}>Sök avgångar</Heading3Black>

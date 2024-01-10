@@ -27,7 +27,6 @@ export const InputAndButtonContainer = styled.div`
   height: 25vh;
   width: 260px;
   border-radius: 4%;
-  margin-top: 30px;
   margin-left: 40px;
   padding-top: 10px;
 `;

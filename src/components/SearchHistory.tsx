@@ -2,6 +2,7 @@ import {
   SearchHistoryContainer,
   SearchItem,
   SearchDetail,
+  Heading3SearchHistory,
 } from "../styled/StyledHistory";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
@@ -17,7 +18,7 @@ export const SearchHistory = ({
 }: SearchHistoryProps) => {
   return (
     <SearchHistoryContainer>
-      <h3>Tidigare sökningar</h3>
+      <Heading3SearchHistory>Tidigare sökningar</Heading3SearchHistory>
       {history.map((search, index) => (
         <SearchItem key={index}>
           <div onClick={() => onSearchSelect(search)}>
