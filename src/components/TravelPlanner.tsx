@@ -47,7 +47,9 @@ export const TravelPlanner = () => {
   });
 
   const favoriteSearches = searchHistory.filter((search) => search.isFavorite);
-  const [activeView, setActiveView] = useState("favorites");
+  const [currentView, setCurrentView] = useState<
+    "favorites" | "history" | "tripData"
+  >("tripData");
 
   useEffect(() => {
     const loadedHistory = localStorage.getItem("searchHistory");
@@ -60,9 +62,6 @@ export const TravelPlanner = () => {
     localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
   }, [searchHistory]);
 
-  const handleViewChange = (view: "favorites" | "history") => {
-    setActiveView(view);
-  };
   const handleSearchSelect = (search: Search) => {
     setOriginName(search.origin);
     setDestName(search.destination);
@@ -72,6 +71,10 @@ export const TravelPlanner = () => {
   const handleSwapInputs = () => {
     setOriginName(destName);
     setDestName(originName);
+  };
+
+  const handleViewChange = (view: "favorites" | "history") => {
+    setCurrentView(view);
   };
 
   const handleFetchTrip = useCallback(async (o: string, d: string) => {
@@ -101,6 +104,8 @@ export const TravelPlanner = () => {
 
           return prevHistory;
         });
+
+        setCurrentView("tripData");
       } else {
         setError("Kunde inte hitta station ID.");
       }
@@ -209,34 +214,34 @@ export const TravelPlanner = () => {
             >
               Sök resa
             </StyledButton>
-            <StyledButtonContainer>
-              <StyledButtonAlternative
-                onClick={() => handleViewChange("favorites")}
-              >
-                Favoriter
-                <FontAwesomeIcon icon={solidStar} />
-              </StyledButtonAlternative>
-              <StyledButtonAlternative
-                onClick={() => handleViewChange("history")}
-              >
-                Sökhistorik
-                <FontAwesomeIcon icon={faClockRotateLeft} />
-              </StyledButtonAlternative>
-            </StyledButtonContainer>
-            {error && <p>{error}</p>}
-            <div>{renderTripData()}</div>
           </InputAndButtonContainer>
         </SearchTravelPlannerContainer>
+        <StyledButtonContainer>
+          <StyledButtonAlternative
+            onClick={() => handleViewChange("favorites")}
+          >
+            Favoriter
+            <FontAwesomeIcon icon={solidStar} />
+          </StyledButtonAlternative>
+          <StyledButtonAlternative onClick={() => handleViewChange("history")}>
+            Sökhistorik
+            <FontAwesomeIcon icon={faClockRotateLeft} />
+          </StyledButtonAlternative>
+        </StyledButtonContainer>
+        {error && <p>{error}</p>}
       </TravelPlannerContainer>
+
       <ContainerSearchHistoryAndFavoriteList>
-        {activeView === "favorites" && (
+        {currentView === "tripData" && renderTripData()}
+
+        {currentView === "favorites" && (
           <FavoriteList
             favorites={favoriteSearches}
             onFavoriteSelect={handleFavoriteSelect}
           />
         )}
 
-        {activeView === "history" && (
+        {currentView === "history" && (
           <SearchHistory
             history={searchHistory}
             onSearchSelect={handleSearchSelect}
