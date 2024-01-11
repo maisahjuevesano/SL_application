@@ -10,7 +10,6 @@ export const DeparutesHistoryContainer = styled.div`
   margin-top: 20px;
   gap: 10px;
   padding-bottom: 20px;
-  /* border: white 3px solid; */
   border: #94b0c2 3px solid;
 `;
 
@@ -20,6 +19,8 @@ export const SearchItem = styled.div`
   gap: 20px;
   align-items: center;
   width: 100%;
+  border-bottom: 1px solid white;
+  justify-content: space-around;
 `;
 
 export const Heading3DepartureHistory = styled.h3``;

@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import { ToggleContainerProps } from "../models/toggleContainerProps";
 
-//sök avgångar
-
 export const DeparturesContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -34,7 +32,6 @@ export const InputAndButtonContainer = styled.div<ToggleContainerProps>`
   border-radius: 4%;
   margin-top: 30px;
   margin-left: 30px;
-  /* padding-top: 10px; */
 `;
 
 export const StyledInput = styled.input`
@@ -141,6 +138,7 @@ export const Container = styled.div`
 `;
 
 export const InfoDiv = styled.div`
-  /* display: flex;
-  margin-top: 3px; */
+  display: flex;
+  margin-top: 3px;
+  border-bottom: 1px solid white;
 `;

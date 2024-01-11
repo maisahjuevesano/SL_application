@@ -2,17 +2,20 @@ import {
   FavoriteItem,
   FavoriteListContainer,
   Heading3FavoriteList,
-  FavoriteSelectButton,
 } from "../styled/StyledFavoriteList";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 
 interface FavoriteListDeparturesProps {
   favorites: string[];
   onFavoriteSelect: (favorite: string) => void;
+  onRemoveFavorite: (favorite: string) => void;
 }
 
 const FavoriteListDepartures = ({
   favorites,
   onFavoriteSelect,
+  onRemoveFavorite,
 }: FavoriteListDeparturesProps) => {
   return (
     <FavoriteListContainer>
@@ -20,9 +23,11 @@ const FavoriteListDepartures = ({
       {favorites.map((favorite, index) => (
         <FavoriteItem key={index}>
           {favorite}
-          <FavoriteSelectButton onClick={() => onFavoriteSelect(favorite)}>
-            Välj
-          </FavoriteSelectButton>
+          <button onClick={() => onFavoriteSelect(favorite)}>Välj</button>
+          <FontAwesomeIcon
+            icon={faTrashCan}
+            onClick={() => onRemoveFavorite(favorite)}
+          />
         </FavoriteItem>
       ))}
     </FavoriteListContainer>

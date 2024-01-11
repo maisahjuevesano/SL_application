@@ -131,6 +131,17 @@ export const TravelPlanner = () => {
 
     setSearchHistory(newSearchHistory);
   };
+
+  const onRemoveFavorite = (searchToRemove: Search) => {
+    setSearchHistory((prevHistory) =>
+      prevHistory.filter(
+        (search) =>
+          search.origin !== searchToRemove.origin ||
+          search.destination !== searchToRemove.destination
+      )
+    );
+  };
+
   const onToggleFavorite = (searchToToggle: Search) => {
     const updatedHistory = searchHistory.map((search) => {
       if (
@@ -238,6 +249,7 @@ export const TravelPlanner = () => {
           <FavoriteList
             favorites={favoriteSearches}
             onFavoriteSelect={handleFavoriteSelect}
+            onRemoveFavorite={onRemoveFavorite}
           />
         )}
 

@@ -5,13 +5,20 @@ import {
   Heading3FavoriteList,
   FavoriteSelectButton,
 } from "./../styled/StyledFavoriteList";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 
 interface FavoriteListProps {
   favorites: Search[];
   onFavoriteSelect: (search: Search) => void;
+  onRemoveFavorite: (search: Search) => void;
 }
 
-const FavoriteList = ({ favorites, onFavoriteSelect }: FavoriteListProps) => {
+const FavoriteList = ({
+  favorites,
+  onFavoriteSelect,
+  onRemoveFavorite,
+}: FavoriteListProps) => {
   return (
     <FavoriteListContainer>
       <Heading3FavoriteList>Favoritsökningar</Heading3FavoriteList>
@@ -21,6 +28,10 @@ const FavoriteList = ({ favorites, onFavoriteSelect }: FavoriteListProps) => {
           <FavoriteSelectButton onClick={() => onFavoriteSelect(search)}>
             Välj
           </FavoriteSelectButton>
+          <FontAwesomeIcon
+            icon={faTrashCan}
+            onClick={() => onRemoveFavorite(search)}
+          />
         </FavoriteItem>
       ))}
     </FavoriteListContainer>

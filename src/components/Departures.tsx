@@ -19,6 +19,7 @@ import {
   StyledButtonContainer,
   StyledInput,
 } from "../styled/styledDepartures";
+
 import { Train } from "../styled/StyledTrain";
 import DepartureHistory from "./DepartureHistory";
 import FavoriteListDepartures from "./FavoriteListDepartures";
@@ -45,7 +46,6 @@ export const Departures = () => {
   );
 
   const handleFavoriteSelect = async (favorite: string) => {
-    // Anta att `favorite` är namnet på stationen som användaren vill söka efter
     const siteId = await fetchSiteId(favorite);
     if (siteId) {
       const departures = await fetchRealtimeDepartures(siteId);
@@ -53,7 +53,6 @@ export const Departures = () => {
       const capitalizedFavorite = capitalizeFirstLetter(favorite);
       setSearchStation(capitalizedFavorite);
 
-      // Uppdatera local storage om nödvändigt
       localStorage.setItem("searchedStation", capitalizedFavorite);
       localStorage.setItem("departuresData", JSON.stringify(departures));
     } else {
@@ -64,19 +63,15 @@ export const Departures = () => {
 
   const handleToggleFavorite = (item: string) => {
     setFavorites((prevFavorites) => {
-      // Kolla om sökningen redan är en favorit
       const isFavorite = prevFavorites.includes(item);
       let newFavorites;
 
       if (isFavorite) {
-        // Om den är favorit, ta bort den från favoritlistan
         newFavorites = prevFavorites.filter((favorite) => favorite !== item);
       } else {
-        // Annars, lägg till den i favoritlistan
         newFavorites = [...prevFavorites, item];
       }
 
-      // Spara den uppdaterade listan i localStorage
       localStorage.setItem("departureFavorites", JSON.stringify(newFavorites));
 
       return newFavorites;
@@ -149,6 +144,21 @@ export const Departures = () => {
     );
   };
 
+  const handleRemoveFavorite = (favoriteToRemove: string) => {
+    setFavorites((prevFavorites) => {
+      const updatedFavorites = prevFavorites.filter(
+        (favorite) => favorite !== favoriteToRemove
+      );
+
+      localStorage.setItem(
+        "departureFavorites",
+        JSON.stringify(updatedFavorites)
+      );
+
+      return updatedFavorites;
+    });
+  };
+
   const handleEnterSearch = async (
     event: React.KeyboardEvent<HTMLInputElement>
   ) => {
@@ -204,6 +214,7 @@ export const Departures = () => {
           <FavoriteListDepartures
             favorites={favorites}
             onFavoriteSelect={handleFavoriteSelect}
+            onRemoveFavorite={handleRemoveFavorite}
           />
         )}
 
@@ -211,6 +222,7 @@ export const Departures = () => {
           <Container>
             {searchedStation && <h2>{searchedStation}</h2>}
             <DivContainer>
+              <Heading3 $istoggled={isToggled}>Avångar mot</Heading3>
               {departuresData.Buses.map((bus, index) => (
                 <InfoDiv key={index}>
                   {`${bus.Destination} - ${bus.DisplayTime}`}
