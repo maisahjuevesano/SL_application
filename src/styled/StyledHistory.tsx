@@ -7,7 +7,7 @@ export const SearchHistoryContainer = styled.div`
   flex-direction: column;
   align-items: center;
   margin-top: 20px; //kanske ändra senare
-  width: 300px;
+  width: 100%;
   border: #94b0c2 3px solid;
 `;
 
@@ -17,7 +17,10 @@ export const SearchItem = styled.div`
   padding: 10px 0px 15px 10px;
   margin: 10px 0px;
   /* border-bottom: 2px solid #ffffff; */
-  width: 100%;
+  width: 335px;
+  justify-content: space-around;
+  padding: 5px;
+  border-bottom: 2px solid #ffffff;
 `;
 
 export const SearchDetail = styled.div`

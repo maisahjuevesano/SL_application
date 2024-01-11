@@ -8,14 +8,18 @@ export const FavoriteListContainer = styled.div`
   align-items: center;
   margin-top: 20px;
   border: #94b0c2 3px solid;
+  padding: 10px;
+  width: 280px;
 `;
 
 export const FavoriteItem = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   margin-bottom: 10px;
   padding: 10px;
-  /* border-bottom: 2px solid #ffffff; */
+  border-bottom: 2px solid #ffffff;
+  width: 275px;
+  justify-content: space-around;
 `;
 
 export const SearchDetail = styled.div`
