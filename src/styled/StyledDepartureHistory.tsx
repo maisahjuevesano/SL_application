@@ -1,30 +1,30 @@
 import { styled } from "styled-components";
 
-export const FavoriteListContainer = styled.div`
+export const DeparutesHistoryContainer = styled.div`
+  width: 300px;
   background-color: rgba(217, 217, 217, 0.5);
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 20px;
+  gap: 10px;
+  padding-bottom: 20px;
+  /* border: white 3px solid; */
   border: #94b0c2 3px solid;
 `;
 
-export const FavoriteItem = styled.div`
+export const SearchItem = styled.div`
   display: flex;
-  flex-direction: column;
-  margin-bottom: 10px;
-  padding: 10px;
-  /* border-bottom: 2px solid #ffffff; */
+  justify-content: center; //ändra kanske senare
+  gap: 20px;
+  align-items: center;
+  width: 100%;
 `;
 
-export const SearchDetail = styled.div`
-  /* margin: 3px 0; //kanske ändra eller ta bort */
-`;
+export const Heading3DepartureHistory = styled.h3``;
 
-export const Heading3FavoriteList = styled.h3``;
-
-export const FavoriteSelectButton = styled.button`
+export const SearchButton = styled.button`
   background-color: rgba(217, 217, 217, 0.5);
   margin-top: 10px;
   border-radius: 10px;
@@ -45,4 +45,8 @@ export const FavoriteSelectButton = styled.button`
   &:focus {
     box-shadow: 0 0 0 2px #bbb;
   }
+`;
+
+export const ContainerButtons = styled.div`
+  padding-left: 5px;
 `;

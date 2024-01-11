@@ -8,6 +8,7 @@ export const SearchHistoryContainer = styled.div`
   align-items: center;
   margin-top: 20px; //kanske ändra senare
   width: 300px;
+  border: #94b0c2 3px solid;
 `;
 
 export const SearchItem = styled.div`

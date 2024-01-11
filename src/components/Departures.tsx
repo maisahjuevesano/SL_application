@@ -15,9 +15,13 @@ import {
   InputAndButtonContainer,
   SearchTravelContainer,
   StyledButton,
+  StyledButtonAlternative,
+  StyledButtonContainer,
   StyledInput,
 } from "../styled/styledDepartures";
 import { Train } from "../styled/StyledTrain";
+import DepartureHistory from "./DepartureHistory";
+import FavoriteListDepartures from "./FavoriteListDepartures";
 
 export const Departures = () => {
   const [departuresData, setDeparturesData] = useState<SLDeparturesData | null>(
@@ -26,7 +30,58 @@ export const Departures = () => {
   const [searchString, setSearchString] = useState<string>("");
   const [searchedStation, setSearchStation] = useState<string>("");
   const { isToggled } = useTheme();
+  const [searchHistory, setSearchHistory] = useState<string[]>(() => {
+    const loadedHistory = localStorage.getItem("departureSearchHistory");
+    return loadedHistory ? JSON.parse(loadedHistory) : [];
+  });
 
+  const [favorites, setFavorites] = useState<string[]>(() => {
+    const loadedFavorites = localStorage.getItem("departureFavorites");
+    return loadedFavorites ? JSON.parse(loadedFavorites) : [];
+  });
+
+  const [currentView, setCurrentView] = useState<"history" | "favorites">(
+    "history"
+  );
+
+  const handleFavoriteSelect = async (favorite: string) => {
+    // Anta att `favorite` är namnet på stationen som användaren vill söka efter
+    const siteId = await fetchSiteId(favorite);
+    if (siteId) {
+      const departures = await fetchRealtimeDepartures(siteId);
+      setDeparturesData(departures);
+      const capitalizedFavorite = capitalizeFirstLetter(favorite);
+      setSearchStation(capitalizedFavorite);
+
+      // Uppdatera local storage om nödvändigt
+      localStorage.setItem("searchedStation", capitalizedFavorite);
+      localStorage.setItem("departuresData", JSON.stringify(departures));
+    } else {
+      // Hantera fallet där ingen station hittas
+      // Exempel: visa ett felmeddelande till användaren
+    }
+  };
+
+  const handleToggleFavorite = (item: string) => {
+    setFavorites((prevFavorites) => {
+      // Kolla om sökningen redan är en favorit
+      const isFavorite = prevFavorites.includes(item);
+      let newFavorites;
+
+      if (isFavorite) {
+        // Om den är favorit, ta bort den från favoritlistan
+        newFavorites = prevFavorites.filter((favorite) => favorite !== item);
+      } else {
+        // Annars, lägg till den i favoritlistan
+        newFavorites = [...prevFavorites, item];
+      }
+
+      // Spara den uppdaterade listan i localStorage
+      localStorage.setItem("departureFavorites", JSON.stringify(newFavorites));
+
+      return newFavorites;
+    });
+  };
   useEffect(() => {
     const savedStation = localStorage.getItem("searchedStation");
     const savedDeparturesData = localStorage.getItem("departuresData");
@@ -53,8 +108,45 @@ export const Departures = () => {
 
       localStorage.setItem("searchedStation", capitalizedSearchString);
       localStorage.setItem("departuresData", JSON.stringify(departures));
+
+      setSearchHistory((prevHistory) => {
+        const newHistory = [
+          ...new Set([capitalizedSearchString, ...prevHistory]),
+        ].slice(0, 10);
+        localStorage.setItem(
+          "departureSearchHistory",
+          JSON.stringify(newHistory)
+        );
+        return newHistory;
+      });
+
       setSearchString("");
     }
+  };
+
+  const handleHistorySelect = async (historySearch: string) => {
+    setSearchString(historySearch);
+    const siteId = await fetchSiteId(historySearch);
+    if (siteId) {
+      const departures = await fetchRealtimeDepartures(siteId);
+      setDeparturesData(departures);
+      const capitalizedSearchString = capitalizeFirstLetter(historySearch);
+      setSearchStation(capitalizedSearchString);
+
+      localStorage.setItem("searchedStation", capitalizedSearchString);
+      localStorage.setItem("departuresData", JSON.stringify(departures));
+    }
+  };
+
+  const handleRemoveHistoryItem = (itemToRemove: string) => {
+    const updatedHistory = searchHistory.filter(
+      (item) => item !== itemToRemove
+    );
+    setSearchHistory(updatedHistory);
+    localStorage.setItem(
+      "departureSearchHistory",
+      JSON.stringify(updatedHistory)
+    );
   };
 
   const handleEnterSearch = async (
@@ -66,44 +158,68 @@ export const Departures = () => {
   };
 
   return (
-    <DeparturesContainer>
-      <Bus></Bus>
-      <Train></Train>
-      <SearchTravelContainer $istoggled={isToggled}>
-        <DivHeading>
-          <Heading3Black $istoggled={isToggled}>Sök avgångar</Heading3Black>
-        </DivHeading>
-        <InputAndButtonContainer $istoggled={isToggled}>
+    <>
+      <DeparturesContainer>
+        <Bus></Bus>
+        <Train></Train>
+        <SearchTravelContainer $istoggled={isToggled}>
           <DivHeading>
-            <Heading3 $istoggled={isToggled}>Från</Heading3>
+            <Heading3Black $istoggled={isToggled}>Sök avgångar</Heading3Black>
           </DivHeading>
-          <StyledInput
-            type="text"
-            value={searchString}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setSearchString(e.target.value)
-            }
-            onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) =>
-              handleEnterSearch(e)
-            }
-            placeholder="Sök avgång"
+          <InputAndButtonContainer $istoggled={isToggled}>
+            <DivHeading>
+              <Heading3 $istoggled={isToggled}>Från</Heading3>
+            </DivHeading>
+            <StyledInput
+              type="text"
+              value={searchString}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setSearchString(e.target.value)
+              }
+              onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) =>
+                handleEnterSearch(e)
+              }
+              placeholder="Sök avgång"
+            />
+            <StyledButton onClick={handleSearch}>Sök</StyledButton>
+          </InputAndButtonContainer>
+        </SearchTravelContainer>
+        <StyledButtonContainer>
+          <StyledButtonAlternative onClick={() => setCurrentView("history")}>
+            Historik
+          </StyledButtonAlternative>
+          <StyledButtonAlternative onClick={() => setCurrentView("favorites")}>
+            Favoriter
+          </StyledButtonAlternative>
+        </StyledButtonContainer>
+        {currentView === "history" ? (
+          <DepartureHistory
+            searchHistory={searchHistory}
+            onSelectHistoryItem={handleHistorySelect}
+            onRemoveHistoryItem={handleRemoveHistoryItem}
+            onToggleFavorite={handleToggleFavorite}
+            favorites={favorites}
           />
-          <StyledButton onClick={handleSearch}>Sök</StyledButton>
-        </InputAndButtonContainer>
-      </SearchTravelContainer>
+        ) : (
+          <FavoriteListDepartures
+            favorites={favorites}
+            onFavoriteSelect={handleFavoriteSelect}
+          />
+        )}
 
-      {departuresData && (
-        <Container>
-          {searchedStation && <h2>{searchedStation}</h2>}
-          <DivContainer>
-            {departuresData.Buses.map((bus, index) => (
-              <InfoDiv key={index}>
-                {`${bus.Destination} - ${bus.DisplayTime}`}
-              </InfoDiv>
-            ))}
-          </DivContainer>
-        </Container>
-      )}
-    </DeparturesContainer>
+        {departuresData && (
+          <Container>
+            {searchedStation && <h2>{searchedStation}</h2>}
+            <DivContainer>
+              {departuresData.Buses.map((bus, index) => (
+                <InfoDiv key={index}>
+                  {`${bus.Destination} - ${bus.DisplayTime}`}
+                </InfoDiv>
+              ))}
+            </DivContainer>
+          </Container>
+        )}
+      </DeparturesContainer>
+    </>
   );
 };

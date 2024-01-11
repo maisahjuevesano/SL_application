@@ -25,8 +25,8 @@ export const SearchTravelContainer = styled.div<ToggleContainerProps>`
 export const InputAndButtonContainer = styled.div<ToggleContainerProps>`
   display: flex;
   flex-direction: column;
-  background-color: ${(props) =>
-    props.$istoggled ? "#94b0c2a6" : "rgba(217, 217, 217, 0.5)"};
+  /* background-color: ${(props) =>
+    props.$istoggled ? "#94b0c2a6" : "rgba(217, 217, 217, 0.5)"}; */
   border: white 3px solid;
   align-items: center;
   height: 50vh;
@@ -74,19 +74,46 @@ export const StyledButton = styled.button`
     box-shadow: 0 0 0 2px #bbb;
   }
 `;
+export const StyledButtonContainer = styled.div`
+  display: flex;
+`;
+export const StyledButtonAlternative = styled.button`
+  font-weight: bolder;
+  background-color: rgba(217, 217, 217, 0.5);
+  border: none;
+  margin-top: 100px;
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: white 3px solid;
+  margin-left: 15px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-colour 0.3s ease;
 
+  &:hover {
+    background-color: #666;
+  }
+
+  &:active {
+    background-color: #333;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 2px #bbb;
+  }
+`;
 export const Heading2 = styled.h2``;
 
 export const Heading3 = styled.h2<ToggleContainerProps>`
   display: flex;
-  color: ${(props) => (props.$istoggled ? "#3e4245" : "#94b0c2")};
+  color: ${(props) => (props.$istoggled ? "#000000" : "#94b0c2")};
   font-size: 16px;
 `;
 
 export const Heading3Black = styled.h3<ToggleContainerProps>`
   display: flex;
   margin-bottom: 0;
-  color: ${(props) => (props.$istoggled ? "white" : "#94b0c2")};
+  color: ${(props) => (props.$istoggled ? "#000000" : "#94b0c2")};
 `;
 
 export const DivContainer = styled.div`
@@ -103,13 +130,14 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-radius: 2%;
+  border-radius: 10px;
   background-color: rgba(217, 217, 217, 0.5);
-  margin-top: 100px;
+  margin-top: 15px;
   width: 300px;
-  color: #000000;
   min-height: 25vh; // Minsta höjd, men kan bli större beroende på innehåll
   flex-grow: 1; // Låter komponenten expandera och fylla tillgängligt utrymme
+  border: #94b0c2 3px solid;
+  margin-bottom: 15px;
 `;
 
 export const InfoDiv = styled.div`
