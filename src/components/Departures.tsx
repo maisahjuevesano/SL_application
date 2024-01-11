@@ -15,10 +15,13 @@ import {
   InputAndButtonContainer,
   SearchTravelContainer,
   StyledButton,
+  StyledButtonAlternative,
+  StyledButtonContainer,
   StyledInput,
 } from "../styled/styledDepartures";
 import { Train } from "../styled/StyledTrain";
 import DepartureHistory from "./DepartureHistory";
+import FavoriteListDepartures from "./FavoriteListDepartures";
 
 export const Departures = () => {
   const [departuresData, setDeparturesData] = useState<SLDeparturesData | null>(
@@ -32,6 +35,53 @@ export const Departures = () => {
     return loadedHistory ? JSON.parse(loadedHistory) : [];
   });
 
+  const [favorites, setFavorites] = useState<string[]>(() => {
+    const loadedFavorites = localStorage.getItem("departureFavorites");
+    return loadedFavorites ? JSON.parse(loadedFavorites) : [];
+  });
+
+  const [currentView, setCurrentView] = useState<"history" | "favorites">(
+    "history"
+  );
+
+  const handleFavoriteSelect = async (favorite: string) => {
+    // Anta att `favorite` är namnet på stationen som användaren vill söka efter
+    const siteId = await fetchSiteId(favorite);
+    if (siteId) {
+      const departures = await fetchRealtimeDepartures(siteId);
+      setDeparturesData(departures);
+      const capitalizedFavorite = capitalizeFirstLetter(favorite);
+      setSearchStation(capitalizedFavorite);
+
+      // Uppdatera local storage om nödvändigt
+      localStorage.setItem("searchedStation", capitalizedFavorite);
+      localStorage.setItem("departuresData", JSON.stringify(departures));
+    } else {
+      // Hantera fallet där ingen station hittas
+      // Exempel: visa ett felmeddelande till användaren
+    }
+  };
+
+  const handleToggleFavorite = (item: string) => {
+    setFavorites((prevFavorites) => {
+      // Kolla om sökningen redan är en favorit
+      const isFavorite = prevFavorites.includes(item);
+      let newFavorites;
+
+      if (isFavorite) {
+        // Om den är favorit, ta bort den från favoritlistan
+        newFavorites = prevFavorites.filter((favorite) => favorite !== item);
+      } else {
+        // Annars, lägg till den i favoritlistan
+        newFavorites = [...prevFavorites, item];
+      }
+
+      // Spara den uppdaterade listan i localStorage
+      localStorage.setItem("departureFavorites", JSON.stringify(newFavorites));
+
+      return newFavorites;
+    });
+  };
   useEffect(() => {
     const savedStation = localStorage.getItem("searchedStation");
     const savedDeparturesData = localStorage.getItem("departuresData");
@@ -74,8 +124,18 @@ export const Departures = () => {
     }
   };
 
-  const handleHistorySelect = (historySearch: string) => {
+  const handleHistorySelect = async (historySearch: string) => {
     setSearchString(historySearch);
+    const siteId = await fetchSiteId(historySearch);
+    if (siteId) {
+      const departures = await fetchRealtimeDepartures(siteId);
+      setDeparturesData(departures);
+      const capitalizedSearchString = capitalizeFirstLetter(historySearch);
+      setSearchStation(capitalizedSearchString);
+
+      localStorage.setItem("searchedStation", capitalizedSearchString);
+      localStorage.setItem("departuresData", JSON.stringify(departures));
+    }
   };
 
   const handleRemoveHistoryItem = (itemToRemove: string) => {
@@ -124,6 +184,28 @@ export const Departures = () => {
             <StyledButton onClick={handleSearch}>Sök</StyledButton>
           </InputAndButtonContainer>
         </SearchTravelContainer>
+        <StyledButtonContainer>
+          <StyledButtonAlternative onClick={() => setCurrentView("history")}>
+            Historik
+          </StyledButtonAlternative>
+          <StyledButtonAlternative onClick={() => setCurrentView("favorites")}>
+            Favoriter
+          </StyledButtonAlternative>
+        </StyledButtonContainer>
+        {currentView === "history" ? (
+          <DepartureHistory
+            searchHistory={searchHistory}
+            onSelectHistoryItem={handleHistorySelect}
+            onRemoveHistoryItem={handleRemoveHistoryItem}
+            onToggleFavorite={handleToggleFavorite}
+            favorites={favorites}
+          />
+        ) : (
+          <FavoriteListDepartures
+            favorites={favorites}
+            onFavoriteSelect={handleFavoriteSelect}
+          />
+        )}
 
         {departuresData && (
           <Container>
@@ -138,11 +220,6 @@ export const Departures = () => {
           </Container>
         )}
       </DeparturesContainer>
-      <DepartureHistory
-        searchHistory={searchHistory}
-        onSelectHistoryItem={handleHistorySelect}
-        onRemoveHistoryItem={handleRemoveHistoryItem}
-      />
     </>
   );
 };

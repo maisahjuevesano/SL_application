@@ -13,7 +13,7 @@ export const TravelPlannerContainer = styled.div`
 export const SearchTravelPlannerContainer = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: #3e4245;
+  background-color: #94b0c2;
   align-items: center;
   height: 25vh;
   width: 260px;
