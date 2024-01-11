@@ -13,17 +13,18 @@ export const TravelPlannerContainer = styled.div`
 export const SearchTravelPlannerContainer = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: #94b0c2;
+  background-color: #aa71d8;
   align-items: center;
   height: 25vh;
   width: 260px;
   border-radius: 4%;
+  border: 1px solid #c67bbf;
 `;
 export const InputAndButtonContainer = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: rgba(217, 217, 217, 0.5);
-  border: white 3px solid;
+  background-color: #ae7dd6;
+  border: #e8888d 1px solid;
   align-items: center;
   width: 260px;
   border-radius: 4%;
@@ -35,35 +36,34 @@ export const StyledInput = styled.input`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgba(217, 217, 217, 0.5);
   border: none;
   padding: 10px 15px;
   margin-bottom: 5px;
   border-radius: 10px;
-  border: white 3px solid;
+  border: #d49ac5 3px solid;
   font-size: 16px;
   cursor: pointer;
 `;
 
 export const StyledButton = styled.button`
   font-weight: bolder;
-  background-color: rgba(217, 217, 217, 0.5);
+  background-color: white;
   border: none;
   padding: 10px 80px;
   margin-top: 5px;
   margin-bottom: 10px;
   border-radius: 10px;
-  border: white 3px solid;
+  border: #d49ac5 3px solid;
   font-size: 16px;
   cursor: pointer;
   transition: background-colour 0.3s ease;
 
   &:hover {
-    background-color: #666;
+    background-color: #6e5af4;
   }
 
   &:active {
-    background-color: #333;
+    background-color: #c67bbf;
   }
 
   &:focus {
@@ -71,25 +71,30 @@ export const StyledButton = styled.button`
   }
 `;
 
-export const StyledButtonAlternative = styled.button`
+export const StyledButtonAlternative = styled.button<ToggleContainerProps>`
+  color: ${(props) => (props.$istoggled ? "white" : "white")};
+  display: flex;
+  justify-content: space-around;
   font-weight: bolder;
-  background-color: rgba(217, 217, 217, 0.5);
+  background-color: #aa71d8b8;
   border: none;
   margin-top: 100px;
-  padding: 10px 15px;
+  height: 40px;
+  align-items: center;
+  width: 135px;
   border-radius: 10px;
-  border: white 3px solid;
+  border: #6e5af4 2px solid;
   margin-left: 15px;
   font-size: 15px;
   cursor: pointer;
   transition: background-colour 0.3s ease;
 
   &:hover {
-    background-color: #666;
+    background-color: #6e5af4;
   }
 
   &:active {
-    background-color: #333;
+    background-color: #c67bbf;
   }
 
   &:focus {
@@ -101,22 +106,23 @@ export const StyledButtonContainer = styled.div`
   display: flex;
 `;
 
-export const StyledSwitchButton = styled.button`
+export const StyledSwitchButton = styled.button<ToggleContainerProps>`
+  color: ${(props) => (props.$istoggled ? "white" : "white")};
   border-radius: 50%;
   transition: all 0.3s ease;
-  background-color: rgba(217, 217, 217, 0.5);
+  background-color: #d49ac5;
   width: 30px;
   height: 30px;
-  border: white 3px solid;
+  border: #aa71d8 2px solid;
   font-size: 16px;
   cursor: pointer;
 
   &:hover {
-    background-color: #666;
+    background-color: #6e5af4;
   }
 
   &:active {
-    background-color: #333;
+    background-color: #c67bbf;
   }
 
   &:focus {
@@ -150,8 +156,8 @@ export const LegContainer = styled.div`
   border-radius: 8px;
 `;
 
-export const LegHeader = styled.h3`
-  color: #000000;
+export const LegHeader = styled.h3<ToggleContainerProps>`
+  color: ${(props) => (props.$istoggled ? "white" : "black")};
   margin: 0 0 10px 0;
 `;
 

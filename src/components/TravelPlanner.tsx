@@ -179,7 +179,7 @@ export const TravelPlanner = () => {
     if (!tripData) return null;
     return tripData.Trip.map((trip: Trip, index: number) => (
       <TripContainer key={index}>
-        <LegHeader>Resa {index + 1}</LegHeader>
+        <LegHeader $istoggled={isToggled}>Resa {index + 1}</LegHeader>
         {renderLegs(trip)}
       </TripContainer>
     ));
@@ -214,7 +214,10 @@ export const TravelPlanner = () => {
               onKeyPress={handleKeyPress}
               placeholder="Till"
             />
-            <StyledSwitchButton onClick={handleSwapInputs}>
+            <StyledSwitchButton
+              $istoggled={isToggled}
+              onClick={handleSwapInputs}
+            >
               <FontAwesomeIcon icon={faArrowsUpDown} />
             </StyledSwitchButton>
             <StyledButton
@@ -229,12 +232,16 @@ export const TravelPlanner = () => {
         </SearchTravelPlannerContainer>
         <StyledButtonContainer>
           <StyledButtonAlternative
+            $istoggled={isToggled}
             onClick={() => handleViewChange("favorites")}
           >
             Favoriter
             <FontAwesomeIcon icon={solidStar} />
           </StyledButtonAlternative>
-          <StyledButtonAlternative onClick={() => handleViewChange("history")}>
+          <StyledButtonAlternative
+            $istoggled={isToggled}
+            onClick={() => handleViewChange("history")}
+          >
             Sökhistorik
             <FontAwesomeIcon icon={faClockRotateLeft} />
           </StyledButtonAlternative>

@@ -8,10 +8,10 @@ export const StyledHeader = styled.header`
   align-items: center;
 `;
 
-export const StyledNav = styled.nav`
+export const StyledNav = styled.nav<ToggleContainerProps>`
   height: 60px;
   border-radius: 15px;
-  background-color: rgba(217, 217, 217, 0.5);
+  background-color: ${(props) => (props.$istoggled ? "white" : "white")};
 `;
 
 export const StyledUl = styled.ul`
