@@ -10,21 +10,23 @@ export const TravelPlannerContainer = styled.div`
   align-items: center;
 `;
 
-export const SearchTravelPlannerContainer = styled.div`
+export const SearchTravelPlannerContainer = styled.div<ToggleContainerProps>`
   display: flex;
   flex-direction: column;
-  background-color: #aa71d8;
+  background-color: ${(props) =>
+    props.$istoggled ? "#ae7dd671" : "#004b97c1"};
   align-items: center;
   height: 25vh;
   width: 260px;
   border-radius: 4%;
-  border: 1px solid #c67bbf;
+  border: 1px solid ${(props) => (props.$istoggled ? "#c67bbf" : "#209259c1")};
 `;
-export const InputAndButtonContainer = styled.div`
+export const InputAndButtonContainer = styled.div<ToggleContainerProps>`
   display: flex;
   flex-direction: column;
-  background-color: #ae7dd6;
-  border: #e8888d 1px solid;
+  background-color: ${(props) =>
+    props.$istoggled ? "#ae7dd671" : "#477c59c1"};
+  border: 1px solid ${(props) => (props.$istoggled ? "#e8888d" : "#d4824ac1")};
   align-items: center;
   width: 260px;
   border-radius: 4%;
@@ -32,7 +34,7 @@ export const InputAndButtonContainer = styled.div`
   padding-top: 10px;
 `;
 
-export const StyledInput = styled.input`
+export const StyledInput = styled.input<ToggleContainerProps>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -40,20 +42,22 @@ export const StyledInput = styled.input`
   padding: 10px 15px;
   margin-bottom: 5px;
   border-radius: 10px;
-  border: #d49ac5 3px solid;
+  background-color: ${(props) =>
+    props.$istoggled ? "#ae7dd671" : "#164727c1"};
+  border: 1px solid ${(props) => (props.$istoggled ? "#e8888d" : "#d4824ac1")};
   font-size: 16px;
   cursor: pointer;
 `;
 
-export const StyledButton = styled.button`
+export const StyledButton = styled.button<ToggleContainerProps>`
   font-weight: bolder;
-  background-color: white;
-  border: none;
+  background-color: ${(props) =>
+    props.$istoggled ? "#ae7dd671" : "#477c59c1"};
   padding: 10px 80px;
   margin-top: 5px;
   margin-bottom: 10px;
   border-radius: 10px;
-  border: #d49ac5 3px solid;
+  border: 1px solid ${(props) => (props.$istoggled ? "#e8888d" : "#d4824ac1")};
   font-size: 16px;
   cursor: pointer;
   transition: background-colour 0.3s ease;
@@ -72,18 +76,17 @@ export const StyledButton = styled.button`
 `;
 
 export const StyledButtonAlternative = styled.button<ToggleContainerProps>`
-  color: ${(props) => (props.$istoggled ? "white" : "white")};
+  color: ${(props) => (props.$istoggled ? "#ffffff" : "#d4814a")};
   display: flex;
   justify-content: space-around;
-  font-weight: bolder;
-  background-color: #aa71d8b8;
-  border: none;
+  background-color: ${(props) =>
+    props.$istoggled ? "#ae7dd671" : "#477c59c1"};
   margin-top: 100px;
   height: 40px;
   align-items: center;
   width: 135px;
   border-radius: 10px;
-  border: #6e5af4 2px solid;
+  border: 1px solid ${(props) => (props.$istoggled ? "#e8888d" : "#d4814af6")};
   margin-left: 15px;
   font-size: 15px;
   cursor: pointer;
@@ -91,14 +94,17 @@ export const StyledButtonAlternative = styled.button<ToggleContainerProps>`
 
   &:hover {
     background-color: #6e5af4;
+    //kolla hur det går att fixa darkmode här
   }
 
   &:active {
     background-color: #c67bbf;
+    //kolla hur det går att fixa darkmode här
   }
 
   &:focus {
     box-shadow: 0 0 0 2px #bbb;
+    //kolla hur det går att fixa darkmode här
   }
 `;
 
@@ -107,26 +113,29 @@ export const StyledButtonContainer = styled.div`
 `;
 
 export const StyledSwitchButton = styled.button<ToggleContainerProps>`
-  color: ${(props) => (props.$istoggled ? "white" : "white")};
+  color: ${(props) => (props.$istoggled ? "#ae7dd6" : "#c5e7d0da")};
   border-radius: 50%;
   transition: all 0.3s ease;
-  background-color: #d49ac5;
+  background-color: ${(props) => (props.$istoggled ? "#d49ac5" : "#477c59c1")};
   width: 30px;
   height: 30px;
-  border: #aa71d8 2px solid;
+  border: 1px solid ${(props) => (props.$istoggled ? "#e8888d" : "#d4814af6")};
   font-size: 16px;
   cursor: pointer;
 
   &:hover {
     background-color: #6e5af4;
+    //kolla hur det går att fixa darkmode här
   }
 
   &:active {
     background-color: #c67bbf;
+    //kolla hur det går att fixa darkmode här
   }
 
   &:focus {
     box-shadow: 0 0 0 2px #bbb;
+    //kolla hur det går att fixa darkmode här
   }
 `;
 
@@ -140,19 +149,21 @@ export const Heading3 = styled.h3<ToggleContainerProps>`
 `;
 
 //tripdatastyling
-export const TripContainer = styled.div`
-  background-color: rgba(217, 217, 217, 0.5);
+export const TripContainer = styled.div<ToggleContainerProps>`
+  background-color: ${(props) =>
+    props.$istoggled ? "#ae7dd671" : "#477c59c1"};
   border-radius: 8px;
   width: 250px;
   margin: 10px 0;
   padding: 10px;
 `;
 
-export const LegContainer = styled.div`
+export const LegContainer = styled.div<ToggleContainerProps>`
   margin-bottom: 10px;
   padding: 10px;
-  background-color: rgba(217, 217, 217, 0.5);
-  border: 1px solid #ddd;
+  background-color: ${(props) =>
+    props.$istoggled ? "#ae7dd671" : "#477c59c1"};
+  border: 1px solid ${(props) => (props.$istoggled ? "white" : "#d4824ac1")};
   border-radius: 8px;
 `;
 

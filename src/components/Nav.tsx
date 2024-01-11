@@ -15,7 +15,7 @@ export const Nav = () => {
 
   return (
     <StyledHeader>
-      <StyledNav>
+      <StyledNav $istoggled={isToggled}>
         <StyledUl>
           <StyledLi $istoggled={isToggled}>
             <Link to="/TravelPlanner">Sök resa</Link>
