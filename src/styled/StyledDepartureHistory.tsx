@@ -3,9 +3,10 @@ import { ToggleContainerProps } from "../models/toggleContainerProps";
 
 export const DeparutesHistoryContainer = styled.div<ToggleContainerProps>`
   background-color: ${(props) =>
-    props.$istoggled ? "#6f3ab46e" : "#189cbdf4"};
+    props.$istoggled ? "#004b97c1" : "#189cbdf4"};
   border: 1px solid ${(props) => (props.$istoggled ? "#c67bbf" : "#209259c1")};
-  color: ${(props) => (props.$istoggled ? "#b4a23a" : "#189cbdf4")};
+  color: ${(props) => (props.$istoggled ? "#ffffff" : "#f5e750f4")};
+
   width: 300px;
   border-radius: 10px;
   display: flex;
@@ -24,6 +25,7 @@ export const SearchItem = styled.div`
   width: 100%;
   border-bottom: 1px solid white;
   justify-content: space-around;
+  padding-bottom: 10px;
 `;
 
 export const Heading3DepartureHistory = styled.h3``;

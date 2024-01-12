@@ -106,7 +106,7 @@ export const Heading2 = styled.h2``;
 
 export const Heading3 = styled.h2<ToggleContainerProps>`
   display: flex;
-  color: ${(props) => (props.$istoggled ? "#000000" : "#000000")};
+  color: ${(props) => (props.$istoggled ? "#ffffff" : "#000000")};
   font-size: 16px;
 `;
 
@@ -131,8 +131,9 @@ export const Container = styled.div<ToggleContainerProps>`
   flex-direction: column;
   align-items: center;
   border-radius: 10px;
-  color: ${(props) => (props.$istoggled ? "#ae7dd6" : "#f0ca21c1")};
-  background-color: ${(props) => (props.$istoggled ? "#ae7dd6" : "#164727c1")};
+  color: ${(props) => (props.$istoggled ? "white" : "#f0ca21c1")};
+  background-color: ${(props) =>
+    props.$istoggled ? "#704dd992" : "#164727c1"};
   border: 1px solid ${(props) => (props.$istoggled ? "#e8888d" : "#d4814a")};
   margin-top: 15px;
   width: 300px;

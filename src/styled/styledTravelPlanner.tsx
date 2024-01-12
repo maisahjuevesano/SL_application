@@ -164,7 +164,7 @@ export const LegContainer = styled.div<ToggleContainerProps>`
   margin-bottom: 10px;
   padding: 10px;
   background-color: ${(props) =>
-    props.$istoggled ? "#ae7dd671" : "#477c59c1"};
+    props.$istoggled ? "#ae7dd671" : "#99c0a6c1"};
   border: 1px solid ${(props) => (props.$istoggled ? "white" : "#d4824ac1")};
   border-radius: 8px;
 `;
