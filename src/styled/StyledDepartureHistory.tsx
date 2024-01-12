@@ -5,8 +5,8 @@ export const DeparutesHistoryContainer = styled.div<ToggleContainerProps>`
   background-color: ${(props) =>
     props.$istoggled ? "#004b97c1" : "#189cbdf4"};
   border: 1px solid ${(props) => (props.$istoggled ? "#c67bbf" : "#209259c1")};
-  color: ${(props) => (props.$istoggled ? "#ffffff" : "#f5e750f4")};
-
+  color: ${(props) =>
+    props.$istoggled ? "white" : "#ffb838"}; //fungerar inte som jag vill.
   width: 300px;
   border-radius: 10px;
   display: flex;
@@ -28,7 +28,9 @@ export const SearchItem = styled.div`
   padding-bottom: 10px;
 `;
 
-export const Heading3DepartureHistory = styled.h3``;
+export const Heading3DepartureHistory = styled.h3<ToggleContainerProps>`
+  color: ${(props) => (props.$istoggled ? "white" : "#ffb838")};
+`;
 
 export const SearchButton = styled.button`
   background-color: rgba(217, 217, 217, 0.5);

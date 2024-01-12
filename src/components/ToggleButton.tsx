@@ -6,7 +6,7 @@ export const ToggleButton = () => {
 
   return (
     <ToggleContainer $istoggled={isToggled} onClick={toggleTheme}>
-      <ToggleKnob />
+      <ToggleKnob $istoggled />
     </ToggleContainer>
   );
 };

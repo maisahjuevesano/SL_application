@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import { ToggleContainerProps } from "../models/toggleContainerProps";
 
-//Sök resa
-
 export const TravelPlannerContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -64,15 +62,17 @@ export const StyledButton = styled.button<ToggleContainerProps>`
   transition: background-colour 0.3s ease;
 
   &:hover {
-    background-color: #6e5af4;
+    background-color: ${(props) =>
+      props.$istoggled ? "#6f5af4ac" : "#6ef39c"};
   }
 
   &:active {
-    background-color: #c67bbf;
+    background-color: ${(props) => (props.$istoggled ? "#d785bd" : "#6ef39c")};
   }
 
   &:focus {
-    box-shadow: 0 0 0 2px #bbb;
+    box-shadow: 0 0 0 2px
+      ${(props) => (props.$istoggled ? "#6f5af4ac" : "#6ef39c")};
   }
 `;
 
@@ -95,18 +95,17 @@ export const StyledButtonAlternative = styled.button<ToggleContainerProps>`
   transition: background-colour 0.3s ease;
 
   &:hover {
-    background-color: #6e5af4;
-    //kolla hur det går att fixa darkmode här
+    background-color: ${(props) =>
+      props.$istoggled ? "#6f5af4ac" : "#6ef39c"};
   }
 
   &:active {
-    background-color: #c67bbf;
-    //kolla hur det går att fixa darkmode här
+    background-color: ${(props) => (props.$istoggled ? "#d785bd" : "#6ef39c")};
   }
 
   &:focus {
-    box-shadow: 0 0 0 2px #bbb;
-    //kolla hur det går att fixa darkmode här
+    box-shadow: 0 0 0 2px
+      ${(props) => (props.$istoggled ? "#6f5af4ac" : "#6ef39c")};
   }
 `;
 
@@ -126,18 +125,17 @@ export const StyledSwitchButton = styled.button<ToggleContainerProps>`
   cursor: pointer;
 
   &:hover {
-    background-color: #6e5af4;
-    //kolla hur det går att fixa darkmode här
+    background-color: ${(props) =>
+      props.$istoggled ? "#6f5af4ac" : "#6ef39c"};
   }
 
   &:active {
-    background-color: #c67bbf;
-    //kolla hur det går att fixa darkmode här
+    background-color: ${(props) => (props.$istoggled ? "#d785bd" : "#6ef39c")};
   }
 
   &:focus {
-    box-shadow: 0 0 0 2px #bbb;
-    //kolla hur det går att fixa darkmode här
+    box-shadow: 0 0 0 2px
+      ${(props) => (props.$istoggled ? "#6f5af4ac" : "#6ef39c")};
   }
 `;
 
@@ -147,10 +145,9 @@ export const DivHeading = styled.div`
 `;
 
 export const Heading3 = styled.h3<ToggleContainerProps>`
-  color: ${(props) => (props.$istoggled ? "white" : "#94b0c2")};
+  color: ${(props) => (props.$istoggled ? "#ffffff" : "#ffb838")};
 `;
 
-//tripdatastyling
 export const TripContainer = styled.div<ToggleContainerProps>`
   background-color: ${(props) =>
     props.$istoggled ? "#ae7dd671" : "#477c59c1"};

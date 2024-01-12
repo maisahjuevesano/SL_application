@@ -4,8 +4,7 @@ import { ToggleContainerProps } from "../models/toggleContainerProps";
 export const ToggleContainer = styled.div<ToggleContainerProps>`
   width: 34px;
   height: 15px;
-  background-color: ${(props) =>
-    props.$istoggled ? "#f98d5bba" : "#002938ab"};
+  background-color: ${(props) => (props.$istoggled ? "#ae66c9" : "#002938ab")};
   border-radius: 25px;
   padding: 5px;
   display: flex;
@@ -15,10 +14,10 @@ export const ToggleContainer = styled.div<ToggleContainerProps>`
   margin: 3px;
 `;
 
-export const ToggleKnob = styled.div`
+export const ToggleKnob = styled.div<ToggleContainerProps>`
   width: 20px;
   height: 20px;
-  background-color: white;
+  background-color: ${(props) => (props.$istoggled ? "#6f5af4ac" : "#ffb838")};
   border-radius: 50%;
   transition: all 0.3s ease;
 `;
