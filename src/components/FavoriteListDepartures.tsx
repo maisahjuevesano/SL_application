@@ -18,7 +18,7 @@ const FavoriteListDepartures = ({
   onRemoveFavorite,
 }: FavoriteListDeparturesProps) => {
   return (
-    <FavoriteListContainer>
+    <FavoriteListContainer $istoggled>
       <Heading3FavoriteList>Favoritavgångar</Heading3FavoriteList>
       {favorites.map((favorite, index) => (
         <FavoriteItem key={index}>
