@@ -28,7 +28,9 @@ const DepartureHistory = ({
 }: DepartureHistoryProps) => {
   return (
     <DeparutesHistoryContainer $istoggled>
-      <Heading3DepartureHistory>Tidigare Sökningar</Heading3DepartureHistory>
+      <Heading3DepartureHistory $istoggled>
+        Tidigare Sökningar
+      </Heading3DepartureHistory>
       {searchHistory.map((item, index) => (
         <SearchItem key={index}>
           {item}
