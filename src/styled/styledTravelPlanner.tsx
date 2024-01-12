@@ -15,11 +15,11 @@ export const SearchTravelPlannerContainer = styled.div<ToggleContainerProps>`
   flex-direction: column;
   background-color: ${(props) =>
     props.$istoggled ? "#ae7dd671" : "#004b97c1"};
+  border: 1px solid ${(props) => (props.$istoggled ? "#c67bbf" : "#209259c1")};
   align-items: center;
   height: 25vh;
   width: 260px;
   border-radius: 4%;
-  border: 1px solid ${(props) => (props.$istoggled ? "#c67bbf" : "#209259c1")};
 `;
 export const InputAndButtonContainer = styled.div<ToggleContainerProps>`
   display: flex;
@@ -53,11 +53,12 @@ export const StyledButton = styled.button<ToggleContainerProps>`
   font-weight: bolder;
   background-color: ${(props) =>
     props.$istoggled ? "#ae7dd671" : "#477c59c1"};
+  border: 1px solid ${(props) => (props.$istoggled ? "#e8888d" : "#d4824ac1")};
   padding: 10px 80px;
   margin-top: 5px;
   margin-bottom: 10px;
   border-radius: 10px;
-  border: 1px solid ${(props) => (props.$istoggled ? "#e8888d" : "#d4824ac1")};
+
   font-size: 16px;
   cursor: pointer;
   transition: background-colour 0.3s ease;
@@ -77,6 +78,7 @@ export const StyledButton = styled.button<ToggleContainerProps>`
 
 export const StyledButtonAlternative = styled.button<ToggleContainerProps>`
   color: ${(props) => (props.$istoggled ? "#ffffff" : "#d4814a")};
+  border: 1px solid ${(props) => (props.$istoggled ? "#e8888d" : "#d4814af6")};
   display: flex;
   justify-content: space-around;
   background-color: ${(props) =>
@@ -86,7 +88,7 @@ export const StyledButtonAlternative = styled.button<ToggleContainerProps>`
   align-items: center;
   width: 135px;
   border-radius: 10px;
-  border: 1px solid ${(props) => (props.$istoggled ? "#e8888d" : "#d4814af6")};
+
   margin-left: 15px;
   font-size: 15px;
   cursor: pointer;

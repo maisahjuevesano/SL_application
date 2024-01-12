@@ -9,7 +9,6 @@ import {
   DeparutesHistoryContainer,
   Heading3DepartureHistory,
   SearchItem,
-  // SearchButton,
 } from "../styled/StyledDepartureHistory";
 
 interface DepartureHistoryProps {
@@ -28,14 +27,12 @@ const DepartureHistory = ({
   favorites,
 }: DepartureHistoryProps) => {
   return (
-    <DeparutesHistoryContainer>
+    <DeparutesHistoryContainer $istoggled>
       <Heading3DepartureHistory>Tidigare Sökningar</Heading3DepartureHistory>
       {searchHistory.map((item, index) => (
         <SearchItem key={index}>
           {item}
-          {/* <SearchButton onClick={() => onSelectHistoryItem(item)}>
-            <FontAwesomeIcon icon={faSearch} />
-          </SearchButton> */}
+
           <FontAwesomeIcon
             onClick={() => onSelectHistoryItem(item)}
             icon={faSearch}

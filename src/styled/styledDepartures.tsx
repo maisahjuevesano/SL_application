@@ -18,14 +18,15 @@ export const SearchTravelContainer = styled.div<ToggleContainerProps>`
   color: ${(props) =>
     props.$istoggled ? "rgba(217, 217, 217, 0.5)" : "#3e4245"};
   background-color: ${(props) =>
-    props.$istoggled ? "#94b0c2" : "rgba(217, 217, 217, 0.5)"};
+    props.$istoggled ? "#ae7dd671" : "#004b97c1"};
+  border: 1px solid ${(props) => (props.$istoggled ? "#c67bbf" : "#209259c1")};
 `;
 export const InputAndButtonContainer = styled.div<ToggleContainerProps>`
   display: flex;
   flex-direction: column;
-  /* background-color: ${(props) =>
-    props.$istoggled ? "#94b0c2a6" : "rgba(217, 217, 217, 0.5)"}; */
-  border: white 3px solid;
+  background-color: ${(props) =>
+    props.$istoggled ? "#ae7dd671" : "#477c59c1"};
+  border: 1px solid ${(props) => (props.$istoggled ? "#e8888d" : "#d4824ac1")};
   align-items: center;
   height: 50vh;
   width: 260px;
@@ -34,37 +35,36 @@ export const InputAndButtonContainer = styled.div<ToggleContainerProps>`
   margin-left: 30px;
 `;
 
-export const StyledInput = styled.input`
+export const StyledInput = styled.input<ToggleContainerProps>`
+  background-color: ${(props) =>
+    props.$istoggled ? "#ae7dd671" : "#164727c1"};
+  border: 1px solid ${(props) => (props.$istoggled ? "#e8888d" : "#d4824ac1")};
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgba(217, 217, 217, 0.5);
   padding: 10px 15px;
   border-radius: 10px;
-  border: white 3px solid;
   font-size: 16px;
   cursor: pointer;
 `;
 
-export const StyledButton = styled.button`
+export const StyledButton = styled.button<ToggleContainerProps>`
+  background-color: ${(props) => (props.$istoggled ? "#ae7dd6" : "#164727c1")};
+  border: 1px solid ${(props) => (props.$istoggled ? "#e8888d" : "#d4814a")};
   font-weight: bolder;
-  background-color: rgba(217, 217, 217, 0.5);
-  border: none;
   margin-top: 15px;
   padding: 10px 99px;
   margin-bottom: 15px;
   border-radius: 10px;
-  border: white 3px solid;
   font-size: 16px;
   cursor: pointer;
   transition: background-colour 0.3s ease;
-
   &:hover {
-    background-color: #666;
+    background-color: #6e5af4;
   }
 
   &:active {
-    background-color: #333;
+    background-color: #c67bbf;
   }
 
   &:focus {
@@ -74,43 +74,46 @@ export const StyledButton = styled.button`
 export const StyledButtonContainer = styled.div`
   display: flex;
 `;
-export const StyledButtonAlternative = styled.button`
+export const StyledButtonAlternative = styled.button<ToggleContainerProps>`
+  background-color: ${(props) =>
+    props.$istoggled ? "#6f5af4ac" : "#164727c1"};
+  border: 1px solid ${(props) => (props.$istoggled ? "#e8888d" : "#d4814a")};
   font-weight: bolder;
-  background-color: rgba(217, 217, 217, 0.5);
-  border: none;
   margin-top: 100px;
   padding: 10px 15px;
   border-radius: 10px;
-  border: white 3px solid;
   margin-left: 15px;
   font-size: 15px;
   cursor: pointer;
   transition: background-colour 0.3s ease;
 
   &:hover {
-    background-color: #666;
+    background-color: #6e5af4;
+    //kolla hur det går att fixa darkmode här
   }
 
   &:active {
-    background-color: #333;
+    background-color: #c67bbf;
+    //kolla hur det går att fixa darkmode här
   }
 
   &:focus {
     box-shadow: 0 0 0 2px #bbb;
+    //kolla hur det går att fixa darkmode här
   }
 `;
 export const Heading2 = styled.h2``;
 
 export const Heading3 = styled.h2<ToggleContainerProps>`
   display: flex;
-  color: ${(props) => (props.$istoggled ? "#000000" : "#94b0c2")};
+  color: ${(props) => (props.$istoggled ? "#000000" : "#000000")};
   font-size: 16px;
 `;
 
 export const Heading3Black = styled.h3<ToggleContainerProps>`
   display: flex;
   margin-bottom: 0;
-  color: ${(props) => (props.$istoggled ? "#000000" : "#94b0c2")};
+  color: ${(props) => (props.$istoggled ? "#000000" : "#976820")};
 `;
 
 export const DivContainer = styled.div`
@@ -123,17 +126,18 @@ export const DivHeading = styled.div`
   text-align: start;
 `;
 
-export const Container = styled.div`
+export const Container = styled.div<ToggleContainerProps>`
   display: flex;
   flex-direction: column;
   align-items: center;
   border-radius: 10px;
-  background-color: rgba(217, 217, 217, 0.5);
+  color: ${(props) => (props.$istoggled ? "#ae7dd6" : "#f0ca21c1")};
+  background-color: ${(props) => (props.$istoggled ? "#ae7dd6" : "#164727c1")};
+  border: 1px solid ${(props) => (props.$istoggled ? "#e8888d" : "#d4814a")};
   margin-top: 15px;
   width: 300px;
   min-height: 25vh; // Minsta höjd, men kan bli större beroende på innehåll
   flex-grow: 1; // Låter komponenten expandera och fylla tillgängligt utrymme
-  border: #94b0c2 3px solid;
   margin-bottom: 15px;
 `;
 
