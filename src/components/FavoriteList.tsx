@@ -3,10 +3,13 @@ import {
   FavoriteItem,
   FavoriteListContainer,
   Heading3FavoriteList,
-  FavoriteSelectButton,
+  ContainerButtons,
+  SearchButton,
+  Container,
 } from "./../styled/StyledFavoriteList";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { StyledTrashIcon } from "../styled/StyledHistory";
 
 interface FavoriteListProps {
   favorites: Search[];
@@ -20,18 +23,24 @@ const FavoriteList = ({
   onRemoveFavorite,
 }: FavoriteListProps) => {
   return (
-    <FavoriteListContainer>
+    <FavoriteListContainer $istoggled>
       <Heading3FavoriteList>Favoritsökningar</Heading3FavoriteList>
       {favorites.map((search, index) => (
         <FavoriteItem key={index}>
-          Från: {search.origin}, Till: {search.destination}
-          <FavoriteSelectButton onClick={() => onFavoriteSelect(search)}>
-            Välj
-          </FavoriteSelectButton>
-          <FontAwesomeIcon
-            icon={faTrashCan}
-            onClick={() => onRemoveFavorite(search)}
-          />
+          <Container>
+            <h4>Från: {search.origin}</h4>
+            <h4>Till: {search.destination}</h4>
+          </Container>
+
+          <ContainerButtons>
+            <SearchButton onClick={() => onFavoriteSelect(search)}>
+              Välj
+            </SearchButton>
+            <StyledTrashIcon
+              icon={faTrashCan}
+              onClick={() => onRemoveFavorite(search)}
+            />
+          </ContainerButtons>
         </FavoriteItem>
       ))}
     </FavoriteListContainer>

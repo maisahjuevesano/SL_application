@@ -5,8 +5,9 @@ import {
   Heading3SearchHistory,
   SearchButton,
   ContainerButtons,
+  StyledTrashIcon,
+  StyledStarIcon,
 } from "../styled/StyledHistory";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import {
   faStar as solidStar,
@@ -21,7 +22,7 @@ export const SearchHistory = ({
   onToggleFavorite,
 }: SearchHistoryProps) => {
   return (
-    <SearchHistoryContainer>
+    <SearchHistoryContainer $istoggled>
       <Heading3SearchHistory>Tidigare sökningar</Heading3SearchHistory>
       {history.map((search, index) => (
         <SearchItem key={index}>
@@ -35,11 +36,11 @@ export const SearchHistory = ({
               Sök
             </SearchButton>
 
-            <FontAwesomeIcon
+            <StyledTrashIcon
               icon={faTrashCan}
               onClick={() => onSearchRemove(search)}
             />
-            <FontAwesomeIcon
+            <StyledStarIcon
               icon={search.isFavorite ? solidStar : regularStar}
               onClick={() => onToggleFavorite(search)}
             />

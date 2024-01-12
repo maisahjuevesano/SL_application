@@ -181,6 +181,7 @@ export const Departures = () => {
               <Heading3 $istoggled={isToggled}>Från</Heading3>
             </DivHeading>
             <StyledInput
+              $istoggled={isToggled}
               type="text"
               value={searchString}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -191,14 +192,22 @@ export const Departures = () => {
               }
               placeholder="Sök avgång"
             />
-            <StyledButton onClick={handleSearch}>Sök</StyledButton>
+            <StyledButton $istoggled={isToggled} onClick={handleSearch}>
+              Sök
+            </StyledButton>
           </InputAndButtonContainer>
         </SearchTravelContainer>
         <StyledButtonContainer>
-          <StyledButtonAlternative onClick={() => setCurrentView("history")}>
+          <StyledButtonAlternative
+            $istoggled={isToggled}
+            onClick={() => setCurrentView("history")}
+          >
             Historik
           </StyledButtonAlternative>
-          <StyledButtonAlternative onClick={() => setCurrentView("favorites")}>
+          <StyledButtonAlternative
+            $istoggled={isToggled}
+            onClick={() => setCurrentView("favorites")}
+          >
             Favoriter
           </StyledButtonAlternative>
         </StyledButtonContainer>
@@ -219,7 +228,7 @@ export const Departures = () => {
         )}
 
         {departuresData && (
-          <Container>
+          <Container $istoggled={isToggled}>
             {searchedStation && <h2>{searchedStation}</h2>}
             <DivContainer>
               <Heading3 $istoggled={isToggled}>Avångar mot</Heading3>

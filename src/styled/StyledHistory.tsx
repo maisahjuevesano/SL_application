@@ -1,14 +1,17 @@
 import { styled } from "styled-components";
+import { ToggleContainerProps } from "../models/toggleContainerProps";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export const SearchHistoryContainer = styled.div`
-  background-color: rgba(217, 217, 217, 0.5);
+export const SearchHistoryContainer = styled.div<ToggleContainerProps>`
+  color: ${(props) => (props.$istoggled ? "white" : "white")};
+  background-color: #aa71d8;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 20px; //kanske ändra senare
   width: 100%;
-  border: #94b0c2 3px solid;
+  border: #6e5af4 1px solid;
 `;
 
 export const SearchItem = styled.div`
@@ -16,11 +19,10 @@ export const SearchItem = styled.div`
   align-items: center;
   padding: 10px 0px 15px 10px;
   margin: 10px 0px;
-  /* border-bottom: 2px solid #ffffff; */
   width: 335px;
   justify-content: space-around;
   padding: 5px;
-  border-bottom: 2px solid #ffffff;
+  border-bottom: 1px solid #6e5af4;
 `;
 
 export const SearchDetail = styled.div`
@@ -30,21 +32,19 @@ export const SearchDetail = styled.div`
 export const Heading3SearchHistory = styled.h3``;
 
 export const SearchButton = styled.button`
-  background-color: rgba(217, 217, 217, 0.5);
-  margin-top: 10px;
+  background-color: #aa71d8b8;
   border-radius: 10px;
-  border: white 3px solid;
-  margin-right: 3px;
-
+  border: #6e5af4 2px solid;
+  width: 60px;
+  margin-right: 5px;
   cursor: pointer;
   transition: background-colour 0.3s ease;
-
   &:hover {
-    background-color: #666;
+    background-color: #6e5af4;
   }
 
   &:active {
-    background-color: #333;
+    background-color: #c67bbf;
   }
 
   &:focus {
@@ -52,6 +52,25 @@ export const SearchButton = styled.button`
   }
 `;
 
+//knappar
+
 export const ContainerButtons = styled.div`
-  padding-left: 5px;
+  display: flex;
+  gap: 10px;
+`;
+
+export const StyledTrashIcon = styled(FontAwesomeIcon)`
+  cursor: pointer;
+
+  &:hover {
+    color: #f00;
+  }
+`;
+
+export const StyledStarIcon = styled(FontAwesomeIcon)`
+  cursor: pointer;
+
+  &:hover {
+    color: #ff0;
+  }
 `;

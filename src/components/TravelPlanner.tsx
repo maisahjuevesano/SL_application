@@ -163,7 +163,7 @@ export const TravelPlanner = () => {
 
   const renderLegs = (trip: Trip) => {
     return trip.LegList.Leg.map((leg: Leg, index: number) => (
-      <LegContainer key={index}>
+      <LegContainer $istoggled={isToggled} key={index}>
         <LegDetail>Från: {leg.Origin?.name || "Okänd"}</LegDetail>
         <LegDetail>Till: {leg.Destination?.name || "Okänd"}</LegDetail>
         <LegDetail>
@@ -178,8 +178,8 @@ export const TravelPlanner = () => {
   const renderTripData = () => {
     if (!tripData) return null;
     return tripData.Trip.map((trip: Trip, index: number) => (
-      <TripContainer key={index}>
-        <LegHeader>Resa {index + 1}</LegHeader>
+      <TripContainer $istoggled={isToggled} key={index}>
+        <LegHeader $istoggled={isToggled}>Resa {index + 1}</LegHeader>
         {renderLegs(trip)}
       </TripContainer>
     ));
@@ -190,12 +190,13 @@ export const TravelPlanner = () => {
       <TravelPlannerContainer>
         <Bus></Bus>
         <Train></Train>
-        <SearchTravelPlannerContainer>
+        <SearchTravelPlannerContainer $istoggled={isToggled}>
           <DivHeading>
             <Heading3 $istoggled={isToggled}>Sök resa</Heading3>
           </DivHeading>
-          <InputAndButtonContainer>
+          <InputAndButtonContainer $istoggled={isToggled}>
             <StyledInput
+              $istoggled={isToggled}
               type="text"
               value={originName}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -206,6 +207,7 @@ export const TravelPlanner = () => {
             />
 
             <StyledInput
+              $istoggled={isToggled}
               type="text"
               value={destName}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -214,10 +216,14 @@ export const TravelPlanner = () => {
               onKeyPress={handleKeyPress}
               placeholder="Till"
             />
-            <StyledSwitchButton onClick={handleSwapInputs}>
+            <StyledSwitchButton
+              $istoggled={isToggled}
+              onClick={handleSwapInputs}
+            >
               <FontAwesomeIcon icon={faArrowsUpDown} />
             </StyledSwitchButton>
             <StyledButton
+              $istoggled={isToggled}
               onClick={() => {
                 handleFetchTrip(originName, destName);
               }}
@@ -229,12 +235,16 @@ export const TravelPlanner = () => {
         </SearchTravelPlannerContainer>
         <StyledButtonContainer>
           <StyledButtonAlternative
+            $istoggled={isToggled}
             onClick={() => handleViewChange("favorites")}
           >
             Favoriter
             <FontAwesomeIcon icon={solidStar} />
           </StyledButtonAlternative>
-          <StyledButtonAlternative onClick={() => handleViewChange("history")}>
+          <StyledButtonAlternative
+            $istoggled={isToggled}
+            onClick={() => handleViewChange("history")}
+          >
             Sökhistorik
             <FontAwesomeIcon icon={faClockRotateLeft} />
           </StyledButtonAlternative>

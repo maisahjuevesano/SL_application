@@ -4,7 +4,8 @@ import { ToggleContainerProps } from "../models/toggleContainerProps";
 export const ToggleContainer = styled.div<ToggleContainerProps>`
   width: 34px;
   height: 15px;
-  background-color: ${(props) => (props.$istoggled ? "#3e4245" : "#94b0c2")};
+  background-color: ${(props) =>
+    props.$istoggled ? "#f98d5bba" : "#002938ab"};
   border-radius: 25px;
   padding: 5px;
   display: flex;

@@ -1,8 +1,12 @@
 import { styled } from "styled-components";
+import { ToggleContainerProps } from "../models/toggleContainerProps";
 
-export const DeparutesHistoryContainer = styled.div`
+export const DeparutesHistoryContainer = styled.div<ToggleContainerProps>`
+  background-color: ${(props) =>
+    props.$istoggled ? "#6f3ab46e" : "#189cbdf4"};
+  border: 1px solid ${(props) => (props.$istoggled ? "#c67bbf" : "#209259c1")};
+  color: ${(props) => (props.$istoggled ? "#b4a23a" : "#189cbdf4")};
   width: 300px;
-  background-color: rgba(217, 217, 217, 0.5);
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -10,7 +14,6 @@ export const DeparutesHistoryContainer = styled.div`
   margin-top: 20px;
   gap: 10px;
   padding-bottom: 20px;
-  border: #94b0c2 3px solid;
 `;
 
 export const SearchItem = styled.div`

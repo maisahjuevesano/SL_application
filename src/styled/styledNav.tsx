@@ -8,10 +8,12 @@ export const StyledHeader = styled.header`
   align-items: center;
 `;
 
-export const StyledNav = styled.nav`
+export const StyledNav = styled.nav<ToggleContainerProps>`
   height: 60px;
   border-radius: 15px;
-  background-color: rgba(217, 217, 217, 0.5);
+  background-color: ${(props) =>
+    props.$istoggled ? "#474dfdb7" : "#4eaa6799"};
+  border: 2px solid ${(props) => (props.$istoggled ? "white" : "#ffb838")};
 `;
 
 export const StyledUl = styled.ul`
@@ -26,12 +28,12 @@ export const StyledLi = styled.li<ToggleContainerProps>`
 
   &:not(:last-child)::after {
     content: "|";
-    color: ${(props) => (props.$istoggled ? "#3e4245" : "#94b0c2")};
+    color: ${(props) => (props.$istoggled ? "#ffffff" : "#ffb838")};
     margin: 0 10px;
   }
 
   a {
-    color: ${(props) => (props.$istoggled ? "#3e4245" : "#94b0c2")};
+    color: ${(props) => (props.$istoggled ? "#ffffff" : "#ffb838")};
     text-decoration: none;
   }
 `;
@@ -50,21 +52,21 @@ export const StyledLink = styled.a`
   }
 `;
 
-export const ToggleContainer = styled.div<ToggleContainerProps>`
-  width: 50px;
-  height: 25px;
-  background-color: ${(props) => (props.$istoggled ? "green" : "grey")};
-  border-radius: 25px;
-  padding: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: ${(props) => (props.$istoggled ? "flex-end" : "flex-start")};
-  cursor: pointer;
-`;
+// export const ToggleContainer = styled.div<ToggleContainerProps>`
+//   width: 50px;
+//   height: 25px;
+//   background-color: ${(props) => (props.$istoggled ? "#6e5af4" : "grey")};
+//   border-radius: 25px;
+//   padding: 5px;
+//   display: flex;
+//   align-items: center;
+//   justify-content: ${(props) => (props.$istoggled ? "flex-end" : "flex-start")};
+//   cursor: pointer;
+// `;
 
-export const ToggleKnob = styled.div`
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  transition: all 0.3s ease;
-`;
+// export const ToggleKnob = styled.div`
+//   width: 20px;
+//   height: 20px;
+//   border-radius: 50%;
+//   transition: all 0.3s ease;
+// `;
