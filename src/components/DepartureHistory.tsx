@@ -10,6 +10,7 @@ import {
   Heading3DepartureHistory,
   SearchItem,
 } from "../styled/StyledDepartureHistory";
+import { useTheme } from "../models/theme-context";
 
 interface DepartureHistoryProps {
   searchHistory: string[];
@@ -26,13 +27,14 @@ const DepartureHistory = ({
   onToggleFavorite,
   favorites,
 }: DepartureHistoryProps) => {
+  const { isToggled } = useTheme();
   return (
-    <DeparutesHistoryContainer $istoggled>
-      <Heading3DepartureHistory $istoggled>
+    <DeparutesHistoryContainer $istoggled={isToggled}>
+      <Heading3DepartureHistory $istoggled={isToggled}>
         Tidigare Sökningar
       </Heading3DepartureHistory>
       {searchHistory.map((item, index) => (
-        <SearchItem key={index}>
+        <SearchItem $istoggled={isToggled} key={index}>
           {item}
 
           <FontAwesomeIcon

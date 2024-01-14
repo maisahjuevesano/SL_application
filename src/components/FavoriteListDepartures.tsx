@@ -5,6 +5,7 @@ import {
 } from "../styled/StyledFavoriteList";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { useTheme } from "../models/theme-context";
 
 interface FavoriteListDeparturesProps {
   favorites: string[];
@@ -17,11 +18,12 @@ const FavoriteListDepartures = ({
   onFavoriteSelect,
   onRemoveFavorite,
 }: FavoriteListDeparturesProps) => {
+  const { isToggled } = useTheme();
   return (
-    <FavoriteListContainer $istoggled>
+    <FavoriteListContainer $istoggled={isToggled}>
       <Heading3FavoriteList>Favoritavgångar</Heading3FavoriteList>
       {favorites.map((favorite, index) => (
-        <FavoriteItem key={index}>
+        <FavoriteItem $istoggled={isToggled} key={index}>
           {favorite}
           <button onClick={() => onFavoriteSelect(favorite)}>Välj</button>
           <FontAwesomeIcon

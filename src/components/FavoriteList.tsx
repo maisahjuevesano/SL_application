@@ -6,10 +6,12 @@ import {
   ContainerButtons,
   SearchButton,
   Container,
+  SearchDetail,
 } from "./../styled/StyledFavoriteList";
 
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { StyledTrashIcon } from "../styled/StyledHistory";
+import { useTheme } from "styled-components";
 
 interface FavoriteListProps {
   favorites: Search[];
@@ -22,14 +24,15 @@ const FavoriteList = ({
   onFavoriteSelect,
   onRemoveFavorite,
 }: FavoriteListProps) => {
+  const { isToggled } = useTheme();
   return (
-    <FavoriteListContainer $istoggled>
+    <FavoriteListContainer $istoggled={isToggled}>
       <Heading3FavoriteList>Favoritsökningar</Heading3FavoriteList>
       {favorites.map((search, index) => (
-        <FavoriteItem key={index}>
+        <FavoriteItem $istoggled={isToggled} key={index}>
           <Container>
-            <h4>Från: {search.origin}</h4>
-            <h4>Till: {search.destination}</h4>
+            <SearchDetail>Från: {search.origin}</SearchDetail>
+            <SearchDetail>Till: {search.destination}</SearchDetail>
           </Container>
 
           <ContainerButtons>

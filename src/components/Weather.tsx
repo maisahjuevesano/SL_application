@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { WeatherData } from "../models/weatherData";
 import { fetchWeatherData } from "../services/weather";
 import { CloudImg, WeatherContainer } from "../styled/StyledWeather";
+import { useTheme } from "../models/theme-context";
 import {
   faSnowflake,
   faCloud,
@@ -17,6 +18,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export const Weather = () => {
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const { isToggled } = useTheme();
 
   const getWeatherIcon = (condition: string) => {
     switch (condition) {
@@ -88,7 +90,7 @@ export const Weather = () => {
   return (
     <>
       <CloudImg></CloudImg>
-      <WeatherContainer>
+      <WeatherContainer $istoggled={isToggled}>
         <h2>Väder</h2>
         <p>{weatherData.temperature}°C</p>
         <p>{getWeatherIcon(weatherData.condition)}</p>

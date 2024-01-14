@@ -1,8 +1,9 @@
 import { styled } from "styled-components";
+import { ToggleContainerProps } from "../models/toggleContainerProps";
 import CloudBg from "./../assets/Cloud.png";
 
-export const WeatherContainer = styled.div`
-  color: #ffffffeb;
+export const WeatherContainer = styled.div<ToggleContainerProps>`
+  color: ${(props) => (props.$istoggled ? "#ffffff" : "#ffb838")};
   display: flex;
   gap: 50px;
   align-items: center;

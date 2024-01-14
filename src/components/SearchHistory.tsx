@@ -14,6 +14,8 @@ import {
   faStar as regularStar,
 } from "@fortawesome/free-solid-svg-icons";
 import { SearchHistoryProps } from "../models/search";
+import { Container } from "../styled/StyledFavoriteList";
+import { useTheme } from "../models/theme-context";
 
 export const SearchHistory = ({
   history,
@@ -21,15 +23,16 @@ export const SearchHistory = ({
   onSearchRemove,
   onToggleFavorite,
 }: SearchHistoryProps) => {
+  const { isToggled } = useTheme();
   return (
-    <SearchHistoryContainer $istoggled>
+    <SearchHistoryContainer $istoggled={isToggled}>
       <Heading3SearchHistory>Tidigare sökningar</Heading3SearchHistory>
       {history.map((search, index) => (
         <SearchItem key={index}>
-          <div>
+          <Container>
             <SearchDetail>Från: {search.origin}</SearchDetail>
             <SearchDetail>Till: {search.destination}</SearchDetail>
-          </div>
+          </Container>
 
           <ContainerButtons>
             <SearchButton onClick={() => onSearchSelect(search)}>

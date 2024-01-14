@@ -37,6 +37,7 @@ export const InputAndButtonContainer = styled.div<ToggleContainerProps>`
 
 export const StyledInput = styled.input<ToggleContainerProps>`
   background-color: ${(props) => (props.$istoggled ? "#ae7dd6" : "#164727c1")};
+  color: ${(props) => (props.$istoggled ? "#ffffff" : "#ffb838")};
   border: 1px solid ${(props) => (props.$istoggled ? "#e8888d" : "#d4824ac1")};
   display: flex;
   flex-direction: column;
@@ -58,17 +59,19 @@ export const StyledButton = styled.button<ToggleContainerProps>`
   border-radius: 10px;
   font-size: 16px;
   cursor: pointer;
-  transition: background-colour 0.3s ease;
+  transition: background-color 0.3s ease;
   &:hover {
-    background-color: #6e5af4;
+    background-color: ${(props) =>
+      props.$istoggled ? "#6f5af4ac" : "#6ef39c"};
   }
 
   &:active {
-    background-color: #c67bbf;
+    background-color: ${(props) => (props.$istoggled ? "#d785bd" : "#6ef39c")};
   }
 
   &:focus {
-    box-shadow: 0 0 0 2px #bbb;
+    box-shadow: 0 0 0 2px
+      ${(props) => (props.$istoggled ? "#6f5af4ac" : "#6ef39c")};
   }
 `;
 export const StyledButtonContainer = styled.div`

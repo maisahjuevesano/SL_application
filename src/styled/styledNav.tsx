@@ -12,7 +12,7 @@ export const StyledNav = styled.nav<ToggleContainerProps>`
   height: 60px;
   border-radius: 15px;
   background-color: ${(props) =>
-    props.$istoggled ? "#474dfdb7" : "#4eaa6799"};
+    props.$istoggled ? "#6f5af4ac" : "#4eaa6799"};
   border: 2px solid ${(props) => (props.$istoggled ? "white" : "#ffb838")};
 `;
 
@@ -35,6 +35,11 @@ export const StyledLi = styled.li<ToggleContainerProps>`
   a {
     color: ${(props) => (props.$istoggled ? "#ffffff" : "#ffb838")};
     text-decoration: none;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 `;
 
