@@ -11,7 +11,7 @@ import {
 
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { StyledTrashIcon } from "../styled/StyledHistory";
-import { useTheme } from "styled-components";
+import { useTheme } from "../models/theme-context";
 
 interface FavoriteListProps {
   favorites: Search[];
