@@ -149,13 +149,29 @@ export const Heading3 = styled.h3<ToggleContainerProps>`
   color: ${(props) => (props.$istoggled ? "#ffffff" : "#ffb838")};
 `;
 
+export const ContainerSearchHistoryAndFavoriteList = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  @media (min-width: 767px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+`;
+
 export const TripContainer = styled.div<ToggleContainerProps>`
   background-color: ${(props) =>
     props.$istoggled ? "#ae7dd671" : "#477c59c1"};
   border-radius: 8px;
-  width: 250px;
-  margin: 10px 0;
-  padding: 10px;
+  text-align: center;
+  width: 100%;
+
+  @media (min-width: 768px) {
+    width: calc(33.333% - 10px);
+    margin: 5px;
+  }
 `;
 
 export const LegContainer = styled.div<ToggleContainerProps>`
@@ -167,19 +183,8 @@ export const LegContainer = styled.div<ToggleContainerProps>`
   border-radius: 8px;
 `;
 
-export const LegHeader = styled.h3<ToggleContainerProps>`
-  color: ${(props) => (props.$istoggled ? "white" : "black")};
-  margin: 0 0 10px 0;
-`;
-
-export const LegDetail = styled.div`
-  color: #333;
+export const LegDetail = styled.div<ToggleContainerProps>`
+  color: white;
   font-size: 14px;
   line-height: 1.5;
-`;
-
-export const ContainerSearchHistoryAndFavoriteList = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
 `;

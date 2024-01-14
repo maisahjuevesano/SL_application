@@ -17,7 +17,6 @@ import {
   InputAndButtonContainer,
   LegContainer,
   LegDetail,
-  LegHeader,
   SearchTravelPlannerContainer,
   StyledButton,
   StyledButtonAlternative,
@@ -165,13 +164,19 @@ export const TravelPlanner = () => {
   const renderLegs = (trip: Trip) => {
     return trip.LegList.Leg.map((leg: Leg, index: number) => (
       <LegContainer $istoggled={isToggled} key={index}>
-        <LegDetail>Från: {leg.Origin?.name || "Okänd"}</LegDetail>
-        <LegDetail>Till: {leg.Destination?.name || "Okänd"}</LegDetail>
-        <LegDetail>
+        <LegDetail $istoggled={isToggled}>
+          Från: {leg.Origin?.name || "Okänd"}
+        </LegDetail>
+        <LegDetail $istoggled={isToggled}>
+          Till: {leg.Destination?.name || "Okänd"}
+        </LegDetail>
+        <LegDetail $istoggled={isToggled}>
           Tid: {leg.Origin?.time || "Okänd tid"} -{" "}
           {leg.Destination?.time || "Okänd tid"}
         </LegDetail>
-        <LegDetail>Medel: {leg.Product?.name || "Okänt"}</LegDetail>
+        <LegDetail $istoggled={isToggled}>
+          Medel: {leg.Product?.name || "Okänt"}
+        </LegDetail>
       </LegContainer>
     ));
   };
@@ -180,7 +185,6 @@ export const TravelPlanner = () => {
     if (!tripData) return null;
     return tripData.Trip.map((trip: Trip, index: number) => (
       <TripContainer $istoggled={isToggled} key={index}>
-        <LegHeader $istoggled={isToggled}>Resa {index + 1}</LegHeader>
         {renderLegs(trip)}
       </TripContainer>
     ));
