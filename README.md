@@ -39,14 +39,14 @@ Right now I have a temporary solution and that is to use cors-anywhere.
 
 ### The departure page
 
-![image](https://github.com/Medieinstitutet/fed22s-js-ext/assets/113436944/db6abdb5-066d-470a-94f0-015ded47e426)
-![image](https://github.com/Medieinstitutet/fed22s-js-ext/assets/113436944/eedc6a29-0a35-495c-8d94-980875602f2b)
+![image](https://github.com/maisahjuevesano/SL_application/assets/113436944/d9331a8a-2ace-4fd7-bdad-0ef6cdf79d35)
+
+![image](https://github.com/maisahjuevesano/SL_application/assets/113436944/25b20407-578f-4414-a97b-b59ce82bd79b)
 
 ### The search/plan travel page
 
-![image](https://github.com/Medieinstitutet/fed22s-js-ext/assets/113436944/111d4efd-14fd-4665-81d4-75aece6c62b9)
-![image](https://github.com/Medieinstitutet/fed22s-js-ext/assets/113436944/95c7127f-5474-4972-8bfe-3402f93102ef)
-![image](https://github.com/Medieinstitutet/fed22s-js-ext/assets/113436944/c3c53e42-f5a4-4f0e-aa1b-b578f68dec89)
+![image](https://github.com/maisahjuevesano/SL_application/assets/113436944/33b952dc-e758-4f49-8eb4-b7a421614b17)
+![image](https://github.com/maisahjuevesano/SL_application/assets/113436944/062c4e2c-2c5c-4e8a-8deb-6c7df6721f16)
 
 ---
 
@@ -83,5 +83,31 @@ Temporary solution follow the link and click the buttont
 ```terminal
   https://cors-anywhere.herokuapp.com/corsdemo
 ```
+
+## If your weather don't work you may follow this steps
+
+```terminal
+Instructions to allow googlechrome location access:
+To use geolocation services in Google Chrome, you need to use your location information. Here are the steps to allow geolocation in Google Chrome:
+
+Open Chrome: Launch Google Chrome if you don't already have it open.
+
+Go to website: Visit the website where you want to use the geolocation feature.
+
+Search for location access: Click the icon with a padlock or information next to the URL in the address bar. This will open a menu.
+
+Select "Location" in the menu: Click on the "Location" option in the menu as shown. It will allow you to change the location access settings for the current website.
+
+Select settings: You will now be given the option to select the location access setting. You can choose between the options "Block", "Ask (default)" and "Allow".
+
+"Block" will prevent the site from using your location information.
+"Ask (default)" will ask you every time a website searches using your location.
+"Allow" will allow the website to automatically access your location information.
+Select "Allow" or "Ask" depending on your preference: If you want to allow location access without being prompted each time, select "Allow". If you want to be prompted every time, select "Ask".
+
+Reload the page: If you have changed the settings to "Allow" or "Ask", reload the page to enable location access.
+```
+
+## screenshot for cors-anywhere
 
 ![image](https://github.com/maisahjuevesano/SL_application/assets/113436944/bc1b137a-907f-499c-ae18-90d007161d75)
