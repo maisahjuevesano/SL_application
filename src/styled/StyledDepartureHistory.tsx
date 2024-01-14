@@ -35,21 +35,19 @@ export const Heading3DepartureHistory = styled.h3<ToggleContainerProps>`
 `;
 
 export const SearchButton = styled.button`
-  background-color: rgba(217, 217, 217, 0.5);
-  margin-top: 10px;
+  background-color: #aa71d8b8;
   border-radius: 10px;
-  border: white 3px solid;
-  margin-right: 3px;
-
+  border: #6e5af4 2px solid;
+  width: 60px;
+  margin-right: 5px;
   cursor: pointer;
   transition: background-colour 0.3s ease;
-
   &:hover {
-    background-color: #666;
+    background-color: #6e5af4;
   }
 
   &:active {
-    background-color: #333;
+    background-color: #c67bbf;
   }
 
   &:focus {
