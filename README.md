@@ -11,6 +11,8 @@ In addition to the missing SL application, there are few functions such as a tog
 I also want a more fun and pleasant design. 💥💫
 💡I would also like to be able to see the weather without going out of one app and into another.
 
+Right now I have a temporary solution and that is to use cors-anywhere.
+
 ## Techniques used (shields/badges)
 
 ![React badge](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB/to/img.png)
@@ -25,6 +27,7 @@ I also want a more fun and pleasant design. 💥💫
 ![.env badge](https://img.shields.io/badge/.env%20-%20%23FF4FA7?style=for-the-badge&color=%23FF4FA7/to/img.png)
 ![GitHub badge](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white/to/img.png)
 ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)![ESLINT](https://img.shields.io/badge/eslint-3A33D1?style=for-the-badge&logo=eslint&logoColor=white)
+![Netlify](https://img.shields.io/badge/Netlify-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white/to/img.png)
 
 ---
 
@@ -74,3 +77,11 @@ Start the server
 ```terminal
   npm run dev
 ```
+
+Temporary solution follow the link and click the buttont
+
+```terminal
+  https://cors-anywhere.herokuapp.com/corsdemo
+```
+
+![image](https://github.com/maisahjuevesano/SL_application/assets/113436944/bc1b137a-907f-499c-ae18-90d007161d75)
