@@ -4,7 +4,7 @@ import { ToggleContainerProps } from "../models/toggleContainerProps";
 
 export const FavoriteListContainer = styled.div<ToggleContainerProps>`
   color: ${(props) => (props.$istoggled ? "white" : "white")};
-  background-color: #aa71d845; //ändra
+  background-color: #aa71d845;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
