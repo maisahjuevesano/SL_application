@@ -2,10 +2,48 @@ import { useEffect, useState } from "react";
 import { WeatherData } from "../models/weatherData";
 import { fetchWeatherData } from "../services/weather";
 import { CloudImg, WeatherContainer } from "../styled/StyledWeather";
+import { useTheme } from "../models/theme-context";
+import {
+  faSnowflake,
+  faCloud,
+  faPooStorm,
+  faCloudRain,
+  faCloudShowersHeavy,
+  faCloudSun,
+  faSmog,
+  faSun,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const Weather = () => {
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const { isToggled } = useTheme();
+
+  const getWeatherIcon = (condition: string) => {
+    switch (condition) {
+      case "Snow":
+        return <FontAwesomeIcon icon={faSnowflake} />;
+      case "Mist":
+        return <FontAwesomeIcon icon={faSmog} />;
+      case "Thunderstorm":
+        return <FontAwesomeIcon icon={faPooStorm} />;
+      case "Rain":
+        return <FontAwesomeIcon icon={faCloudRain} />;
+      case "Shower rain":
+        return <FontAwesomeIcon icon={faCloudShowersHeavy} />;
+      case "Broken clouds":
+        return <FontAwesomeIcon icon={faCloudSun} />;
+      case "Scattered clouds":
+        return <FontAwesomeIcon icon={faCloud} />;
+      case "Few clouds":
+        return <FontAwesomeIcon icon={faCloud} />;
+      case "Clear sky":
+        return <FontAwesomeIcon icon={faSun} />;
+      default:
+        return condition;
+    }
+  };
 
   useEffect(() => {
     if ("geolocation" in navigator) {
@@ -15,11 +53,11 @@ export const Weather = () => {
           fetchWeatherData(latitude, longitude)
             .then((data) => {
               if (typeof data.temperature === "number") {
-                const temperatureInCelsius = data.temperature - 273.15;
-                console.log("Temperatur i Celsius:", temperatureInCelsius);
+                console.log("Temperatur (Kelvin):", data.temperature);
                 setWeatherData({
                   ...data,
-                  temperature: temperatureInCelsius,
+
+                  temperature: Math.ceil(data.temperature),
                 });
               } else {
                 console.error("Felaktigt API-svar för temperatur");
@@ -46,16 +84,16 @@ export const Weather = () => {
   }
 
   if (!weatherData) {
-    return <div>Laddar väderdata...</div>;
+    return <div>Laddar väder data...</div>;
   }
 
   return (
     <>
       <CloudImg></CloudImg>
-      <WeatherContainer>
+      <WeatherContainer $istoggled={isToggled}>
         <h2>Väder</h2>
-        <p>{weatherData.temperature.toFixed(1)}°C</p>
-        {/* <p>Villkor: {weatherData.condition}</p> */}
+        <p>{weatherData.temperature}°C</p>
+        <p>{getWeatherIcon(weatherData.condition)}</p>
       </WeatherContainer>
     </>
   );

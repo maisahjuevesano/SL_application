@@ -42,6 +42,7 @@ export const StyledInput = styled.input<ToggleContainerProps>`
   border-radius: 10px;
   background-color: ${(props) =>
     props.$istoggled ? "#ae7dd671" : "#164727c1"};
+  color: ${(props) => (props.$istoggled ? "#ffffff" : "#ffb838")};
   border: 1px solid ${(props) => (props.$istoggled ? "#e8888d" : "#d4824ac1")};
   font-size: 16px;
   cursor: pointer;
@@ -49,8 +50,8 @@ export const StyledInput = styled.input<ToggleContainerProps>`
 
 export const StyledButton = styled.button<ToggleContainerProps>`
   font-weight: bolder;
-  background-color: ${(props) =>
-    props.$istoggled ? "#ae7dd671" : "#477c59c1"};
+  background-color: ${(props) => (props.$istoggled ? "#ae7dd6" : "#164727c1")};
+  color: ${(props) => (props.$istoggled ? "#ffffff" : "#ffb838")};
   border: 1px solid ${(props) => (props.$istoggled ? "#e8888d" : "#d4824ac1")};
   padding: 10px 80px;
   margin-top: 5px;
@@ -77,18 +78,18 @@ export const StyledButton = styled.button<ToggleContainerProps>`
 `;
 
 export const StyledButtonAlternative = styled.button<ToggleContainerProps>`
-  color: ${(props) => (props.$istoggled ? "#ffffff" : "#d4814a")};
-  border: 1px solid ${(props) => (props.$istoggled ? "#e8888d" : "#d4814af6")};
+  color: ${(props) => (props.$istoggled ? "white" : "#ffb838")};
+  border: 1px solid ${(props) => (props.$istoggled ? "#e8888d" : "#d4814a")};
   display: flex;
   justify-content: space-around;
   background-color: ${(props) =>
-    props.$istoggled ? "#ae7dd671" : "#477c59c1"};
+    props.$istoggled ? "#6f5af4ac" : "#164727c1"};
   margin-top: 100px;
   height: 40px;
   align-items: center;
   width: 135px;
   border-radius: 10px;
-
+  font-weight: bolder;
   margin-left: 15px;
   font-size: 15px;
   cursor: pointer;

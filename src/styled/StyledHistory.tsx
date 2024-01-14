@@ -4,13 +4,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const SearchHistoryContainer = styled.div<ToggleContainerProps>`
   color: ${(props) => (props.$istoggled ? "white" : "white")};
-  background-color: #aa71d8;
+  background-color: ${(props) => (props.$istoggled ? "#aa71d8" : "#477c59c1")};
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px; //kanske ändra senare
-  width: 100%;
+  margin-top: 20px;
+  width: 350px;
   border: #6e5af4 1px solid;
 `;
 
@@ -25,9 +25,7 @@ export const SearchItem = styled.div`
   border-bottom: 1px solid #6e5af4;
 `;
 
-export const SearchDetail = styled.div`
-  /* margin: 3px 0; //kanske ändra eller ta bort */
-`;
+export const SearchDetail = styled.div``;
 
 export const Heading3SearchHistory = styled.h3``;
 
@@ -51,8 +49,6 @@ export const SearchButton = styled.button`
     box-shadow: 0 0 0 2px #bbb;
   }
 `;
-
-//knappar
 
 export const ContainerButtons = styled.div`
   display: flex;

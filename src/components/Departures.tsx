@@ -23,7 +23,7 @@ import {
 import { Train } from "../styled/StyledTrain";
 import DepartureHistory from "./DepartureHistory";
 import FavoriteListDepartures from "./FavoriteListDepartures";
-import { Weather } from "./Weather";
+import { Weather } from "./../components/Weather";
 
 export const Departures = () => {
   const [departuresData, setDeparturesData] = useState<SLDeparturesData | null>(
@@ -202,15 +202,15 @@ export const Departures = () => {
         <StyledButtonContainer>
           <StyledButtonAlternative
             $istoggled={isToggled}
-            onClick={() => setCurrentView("history")}
-          >
-            Historik
-          </StyledButtonAlternative>
-          <StyledButtonAlternative
-            $istoggled={isToggled}
             onClick={() => setCurrentView("favorites")}
           >
             Favoriter
+          </StyledButtonAlternative>
+          <StyledButtonAlternative
+            $istoggled={isToggled}
+            onClick={() => setCurrentView("history")}
+          >
+            Historik
           </StyledButtonAlternative>
         </StyledButtonContainer>
         {currentView === "history" ? (

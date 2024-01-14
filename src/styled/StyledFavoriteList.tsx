@@ -3,50 +3,52 @@ import { styled } from "styled-components";
 import { ToggleContainerProps } from "../models/toggleContainerProps";
 
 export const FavoriteListContainer = styled.div<ToggleContainerProps>`
-  color: ${(props) => (props.$istoggled ? "white" : "white")};
-  background-color: #aa71d845; //ändra
+  color: ${(props) => (props.$istoggled ? "white" : "#ffb838")};
+  background-color: ${(props) => (props.$istoggled ? "#aa71d8" : "#477c59c1")};
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 20px;
-  border: ${(props) => (props.$istoggled ? "white" : "#f98e5b")};
-  border: #f98e5b 2px solid;
-  padding: 10px;
-  width: 290px;
+  width: 350px;
+  border: 1px solid ${(props) => (props.$istoggled ? "#e8888d" : "#d4814a")};
 `;
 
-export const FavoriteItem = styled.div`
-  //fixa!!!
+export const FavoriteItem = styled.div<ToggleContainerProps>`
   display: flex;
   align-items: center;
-  border-bottom: 2px solid #f98e5b;
-  height: 50px;
+  padding: 10px 0px 15px 10px;
+  margin: 10px 0px;
+  width: 335px;
   justify-content: space-around;
-  /* padding: 15px; */
-  /* margin: 15px; */
+  padding: 5px;
+  border-bottom: 1px solid
+    ${(props) => (props.$istoggled ? "white" : "#d4814a")};
 `;
 
 export const Container = styled.div`
   display: flex;
 `;
 
-export const SearchDetail = styled.div`
-  /* margin: 3px 0; //kanske ändra eller ta bort */
-`;
+export const SearchDetail = styled.div``;
 
 export const Heading3FavoriteList = styled.h3``;
 
+export const StyledTrashIcon = styled(FontAwesomeIcon)`
+  cursor: pointer;
+
+  &:hover {
+    color: #f00;
+  }
+`;
 export const SearchButton = styled.button`
-  height: 20px;
-
-  background-color: #af73d4;
+  background-color: #aa71d8b8;
   border-radius: 10px;
-  border: #aa71d8 3px solid;
-
+  border: #6e5af4 2px solid;
+  width: 60px;
+  margin-right: 5px;
   cursor: pointer;
   transition: background-colour 0.3s ease;
-
   &:hover {
     background-color: #6e5af4;
   }
@@ -59,15 +61,6 @@ export const SearchButton = styled.button`
     box-shadow: 0 0 0 2px #bbb;
   }
 `;
-
-export const StyledTrashIcon = styled(FontAwesomeIcon)`
-  cursor: pointer;
-
-  &:hover {
-    color: #f00;
-  }
-`;
-
 export const ContainerButtons = styled.div`
   display: flex;
   gap: 10px;
