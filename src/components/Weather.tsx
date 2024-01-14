@@ -15,11 +15,11 @@ export const Weather = () => {
           fetchWeatherData(latitude, longitude)
             .then((data) => {
               if (typeof data.temperature === "number") {
-                const temperatureInCelsius = data.temperature - 273.15;
-                console.log("Temperatur i Celsius:", temperatureInCelsius);
+                console.log("Temperatur (Kelvin):", data.temperature);
                 setWeatherData({
                   ...data,
-                  temperature: temperatureInCelsius,
+                  // Avrundar temperaturen uppåt här
+                  temperature: Math.ceil(data.temperature),
                 });
               } else {
                 console.error("Felaktigt API-svar för temperatur");
@@ -46,7 +46,7 @@ export const Weather = () => {
   }
 
   if (!weatherData) {
-    return <div>Laddar väderdata...</div>;
+    return <div>Laddar väder data...</div>;
   }
 
   return (
@@ -54,7 +54,7 @@ export const Weather = () => {
       <CloudImg></CloudImg>
       <WeatherContainer>
         <h2>Väder</h2>
-        <p>{weatherData.temperature.toFixed(1)}°C</p>
+        <p>{weatherData.temperature}°C</p>
         {/* <p>Villkor: {weatherData.condition}</p> */}
       </WeatherContainer>
     </>
