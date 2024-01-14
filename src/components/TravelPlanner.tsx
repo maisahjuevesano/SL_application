@@ -33,6 +33,7 @@ import { SearchHistory } from "./SearchHistory";
 import FavoriteList from "./FavoriteList";
 import { Bus } from "../styled/StyledBus";
 import { Train } from "../styled/StyledTrain";
+import { Weather } from "./Weather";
 
 export const TravelPlanner = () => {
   const [originName, setOriginName] = useState<string>("");
@@ -189,6 +190,7 @@ export const TravelPlanner = () => {
     <>
       <TravelPlannerContainer>
         <Bus></Bus>
+        <Weather></Weather>
         <Train></Train>
         <SearchTravelPlannerContainer $istoggled={isToggled}>
           <DivHeading>
