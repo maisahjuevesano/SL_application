@@ -46,6 +46,24 @@ export const StyledInput = styled.input<ToggleContainerProps>`
   border: 1px solid ${(props) => (props.$istoggled ? "#e8888d" : "#d4824ac1")};
   font-size: 16px;
   cursor: pointer;
+
+  ::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: white;
+    opacity: 1; /* Firefox */
+  }
+
+  :-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: white;
+  }
+
+  ::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: white;
+  }
+
+  //tyvärr fungerar det inte av någon konstig anledning...
 `;
 
 export const StyledButton = styled.button<ToggleContainerProps>`

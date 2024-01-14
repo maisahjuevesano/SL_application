@@ -37,8 +37,10 @@ const DepartureHistory = ({
       {searchHistory.map((item, index) => (
         <SearchItem $istoggled={isToggled} key={index}>
           {item}
-          <SearchButton onClick={() => onSelectHistoryItem(item)}>
-            {" "}
+          <SearchButton
+            $istoggled={isToggled}
+            onClick={() => onSelectHistoryItem(item)}
+          >
             Sök
           </SearchButton>
 

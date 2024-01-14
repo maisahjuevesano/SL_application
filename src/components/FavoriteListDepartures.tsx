@@ -27,7 +27,10 @@ const FavoriteListDepartures = ({
       {favorites.map((favorite, index) => (
         <FavoriteItem $istoggled={isToggled} key={index}>
           {favorite}
-          <SearchButton onClick={() => onFavoriteSelect(favorite)}>
+          <SearchButton
+            $istoggled={isToggled}
+            onClick={() => onFavoriteSelect(favorite)}
+          >
             Välj
           </SearchButton>
           <StyledTrashIcon
