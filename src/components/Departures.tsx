@@ -23,6 +23,7 @@ import {
 import { Train } from "../styled/StyledTrain";
 import DepartureHistory from "./DepartureHistory";
 import FavoriteListDepartures from "./FavoriteListDepartures";
+import { Weather } from "./Weather";
 
 export const Departures = () => {
   const [departuresData, setDeparturesData] = useState<SLDeparturesData | null>(
@@ -171,6 +172,7 @@ export const Departures = () => {
     <>
       <DeparturesContainer>
         <Bus></Bus>
+        <Weather></Weather>
         <Train></Train>
         <SearchTravelContainer $istoggled={isToggled}>
           <DivHeading>
