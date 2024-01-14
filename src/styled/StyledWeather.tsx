@@ -3,6 +3,9 @@ import CloudBg from "./../assets/Cloud.png";
 
 export const WeatherContainer = styled.div`
   color: #ffffffeb;
+  display: flex;
+  gap: 50px;
+  align-items: center;
 `;
 
 export const CloudImg = styled.div`
