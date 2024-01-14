@@ -1,16 +1,17 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faTrashCan,
-  faSearch,
   faStar as regularStar,
   faStar as solidStar,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   DeparutesHistoryContainer,
   Heading3DepartureHistory,
+  SearchButton,
   SearchItem,
 } from "../styled/StyledDepartureHistory";
 import { useTheme } from "../models/theme-context";
+import { StyledTrashIcon } from "../styled/StyledFavoriteList";
+import { StyledStarIcon } from "../styled/StyledHistory";
 
 interface DepartureHistoryProps {
   searchHistory: string[];
@@ -36,19 +37,21 @@ const DepartureHistory = ({
       {searchHistory.map((item, index) => (
         <SearchItem $istoggled={isToggled} key={index}>
           {item}
-
-          <FontAwesomeIcon
+          <SearchButton
+            $istoggled={isToggled}
             onClick={() => onSelectHistoryItem(item)}
-            icon={faSearch}
-          />
-          <FontAwesomeIcon
+          >
+            Sök
+          </SearchButton>
+
+          <StyledTrashIcon
             icon={faTrashCan}
             onClick={() => onRemoveHistoryItem(item)}
-          />
-          <FontAwesomeIcon
+          ></StyledTrashIcon>
+          <StyledStarIcon
             icon={favorites.includes(item) ? solidStar : regularStar}
             onClick={() => onToggleFavorite(item)}
-          />
+          ></StyledStarIcon>
         </SearchItem>
       ))}
     </DeparutesHistoryContainer>

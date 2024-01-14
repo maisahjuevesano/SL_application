@@ -32,6 +32,7 @@ export const Departures = () => {
   const [searchString, setSearchString] = useState<string>("");
   const [searchedStation, setSearchStation] = useState<string>("");
   const { isToggled } = useTheme();
+  const [, setError] = useState<string>("");
   const [searchHistory, setSearchHistory] = useState<string[]>(() => {
     const loadedHistory = localStorage.getItem("departureSearchHistory");
     return loadedHistory ? JSON.parse(loadedHistory) : [];
@@ -57,8 +58,7 @@ export const Departures = () => {
       localStorage.setItem("searchedStation", capitalizedFavorite);
       localStorage.setItem("departuresData", JSON.stringify(departures));
     } else {
-      // Hantera fallet där ingen station hittas
-      // Exempel: visa ett felmeddelande till användaren
+      setError("Ingen station hittades");
     }
   };
 

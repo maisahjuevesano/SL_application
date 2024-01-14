@@ -17,23 +17,18 @@ export const FavoriteListContainer = styled.div<ToggleContainerProps>`
 `;
 
 export const FavoriteItem = styled.div<ToggleContainerProps>`
-  //fixa!!!
   display: flex;
   align-items: center;
   border-bottom: 2px solid #f98e5b;
   height: 50px;
   justify-content: space-around;
-  /* padding: 15px; */
-  /* margin: 15px; */
 `;
 
 export const Container = styled.div`
   display: flex;
 `;
 
-export const SearchDetail = styled.div`
-  /* margin: 3px 0; //kanske ändra eller ta bort */
-`;
+export const SearchDetail = styled.div``;
 
 export const Heading3FavoriteList = styled.h3``;
 

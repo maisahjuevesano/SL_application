@@ -18,14 +18,13 @@ export const SearchTravelContainer = styled.div<ToggleContainerProps>`
   color: ${(props) =>
     props.$istoggled ? "rgba(217, 217, 217, 0.5)" : "#3e4245"};
   background-color: ${(props) =>
-    props.$istoggled ? "#8a3bcb70" : "#004b97cb"};
-  border: 1px solid ${(props) => (props.$istoggled ? "#c67bbf" : "#209259c1")};
+    props.$istoggled ? "#8a3bcbe9" : "#004b97cb"};
+  border: 1px solid ${(props) => (props.$istoggled ? "#c67bbf" : "#093b22")};
 `;
 export const InputAndButtonContainer = styled.div<ToggleContainerProps>`
   display: flex;
   flex-direction: column;
-  background-color: ${(props) =>
-    props.$istoggled ? "#ae7dd671" : "#477c59c1"};
+  background-color: ${(props) => (props.$istoggled ? "#7631af" : "#153e20")};
   border: 1px solid ${(props) => (props.$istoggled ? "#e8888d" : "#d4824ac1")};
   align-items: center;
   height: 50vh;
@@ -33,6 +32,8 @@ export const InputAndButtonContainer = styled.div<ToggleContainerProps>`
   border-radius: 4%;
   margin-top: 30px;
   margin-left: 30px;
+  box-shadow: 1px 0px 20px rgba(151, 149, 149, 0.8),
+    0px 10px 5px rgba(151, 149, 149, 0.1);
 `;
 
 export const StyledInput = styled.input<ToggleContainerProps>`
